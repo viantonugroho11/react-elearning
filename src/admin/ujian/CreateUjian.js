@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class CreateWaliKelas extends Component {
+export default class CreateUjian extends Component {
   render() {
     return (
       <div>
