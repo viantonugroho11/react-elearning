@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import Header from '../../compenent/Header'
 import Menu from '../../compenent/Menu'
 import SideBar from '../../compenent/SideBar'
-export default class IndexGuru extends Component {
+
+export default class IndexSiswa extends Component {
   render() {
     return (
       <div>
@@ -16,12 +17,12 @@ export default class IndexGuru extends Component {
         <div className="row">
           <div className="col-md-6 col-sm-12">
             <div className="title">
-              <h4>Data Guru</h4>
+              <h4>Data Siswa</h4>
             </div>
             <nav aria-label="breadcrumb" role="navigation">
               <ol className="breadcrumb">
-                <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li className="breadcrumb-item active" aria-current="page">Data Guru</li>
+                <li className="breadcrumb-item"><a href="/">Home</a></li>
+                <li className="breadcrumb-item active" aria-current="page">Data Siswa</li>
               </ol>
             </nav>
           </div>
@@ -30,14 +31,14 @@ export default class IndexGuru extends Component {
       {/* Simple Datatable start */}
       <div className="card-box mb-30">
         <div className="pd-20">
-          <h4 className="text-blue h4">Data Guru</h4>
+          <h4 className="text-blue h4">Data Siswa</h4>
         </div>
         <div className="pb-20">
           <table className="data-table table stripe hover nowrap">
             <thead>
               <tr>
                 <th className="table-plus datatable-nosort">Nama Lengkap</th>
-                <th>NIK</th>
+                <th>NIS</th>
                 <th>Email</th>
                 <th>Status</th>
                 <th>Foto</th>
