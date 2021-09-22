@@ -45,6 +45,7 @@ function App() {
     	<div>
         <Switch>
           <Route exact path="/" component={DashboardAdmin} />
+          <Route exact path="/admin" component={DashboardAdmin} />
           {/* guru */}
           <Route exact path="/admin/guru" component={IndexGuru} />
           <Route exact path="/admin/guru/create" component={CreateGuru} />
