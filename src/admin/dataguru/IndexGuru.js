@@ -1,10 +1,84 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Header from '../../compenent/Header'
 import Menu from '../../compenent/Menu'
 import SideBar from '../../compenent/SideBar'
-export default class IndexGuru extends Component {
-  render() {
+
+import DataTable from 'react-data-table-component';
+//import hook useState dan useEffect from react
+import { useState, useEffect } from 'react';
+//import axios
+import axios from 'axios';
+function IndexGuru(){
+  //define state
+    const [posts, setPosts] = useState([]);
+    // A super simple expandable component.
+    const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
+    //useEffect hook
+    useEffect(() => {
+
+        //panggil method "fetchData"
+        fectData();
+
+    }, []);
+
+    //function "fetchData"
+    const fectData = async () => {
+        //fetching
+        const response = await axios.get('http://localhost:8000/api/admin/guru');
+        //get response data
+        const data = await response.data.data;
+
+        //assign response data to state "posts"
+        setPosts(data);
+    }
+
+    const datagurus = posts.map((user) => ({
+          nama:user.nama_guru,
+          nik:user.nik,
+          email:user.email,
+          status:user.status_kepegawaian,
+          aksi:<div>
+  <a classname="btn btn-secondary btn-sm" href="/">Edit</a><br/>
+  <a classname="btn btn-secondary btn-sm" href="/">Show</a><br/>
+  <a classname="btn btn-secondary btn-sm" href="/">Delete</a><br/>
+</div>
+,
+    }));
+    
+
+    const columns = [
+      {
+          name: 'Nama Lengkap',
+          selector: row => row.nama,
+          sortable: true,
+      },
+      {
+          name: 'NIK',
+          selector: row => row.nik,
+          sortable: true,
+      },
+      {
+          name: 'Email',
+          selector: row => row.email,
+          sortable: true,
+      },
+      {
+          name: 'Status',
+          selector: row => row.status,
+          sortable: true,
+      },
+      {
+          name: 'Foto',
+          selector: row => row.foto,
+          // sortable: true,
+      },
+      {
+        name:'Aksi',
+        selector:row=>row.aksi
+      },
+    ];
     return (
+      
       <div>
         <Header/>
         <SideBar/>
@@ -17,6 +91,8 @@ export default class IndexGuru extends Component {
           <div className="col-md-6 col-sm-12">
             <div className="title">
               <h4>Data Guru</h4>
+              <br/>
+              <a classname="btn btn-secondary btn-sm" href="/admin/guru/create">Tambah Data</a>
             </div>
             <nav aria-label="breadcrumb" role="navigation">
               <ol className="breadcrumb">
@@ -33,7 +109,14 @@ export default class IndexGuru extends Component {
           <h4 className="text-blue h4">Data Guru</h4>
         </div>
         <div className="pb-20">
-          <table className="data-table table stripe hover nowrap">
+          <DataTable
+          columns={columns}
+            data={datagurus}
+            // expandableRows
+            pagination
+            expandableRowsComponent={ExpandedComponent}
+          />
+          {/* <table className="data-table table stripe hover nowrap">
             <thead>
               <tr>
                 <th className="table-plus datatable-nosort">Nama Lengkap</th>
@@ -45,247 +128,42 @@ export default class IndexGuru extends Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="table-plus">Gloria F. Mead</td>
-                <td>25</td>
-                <td>Sagittarius</td>
-                <td>2829 Trainer Avenue Peoria, IL 61602 </td>
+              { posts.map((post, index) => (
+              <tr key={post.id}>
+                <td className="table-plus">{post.nama_guru}</td>
+                <td>{post.nik}</td>
+                <td>{post.email}</td>
+                <td>{post.status_kepegawaian}</td>
                 <td>29-03-2018</td>
                 <td>
                   <div className="dropdown">
-                    <a className="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                    <a className="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="/" role="button" data-toggle="dropdown">
                       <i className="dw dw-more" />
                     </a>
                     <div className="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                      <a className="dropdown-item" href="#"><i className="dw dw-eye" /> View</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-edit2" /> Edit</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-delete-3" /> Delete</a>
+                      <a className="dropdown-item" href="."><i className="dw dw-eye" /> View</a>
+                      <a className="dropdown-item" href="/"><i className="dw dw-edit2" /> Edit</a>
+                      <a className="dropdown-item" href="/"><i className="dw dw-delete-3" /> Delete</a>
                     </div>
                   </div>
                 </td>
               </tr>
-              <tr>
-                <td className="table-plus">Andrea J. Cagle</td>
-                <td>30</td>
-                <td>Gemini</td>
-                <td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-                <td>29-03-2018</td>
-                <td>
-                  <div className="dropdown">
-                    <a className="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                      <i className="dw dw-more" />
-                    </a>
-                    <div className="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                      <a className="dropdown-item" href="#"><i className="dw dw-eye" /> View</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-edit2" /> Edit</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-delete-3" /> Delete</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td className="table-plus">Andrea J. Cagle</td>
-                <td>20</td>
-                <td>Gemini</td>
-                <td>2829 Trainer Avenue Peoria, IL 61602 </td>
-                <td>29-03-2018</td>
-                <td>
-                  <div className="dropdown">
-                    <a className="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                      <i className="dw dw-more" />
-                    </a>
-                    <div className="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                      <a className="dropdown-item" href="#"><i className="dw dw-eye" /> View</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-edit2" /> Edit</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-delete-3" /> Delete</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td className="table-plus">Andrea J. Cagle</td>
-                <td>30</td>
-                <td>Sagittarius</td>
-                <td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-                <td>29-03-2018</td>
-                <td>
-                  <div className="dropdown">
-                    <a className="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                      <i className="dw dw-more" />
-                    </a>
-                    <div className="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                      <a className="dropdown-item" href="#"><i className="dw dw-eye" /> View</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-edit2" /> Edit</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-delete-3" /> Delete</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td className="table-plus">Andrea J. Cagle</td>
-                <td>25</td>
-                <td>Gemini</td>
-                <td>2829 Trainer Avenue Peoria, IL 61602 </td>
-                <td>29-03-2018</td>
-                <td>
-                  <div className="dropdown">
-                    <a className="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                      <i className="dw dw-more" />
-                    </a>
-                    <div className="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                      <a className="dropdown-item" href="#"><i className="dw dw-eye" /> View</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-edit2" /> Edit</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-delete-3" /> Delete</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td className="table-plus">Andrea J. Cagle</td>
-                <td>20</td>
-                <td>Sagittarius</td>
-                <td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-                <td>29-03-2018</td>
-                <td>
-                  <div className="dropdown">
-                    <a className="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                      <i className="dw dw-more" />
-                    </a>
-                    <div className="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                      <a className="dropdown-item" href="#"><i className="dw dw-eye" /> View</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-edit2" /> Edit</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-delete-3" /> Delete</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td className="table-plus">Andrea J. Cagle</td>
-                <td>18</td>
-                <td>Gemini</td>
-                <td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-                <td>29-03-2018</td>
-                <td>
-                  <div className="dropdown">
-                    <a className="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                      <i className="dw dw-more" />
-                    </a>
-                    <div className="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                      <a className="dropdown-item" href="#"><i className="dw dw-eye" /> View</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-edit2" /> Edit</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-delete-3" /> Delete</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td className="table-plus">Andrea J. Cagle</td>
-                <td>30</td>
-                <td>Sagittarius</td>
-                <td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-                <td>29-03-2018</td>
-                <td>
-                  <div className="dropdown">
-                    <a className="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                      <i className="dw dw-more" />
-                    </a>
-                    <div className="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                      <a className="dropdown-item" href="#"><i className="dw dw-eye" /> View</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-edit2" /> Edit</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-delete-3" /> Delete</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td className="table-plus">Andrea J. Cagle</td>
-                <td>30</td>
-                <td>Sagittarius</td>
-                <td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-                <td>29-03-2018</td>
-                <td>
-                  <div className="dropdown">
-                    <a className="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                      <i className="dw dw-more" />
-                    </a>
-                    <div className="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                      <a className="dropdown-item" href="#"><i className="dw dw-eye" /> View</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-edit2" /> Edit</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-delete-3" /> Delete</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td className="table-plus">Andrea J. Cagle</td>
-                <td>30</td>
-                <td>Gemini</td>
-                <td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-                <td>29-03-2018</td>
-                <td>
-                  <div className="dropdown">
-                    <a className="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                      <i className="dw dw-more" />
-                    </a>
-                    <div className="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                      <a className="dropdown-item" href="#"><i className="dw dw-eye" /> View</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-edit2" /> Edit</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-delete-3" /> Delete</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td className="table-plus">Andrea J. Cagle</td>
-                <td>30</td>
-                <td>Gemini</td>
-                <td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-                <td>29-03-2018</td>
-                <td>
-                  <div className="dropdown">
-                    <a className="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                      <i className="dw dw-more" />
-                    </a>
-                    <div className="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                      <a className="dropdown-item" href="#"><i className="dw dw-eye" /> View</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-edit2" /> Edit</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-delete-3" /> Delete</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td className="table-plus">Andrea J. Cagle</td>
-                <td>30</td>
-                <td>Gemini</td>
-                <td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-                <td>29-03-2018</td>
-                <td>
-                  <div className="dropdown">
-                    <a className="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                      <i className="dw dw-more" />
-                    </a>
-                    <div className="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                      <a className="dropdown-item" href="#"><i className="dw dw-eye" /> View</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-edit2" /> Edit</a>
-                      <a className="dropdown-item" href="#"><i className="dw dw-delete-3" /> Delete</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
+              ))}
             </tbody>
-          </table>
+          </table> */}
         </div>
       </div>
       {/* Simple Datatable End */}
+      
     </div>
     <div className="footer-wrap pd-20 mb-20 card-box">
-      DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
+      DeskApp - Bootstrap 4 Admin Template By <a href="/" target="_blank">Ankit Hingarajiya</a>
     </div>
   </div>
 </div>
 
       </div>
     )
-  }
 }
+
+export default IndexGuru;
