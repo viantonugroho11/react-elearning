@@ -14,7 +14,7 @@ export default class DashboardAdmin extends Component {
     <div className="card-box pd-20 height-100-p mb-30">
       <div className="row align-items-center">
         <div className="col-md-4">
-          <img src="%PUBLIC_URL%/vendors/images/banner-img.png"/>
+          {/* <img src="%PUBLIC_URL%/vendors/images/banner-img.png"/> */}
         </div>
         <div className="col-md-8">
           <h4 className="font-20 weight-500 mb-10 text-capitalize">

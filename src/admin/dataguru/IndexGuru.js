@@ -92,7 +92,7 @@ function IndexGuru(){
             <div className="title">
               <h4>Data Guru</h4>
               <br/>
-              <a classname="btn btn-secondary btn-sm" href="/admin/guru/create">Tambah Data</a>
+              {/* <a classname="btn btn-secondary btn-sm" href="/admin/guru/create">Tambah Data</a> */}
             </div>
             <nav aria-label="breadcrumb" role="navigation">
               <ol className="breadcrumb">

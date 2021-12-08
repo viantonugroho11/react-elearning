@@ -7,8 +7,8 @@ export default class Menu extends Component {
         <div className="left-side-bar">
           <div className="brand-logo">
             <a href="index.html">
-              <img src="%PUBLIC_URL%/vendors/images/deskapp-logo.svg" alt className="dark-logo" />
-              <img src="%PUBLIC_URL%/vendors/images/deskapp-logo-white.svg" alt className="light-logo" />
+              {/* <img src="%PUBLIC_URL%/vendors/images/deskapp-logo.svg" alt className="dark-logo" />
+              <img src="%PUBLIC_URL%/vendors/images/deskapp-logo-white.svg" alt className="light-logo" /> */}
             </a>
             <div className="close-sidebar" data-toggle="left-sidebar-close">
               <i className="ion-close-round" />
