@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export default class EditMateri extends Component {
+export default class CreateMateri extends Component {
   render() {
     return (
       <div>
-        <div className="main-container">
+<div className="main-container">
   <div className="pd-ltr-20 xs-pd-20-10">
     <div className="min-height-200px">
       <div className="page-header">
