@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class FooterSiswa extends Component {
+export default class SidebarUjianSiswa extends Component {
   render() {
     return (
       <div>
