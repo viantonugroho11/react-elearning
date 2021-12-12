@@ -21,6 +21,15 @@ function IndexGuru(){
 
     }, []);
 
+    //function "deletePost"
+    const deletePost = async (id) => {
+    
+        //sending
+        await axios.delete(`http://localhost:8000/api/admin/guru/${id}`);
+    
+        //panggil function "fetchData"
+        fectData();
+    }
     //function "fetchData"
     const fectData = async () => {
         //fetching
@@ -38,9 +47,9 @@ function IndexGuru(){
           email:user.email,
           status:user.status_kepegawaian,
           aksi:<div>
-  <a classname="btn btn-secondary btn-sm" href="/">Edit</a><br/>
+  <a classname="btn btn-secondary btn-sm" href={"/admin/guru/edit/"+user.id}>Edit</a><br/>
   <a classname="btn btn-secondary btn-sm" href="/">Show</a><br/>
-  <a classname="btn btn-secondary btn-sm" href="/">Delete</a><br/>
+  <button classname="btn btn-secondary btn-sm" onClick={() => deletePost(user.id)}>DELETE</button><br/>
 </div>
 ,
     }));
@@ -96,8 +105,8 @@ function IndexGuru(){
             </div>
             <nav aria-label="breadcrumb" role="navigation">
               <ol className="breadcrumb">
-                <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li className="breadcrumb-item active" aria-current="page">Data Guru</li>
+                <li className="breadcrumb-item"><a href="/">Home</a></li>
+                <li className="breadcrumb-item active" aria-current="page"><a href="/admin/guru">Data Guru</a></li>
               </ol>
             </nav>
           </div>
@@ -106,7 +115,8 @@ function IndexGuru(){
       {/* Simple Datatable start */}
       <div className="card-box mb-30">
         <div className="pd-20">
-          <h4 className="text-blue h4">Data Guru</h4>
+          <h4 className="text-blue h4">Data Guru</h4><br/>
+          <a classname="btn btn-secondary btn-sm" href="/admin/guru/create">Tambah Data</a>
         </div>
         <div className="pb-20">
           <DataTable
