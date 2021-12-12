@@ -42,11 +42,11 @@ export default class Menu extends Component {
                     <span className="micon dw dw-apartment" /><span className="mtext">Kelas</span>
                   </a>
                 </li>
-                <li className="dropdown">
-                  <a href="/admin/angakatan" className="dropdown-toggle no-arrow">
+                {/* <li className="dropdown">
+                  <a href="/admin/angkatan" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-apartment" /><span className="mtext">Angkatan</span>
                   </a>
-                </li>
+                </li> */}
                 <li>
                   <div className="dropdown-divider" />
                 </li>
