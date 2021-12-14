@@ -115,7 +115,7 @@ export default class Header extends Component {
           <span className="user-icon">
             {/* <img src="vendors/images/photo1.jpg" alt /> */}
           </span>
-          <span className="user-name">Dimas Wahyu Pratomo</span>
+          <span className="user-name">Dimas1 Wahyu Pratomo</span>
         </a>
         <div className="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
           <a className="dropdown-item" href="profile.html"><i className="dw dw-user1" /> Profile</a>
