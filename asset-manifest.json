@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/react-elearning/build/static/css/main.a617e044.chunk.css",
-    "main.js": "/react-elearning/build/static/js/main.1fe78556.chunk.js",
-    "main.js.map": "/react-elearning/build/static/js/main.1fe78556.chunk.js.map",
-    "runtime-main.js": "/react-elearning/build/static/js/runtime-main.23c67ae7.js",
-    "runtime-main.js.map": "/react-elearning/build/static/js/runtime-main.23c67ae7.js.map",
-    "static/js/2.d801adf1.chunk.js": "/react-elearning/build/static/js/2.d801adf1.chunk.js",
-    "static/js/2.d801adf1.chunk.js.map": "/react-elearning/build/static/js/2.d801adf1.chunk.js.map",
-    "static/js/3.ccbad5ea.chunk.js": "/react-elearning/build/static/js/3.ccbad5ea.chunk.js",
-    "static/js/3.ccbad5ea.chunk.js.map": "/react-elearning/build/static/js/3.ccbad5ea.chunk.js.map",
-    "index.html": "/react-elearning/build/index.html",
-    "static/css/main.a617e044.chunk.css.map": "/react-elearning/build/static/css/main.a617e044.chunk.css.map",
-    "static/js/2.d801adf1.chunk.js.LICENSE.txt": "/react-elearning/build/static/js/2.d801adf1.chunk.js.LICENSE.txt"
+    "main.css": "/react-elearning/static/css/main.a617e044.chunk.css",
+    "main.js": "/react-elearning/static/js/main.1fe78556.chunk.js",
+    "main.js.map": "/react-elearning/static/js/main.1fe78556.chunk.js.map",
+    "runtime-main.js": "/react-elearning/static/js/runtime-main.c6087c8c.js",
+    "runtime-main.js.map": "/react-elearning/static/js/runtime-main.c6087c8c.js.map",
+    "static/js/2.68d4f9e6.chunk.js": "/react-elearning/static/js/2.68d4f9e6.chunk.js",
+    "static/js/2.68d4f9e6.chunk.js.map": "/react-elearning/static/js/2.68d4f9e6.chunk.js.map",
+    "static/js/3.ccbad5ea.chunk.js": "/react-elearning/static/js/3.ccbad5ea.chunk.js",
+    "static/js/3.ccbad5ea.chunk.js.map": "/react-elearning/static/js/3.ccbad5ea.chunk.js.map",
+    "index.html": "/react-elearning/index.html",
+    "static/css/main.a617e044.chunk.css.map": "/react-elearning/static/css/main.a617e044.chunk.css.map",
+    "static/js/2.68d4f9e6.chunk.js.LICENSE.txt": "/react-elearning/static/js/2.68d4f9e6.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.23c67ae7.js",
-    "static/js/2.d801adf1.chunk.js",
+    "static/js/runtime-main.c6087c8c.js",
+    "static/js/2.68d4f9e6.chunk.js",
     "static/css/main.a617e044.chunk.css",
     "static/js/main.1fe78556.chunk.js"
   ]
