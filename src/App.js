@@ -53,7 +53,7 @@ function App() {
     	<div>
         <Switch>
           {/* admin start */}
-          <Route exact path="/" component={DashboardAdmin} />
+          {/* <Route exact path="/" component={DashboardAdmin} /> */}
           <Route exact path="/admin" component={DashboardAdmin} />
           {/* login */}
           <Route exact path="/admin/login" component={LoginAdmin} />

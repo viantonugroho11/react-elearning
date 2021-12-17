@@ -7,7 +7,7 @@ import { useHistory } from 'react-router';
 //import axios
 import axios from 'axios';
 
-function LoginAdmin() {
+function LoginSiswa() {
 
   //define state
   const [email, setEmail] = useState("");
@@ -31,7 +31,7 @@ function LoginAdmin() {
     formData.append('password', password);
 
     //send data to server
-    await axios.post('http://localhost:8000/api/loginadmin', formData)
+    await axios.post('http://localhost:8000/api/login', formData)
       .then((response) => {
 
         //set token on localStorage
@@ -110,4 +110,4 @@ function LoginAdmin() {
     </div>
   )
 }
-export default LoginAdmin
+export default LoginSiswa

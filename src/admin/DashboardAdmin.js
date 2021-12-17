@@ -1,9 +1,59 @@
-import React, { Component } from 'react'
 import Header from '../compenent/Header'
 import Menu from '../compenent/Menu'
 import SideBar from '../compenent/SideBar'
-export default class DashboardAdmin extends Component {
-  render() {
+//import hook react
+import React, { useState, useEffect } from 'react';
+
+
+//import hook useHitory from react router dom
+import { useHistory } from 'react-router';
+
+//import axios
+import axios from 'axios';
+
+function DashboardAdmin() {
+
+  //state user
+  const [user, setUser] = useState({});
+
+  //define history
+  const history = useHistory();
+
+  //token
+  const token = localStorage.getItem("token");
+
+  //function "fetchData"
+  const fetchData = async () => {
+
+    //set axios header dengan type Authorization + Bearer token
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+    //fetch user from Rest API
+    await axios.get('http://localhost:8000/api/admin/user')
+      .then((response) => {
+
+        //set response user to state
+        setUser(response.data);
+      })
+      .catch((error) => {
+      //redirect halaman login
+        history.push('/admin/login');
+      })
+      
+  }
+
+  //hook useEffect
+  useEffect(() => {
+
+    //check token empty
+    if (!token) {
+
+      //redirect login page
+      history.push('/');
+    }
+
+    //call function "fetchData"
+    fetchData();
+  }, []);
     return (
       <div>
         <Header />
@@ -19,7 +69,7 @@ export default class DashboardAdmin extends Component {
                 <div className="col-md-8">
                   <h4 className="font-20 weight-500 mb-10 text-capitalize">
                     <i>Assalamu'alaikum Wr Wb,</i><br />
-                    <i>Ahlan Wa Sahlan</i> <div className="weight-600 font-30 text-blue">Dimas Wahyu Pratomo !</div>
+                    <i>Ahlan Wa Sahlan</i> <div className="weight-600 font-30 text-blue">{user.name} !</div>
                   </h4>
                   <p className="font-18 max-width-600">Anda login sebagai Guru, akses anda terhadap aplikasi sesuai dengan apa yang telah diberikan JobDesk dalam LMS ini. <br />Keep Hamasah :)</p>
                 </div>
@@ -96,4 +146,4 @@ export default class DashboardAdmin extends Component {
       </div>
     )
   }
-}
+export default DashboardAdmin;
