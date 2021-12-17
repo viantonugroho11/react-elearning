@@ -5,6 +5,9 @@ import { Switch,Route } from 'react-router'
 //admin
 import DashboardAdmin from './admin/DashboardAdmin';
 
+//loginadmin
+import LoginAdmin from './admin/auth/LoginAdmin';
+
 //guru
 import IndexGuru from './admin/dataguru/IndexGuru';
 import CreateGuru from './admin/dataguru/CreateGuru';
@@ -52,6 +55,8 @@ function App() {
           {/* admin start */}
           <Route exact path="/" component={DashboardAdmin} />
           <Route exact path="/admin" component={DashboardAdmin} />
+          {/* login */}
+          <Route exact path="/admin/login" component={LoginAdmin} />
           {/* guru */}
           <Route exact path="/admin/guru" component={IndexGuru} />
           <Route exact path="/admin/guru/create" component={CreateGuru} />
@@ -120,7 +125,8 @@ function App() {
           <Route exact path="/guru/soalujian/create" component={CreateUjian} />
           <Route exact path="/guru/soalujian/edit/:id" component={EditUjian} />
           {/* end guru */}
-          {/* siswa star */}
+
+          {/* siswa start */}
           <Route exact path="/siswa" component={DashboardAdmin} />
           
         </Switch>
