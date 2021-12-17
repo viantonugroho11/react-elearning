@@ -10,6 +10,9 @@ import { useState } from 'react';
 function CreateUjian() {
     return (
       <div>
+        <Header />
+        <Menu />
+        <SideBar />
         <div className="main-container">
           <div className="pd-ltr-20 xs-pd-20-10">
             <div className="min-height-200px">

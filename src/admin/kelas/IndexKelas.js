@@ -9,6 +9,7 @@ import DataTable from 'react-data-table-component';
 import { useState, useEffect } from 'react';
 //import axios
 import axios from 'axios';
+// import { Link } from 'react-router-dom';
 function IndexKelas(){
     //define state
     const [posts, setPosts] = useState([]);
@@ -39,9 +40,9 @@ function IndexKelas(){
           jumlah:user.get_siswa_count,
           aksi:
           <div>
-            <a classname="btn btn-secondary btn-sm" href={"/admin/siswa/edit/"+user.id}>Edit</a><br/>
-            <a classname="btn btn-secondary btn-sm" href="/">Show</a><br/>
-            <a classname="btn btn-secondary btn-sm" href="/">Delete</a><br/>
+            <a classname="btn btn-secondary" href={"/admin/kelas/edit/"+user.id}>Edit</a><br/>
+            <a classname="btn btn-secondary" href="/">Show</a><br/>
+            <a classname="btn btn-secondary" href="/">Delete</a><br/>
           </div>,
     }));
     

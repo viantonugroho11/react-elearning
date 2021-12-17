@@ -101,7 +101,6 @@ function CreateMataPelajaran() {
             </div>
           </div>
         </div>
-
       </div>
     )
   }
