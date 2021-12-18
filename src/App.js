@@ -53,6 +53,7 @@ import DashboardGuru from './guru/DashboardGuru';
 import LoginGuru from './guru/auth/LoginGuru';
 import IndexPelajaranGuru from './guru/pelajaran/IndexPelajaran';
 import IndexMateriGuru from './guru/materi/IndexMateri';
+import CreateMateri from './guru/materi/CreateMateri';
 
 function App() {
   return (
@@ -105,7 +106,8 @@ function App() {
           <Route exact path="/guru/kelas" component={IndexKelas} />
           {/* materi */}
           <Route exact path="/guru/materi/:id" component={IndexMateriGuru} />
-          <Route exact path="/guru/materi/create/:id" component={CreateMataPelajaran} />
+          <Route exact path="/guru/materi/create/:id" component={CreateMateri} />
+          <Route exact path="/guru/materi/show/:id" component={EditMataPelajaran} />
           <Route exact path="/guru/materi/edit/:id" component={EditMataPelajaran} />
           {/* pelajaran */}
           <Route exact path="/guru/pelajaran" component={IndexPelajaranGuru} />
@@ -121,8 +123,8 @@ function App() {
           <Route exact path="/guru/siswa" component={IndexSiswa} />
           <Route exact path="/guru/siswa/show/:id" component={EditSiswa} />
           {/* soal */}
-          <Route exact path="/guru/soal" component={IndexUjian} />
-          <Route exact path="/guru/soal/create" component={CreateUjian} />
+          <Route exact path="/guru/soal/:id" component={IndexUjian} />
+          <Route exact path="/guru/soal/create/:id" component={CreateUjian} />
           <Route exact path="/guru/soal/edit/:id" component={EditUjian} />
           {/* ujian */}
           <Route exact path="/guru/ujian" component={IndexUjian} />

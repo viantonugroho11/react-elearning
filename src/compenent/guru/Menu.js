@@ -66,7 +66,7 @@ function MenuGuru() {
                   </a>
                 </li>
                 <li className="dropdown">
-                  <a className="dropdown-toggle no-arrow">
+                  <a className="dropdown-toggle">
                     <span className="micon dw dw-apartment" /><span className="mtext">Materi</span>
                   </a>
                   <ul className="submenu">
@@ -80,9 +80,18 @@ function MenuGuru() {
                   </ul>
                 </li>
                 <li className="dropdown">
-                  <a href="/guru/soal" className="dropdown-toggle no-arrow">
+                  <a className="dropdown-toggle">
                     <span className="micon dw dw-apartment" /><span className="mtext">Soal</span>
                   </a>
+                  <ul className="submenu">
+                    return (
+                    {posts.map((data, index) => {
+                      return (
+                        <li><a href={"/guru/soal/" + data.id}>{data.from_pelajaran.nama_pelajaran}</a></li>
+                      )
+                    })}
+                    );
+                  </ul>
                 </li>
                 {/* <li className="dropdown">
                   <a href="/guru/angkatan" className="dropdown-toggle no-arrow">
