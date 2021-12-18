@@ -3,7 +3,7 @@ import Header from '../../compenent/guru/Header'
 import Menu from '../../compenent/guru/Menu'
 import SideBar from '../../compenent/guru/SideBar'
 import axios from 'axios'
-import { Editor } from 'react-draft-wysiwyg';
+
 // import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 //import hook history dari react router dom
 import { useHistory, useParams } from "react-router-dom";
@@ -12,7 +12,7 @@ import { useState } from 'react';
 
 function CreateMateri() {
   const [nama, setNama] = useState('');
-  const [file, setFile] = useState('');
+  const [file, setFile] = useState();
   const [materi, setMateri] = useState('');
   const { id } = useParams();
   //state validation
@@ -30,7 +30,7 @@ function CreateMateri() {
       jadwal_id: id,
       nama_materi: nama,
       isi_materi: materi,
-      file: file,
+      file_materi: file,
     })
       .then(() => {
 
@@ -39,7 +39,8 @@ function CreateMateri() {
 
       })
       .catch((error) => {
-
+        // console.log(res);
+        console.log(error.response.data);
         //assign validation on state
         setValidation(error.response.data);
       })
@@ -85,11 +86,7 @@ function CreateMateri() {
                     <div className="col-md-12">
                       <div className="form-group">
                         <label>Isi Materi</label>
-                        <Editor
-                        value={materi}
-                        onChange={setMateri} 
-                        />
-                        <textarea value={materi} onChange={(e) => setMateri(e.target.value)} class="textarea_editor form-control border-radius-0" placeholder="Enter text ..."></textarea>
+                        <textarea value={materi} onChange={(e) => setMateri(e.target.value)} class="form-control border-radius-0" placeholder="Enter text ..."></textarea>
                         {
                           validation.isi_materi && (
                             <div className="alert alert-danger">
@@ -116,10 +113,9 @@ function CreateMateri() {
                     </div>
                     <div className="col-md-6">
                       <div className="form-group">
+                        
                         <label>File Materi</label>
-                        
-                          <input value={file} onChange={(e) => setFile(e.target.value)} type="file" className="form-control" />
-                        
+                        <input onChange={(e) => setFile(e.target.files[0])} className="form-control" type="file" placeholder="Masukkan Usia Anda" />
                       </div>
                     </div>
                   </div>
