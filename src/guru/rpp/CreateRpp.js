@@ -6,16 +6,19 @@ import axios from 'axios'
 
 // import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 //import hook history dari react router dom
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory} from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react';
 function CreateRpp() {
   const [nama, setNama] = useState('');
   const [file, setFile] = useState();
   const [materi, setMateri] = useState('');
-  const { id } = useParams();
+  // const { id } = useParams();
   //state validation
   const [validation, setValidation] = useState({});
+
+//get id local
+  const id = localStorage.getItem("id");
 
   //history
   const history = useHistory();
@@ -29,10 +32,10 @@ function CreateRpp() {
     const formData = new FormData();
 
     //append data to formData
-    formData.append('jadwal_id', id);
-    formData.append('nama_materi', nama);
-    formData.append('isi_materi', materi);
-    formData.append('file_materi', file);
+    formData.append('guru_id', id);
+    formData.append('nama_rpp', nama);
+    formData.append('keterangan_materi', materi);
+    formData.append('file_file', file);
     await axios.post('http://localhost:8000/api/guru/rpp', formData)
       .then(() => {
 
@@ -77,30 +80,36 @@ function CreateRpp() {
           <div className="pull-left">
             <h4 className="text-blue h4">Form Biodata Guru</h4>
             <p className="mb-30">Isilah data tersebut dengan benar !</p>
+                    {
+                      validation.message && (
+                        <div className="alert alert-danger">
+                          {validation.message}
+                        </div>
+                      )
+                    }
           </div>
         </div>
-        <form>
+        <form onSubmit={storePost}>
           <div className="dropdown-divider" />
-          <p><strong>Rpp Guru</strong></p>
           <div className="row">
             <div className="col-md-12">
               <div className="form-group">
                 <label>Nama RPP</label>
-                <input className="form-control" type="text" placeholder="Masukkan nama Rpp Anda" />
+                        <input value={nama} onChange={(e) => setNama(e.target.value)} className="form-control" type="text" placeholder="Masukkan nama Rpp Anda" />
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-md-6">
               <div className="form-group">
-                <label>keterangan</label>
-                <textarea className="form-control" type="text"/>
+                <label>Keterangan</label>
+                        <textarea value={materi} onChange={(e) => setMateri(e.target.value)} className="form-control" type="text"/>
               </div>
             </div>
             <div className="col-md-6">
               <div className="form-group">
                 <label>File RPP</label>
-                <input className="form-control" type="text" placeholder="Masukkan Tempat Lahir Anda" />
+                        <input onChange={(e) => setFile(e.target.files[0])} className="form-control" type="text" placeholder="Masukkan Tempat Lahir Anda" />
               </div>
             </div>
           </div>

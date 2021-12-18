@@ -38,7 +38,7 @@ function IndexRpp() {
   }
   // const url =  `http://localhost:8000/storage/FileMateri/`
   const datarpp = posts.map((user) => ({
-    nama: user.nama_materi,
+    nama: user.nama_rpp,
     // file: <a href={url + user.file}>{user.file}</a>,
     aksi:
       <div>
