@@ -1,9 +1,58 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Header from '../../compenent/guru/Header'
+import Menu from '../../compenent/guru/Menu'
+import SideBar from '../../compenent/guru/SideBar'
+import axios from 'axios'
 
-export default class CreateRpp extends Component {
-  render() {
+// import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+//import hook history dari react router dom
+import { useHistory, useParams } from "react-router-dom";
+//import hook useState from react
+import { useState } from 'react';
+function CreateRpp() {
+  const [nama, setNama] = useState('');
+  const [file, setFile] = useState();
+  const [materi, setMateri] = useState('');
+  const { id } = useParams();
+  //state validation
+  const [validation, setValidation] = useState({});
+
+  //history
+  const history = useHistory();
+
+  //method "storePost"
+  const storePost = async (e) => {
+    e.preventDefault();
+
+    //send data to server
+    //initialize formData
+    const formData = new FormData();
+
+    //append data to formData
+    formData.append('jadwal_id', id);
+    formData.append('nama_materi', nama);
+    formData.append('isi_materi', materi);
+    formData.append('file_materi', file);
+    await axios.post('http://localhost:8000/api/guru/rpp', formData)
+      .then(() => {
+
+        //redirect
+        history.push('/guru/rpp/');
+
+      })
+      .catch((error) => {
+        // console.log(res);
+        console.log(error.response.data);
+        //assign validation on state
+        setValidation(error.response.data);
+      })
+
+  };
     return (
       <div>
+        <Header />
+        <SideBar />
+        <Menu />
 <div className="main-container">
   <div className="pd-ltr-20 xs-pd-20-10">
     <div className="min-height-200px">
@@ -32,18 +81,12 @@ export default class CreateRpp extends Component {
         </div>
         <form>
           <div className="dropdown-divider" />
-          <p><strong>Biodata Guru</strong></p>
+          <p><strong>Rpp Guru</strong></p>
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-12">
               <div className="form-group">
-                <label>Nama</label>
+                <label>Nama RPP</label>
                 <input className="form-control" type="text" placeholder="Masukkan nama Rpp Anda" />
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="form-group">
-                <label>Guru</label>
-                <input className="form-control" type="text" placeholder="Masukkan Nama Lengkap Anda" />
               </div>
             </div>
           </div>
@@ -51,12 +94,12 @@ export default class CreateRpp extends Component {
             <div className="col-md-6">
               <div className="form-group">
                 <label>keterangan</label>
-                <input className="form-control" type="text" placeholder="Masukkan keterangan Rpp" />
+                <textarea className="form-control" type="text"/>
               </div>
             </div>
             <div className="col-md-6">
               <div className="form-group">
-                <label>Tempat Lahir</label>
+                <label>File RPP</label>
                 <input className="form-control" type="text" placeholder="Masukkan Tempat Lahir Anda" />
               </div>
             </div>
@@ -79,4 +122,4 @@ export default class CreateRpp extends Component {
       </div>
     )
   }
-}
+export default CreateRpp

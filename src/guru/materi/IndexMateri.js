@@ -45,12 +45,16 @@ function IndexMateriGuru() {
     //assign response data to state "posts"
     setPosts(data);
   }
-
+  // const url = `http://localhost:8000/storage/FileMateri/`
   const datamateri = posts.map((user) => ({
     nama: user.nama_materi,
+    // file: <a classname="btn btn-secondary" href={url + user.file_materi} download={user.file_materi}>Download</a>,
+    // file: <form method="get" action={url + user.file_materi}>
+    //   <button type="submit">Download!</button>
+    // </form>,
     aksi:
       <div>
-        <a classname="btn btn-secondary" href={"/guru/pelajaran/edit/" + user.id}>Edit</a><br />
+        <a classname="btn btn-secondary" href={"/guru/materi/edit/" + user.id}>Edit</a><br />
         <a classname="btn btn-secondary" href={"/guru/materi/show/" + user.id}>Show</a><br />
         <a classname="btn btn-secondary" href={"/guru/materi/delete/"}>Delete</a><br />
       </div>,
@@ -63,6 +67,11 @@ function IndexMateriGuru() {
       selector: row => row.nama,
       sortable: true,
     },
+    // {
+    //   name: 'File',
+    //   selector: row => row.file,
+    //   sortable: false,
+    // },
     {
       name: 'Aksi',
       selector: row => row.aksi
