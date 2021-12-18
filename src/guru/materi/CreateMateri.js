@@ -3,7 +3,8 @@ import Header from '../../compenent/guru/Header'
 import Menu from '../../compenent/guru/Menu'
 import SideBar from '../../compenent/guru/SideBar'
 import axios from 'axios'
-
+import { Editor } from 'react-draft-wysiwyg';
+// import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 //import hook history dari react router dom
 import { useHistory, useParams } from "react-router-dom";
 //import hook useState from react
@@ -26,7 +27,7 @@ function CreateMateri() {
 
     //send data to server
     await axios.post('http://localhost:8000/api/guru/materi', {
-      jadwal_id: 21,
+      jadwal_id: id,
       nama_materi: nama,
       isi_materi: materi,
       file: file,
@@ -68,24 +69,34 @@ function CreateMateri() {
               </div>
             </div>
             {/* Default Basic Forms Start */}
-            <form onSubmit={storePost}>
-              <div className="pd-20 card-box mb-30">
-                <div className="clearfix">
-                  <h4 className="h4 text-blue">Materi </h4>
-                  <p>Isilah Data tersebut dengan benar !</p>
-                  {
-                    validation.errors &&
-                    <div className="alert alert-danger" role="alert">
-                      {validation.errors.map((error, index) => (
-                        <div key={index}>{`${error.param} : ${error.msg}`}</div>
-                      ))}
+            <div className="pd-20 card-box mb-30">
+              <div className="clearfix">
+                <h4 className="h4 text-blue">Materi </h4>
+                <p>Isilah Data tersebut dengan benar !</p>
+                {
+                  validation.message && (
+                    <div className="alert alert-danger">
+                      {validation.message}
                     </div>
-                  }
+                  )
+                }
+                <form onSubmit={storePost}>
                   <div className="row">
                     <div className="col-md-12">
                       <div className="form-group">
                         <label>Isi Materi</label>
+                        <Editor
+                        value={materi}
+                        onChange={setMateri} 
+                        />
                         <textarea value={materi} onChange={(e) => setMateri(e.target.value)} class="textarea_editor form-control border-radius-0" placeholder="Enter text ..."></textarea>
+                        {
+                          validation.isi_materi && (
+                            <div className="alert alert-danger">
+                              {validation.isi_materi[0]}
+                            </div>
+                          )
+                        }
                       </div>
                     </div>
                   </div>
@@ -94,15 +105,21 @@ function CreateMateri() {
                       <div className="form-group">
                         <label>Nama Materi</label>
                         <input value={nama} onChange={(e) => setNama(e.target.value)} className="form-control" type="text" placeholder="Masukkan Nama Materi " />
+                        {
+                          validation.nama && (
+                            <div className="alert alert-danger">
+                              {validation.nama[0]}
+                            </div>
+                          )
+                        }
                       </div>
                     </div>
                     <div className="col-md-6">
                       <div className="form-group">
                         <label>File Materi</label>
-                        <div className="custom-file">
-                          <input value={file} onChange={(e) => setFile(e.target.value)} type="file" className="custom-file-input" />
-                          <label className="custom-file-label">File Materi</label>
-                        </div>
+                        
+                          <input value={file} onChange={(e) => setFile(e.target.value)} type="file" className="form-control" />
+                        
                       </div>
                     </div>
                   </div>
@@ -111,9 +128,9 @@ function CreateMateri() {
                       <button className="btn btn-primary btn-sm scroll-click" type="submit">Simpan</button>
                     </div>
                   </div>
-                </div>
+                </form>
               </div>
-            </form>
+            </div>
             {/* Input Validation End */}
           </div>
           <div className="footer-wrap pd-20 mb-20 card-box">

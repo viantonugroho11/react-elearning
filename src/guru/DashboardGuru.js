@@ -2,8 +2,8 @@ import Header from '../compenent/guru/Header'
 import Menu from '../compenent/guru/Menu'
 import SideBar from '../compenent/guru/SideBar'
 //import hook react
-import React, { useState, useEffect } from 'react';
-
+import React from 'react'
+import { useState, useEffect } from 'react'
 
 //import hook useHitory from react router dom
 import { useHistory } from 'react-router';
@@ -53,7 +53,7 @@ function DashboardGuru() {
 
     //call function "fetchData"
     fetchData();
-  }, []);
+  },[]);
   return (
     <div>
       <Header />

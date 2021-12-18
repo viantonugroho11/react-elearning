@@ -36,6 +36,7 @@ function LoginGuru() {
 
         //set token on localStorage
         localStorage.setItem('token', response.data.token);
+        localStorage.setItem('id', response.data.user.id);
 
         //redirect to dashboard
         history.push('/guru');
