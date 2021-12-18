@@ -1,7 +1,35 @@
-import React, { Component } from 'react'
+import React from 'react'
+//import hook useState dan useEffect from react
+import { useState, useEffect } from 'react';
+//import axios
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+function MenuGuru() {
+  //define state
+  const [posts, setPosts] = useState([]);
 
-export default class MenuGuru extends Component {
-  render() {
+  //token
+  // const token = localStorage.getItem("token");
+  //id
+  const id = localStorage.getItem("id");
+  //useEffect hook
+  useEffect(() => {
+
+    //panggil method "fetchData"
+    fectMenuPelajaran();
+
+  }, []);
+
+  //function "fetchData"
+  const fectMenuPelajaran = async () => {
+    //fetching
+    const response = await axios.get(`http://localhost:8000/api/guru/pelajaran/${id}`);
+    //get response data
+    const data = await response.data.data;
+
+    //assign response data to state "posts"
+    setPosts(data);
+  }
     return (
       <div>
         <div className="left-side-bar">
@@ -18,32 +46,46 @@ export default class MenuGuru extends Component {
             <div className="sidebar-menu">
               <ul id="accordion-menu">
                 <li className="dropdown">
-                  <a href="/admin" className="dropdown-toggle no-arrow">
+                  <a href="/guru" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-house-1" /><span className="mtext">Home</span>
                   </a>
                 </li>
                 <li className="dropdown">
-                  <a href="/admin/siswa" className="dropdown-toggle no-arrow">
-                    <span className="micon dw dw-edit2" /><span className="mtext">Data Siswa</span>
+                  <a href="/guru/rpp" className="dropdown-toggle no-arrow">
+                    <span className="micon dw dw-edit2" /><span className="mtext">RPP</span>
                   </a>
                 </li>
                 <li className="dropdown">
-                  <a href="/admin/guru" className="dropdown-toggle no-arrow">
-                    <span className="micon dw dw-library" /><span className="mtext">Data Guru</span>
+                  <a href="/guru/silabus" className="dropdown-toggle no-arrow">
+                    <span className="micon dw dw-library" /><span className="mtext">Silabus</span>
                   </a>
                 </li>
                 <li>
-                  <a href="/admin/matapelajaran" className="dropdown-toggle no-arrow">
-                    <span className="micon dw dw-calendar1" /><span className="mtext">Mata Pelajaran</span>
+                  <a href="/guru/pelajaran" className="dropdown-toggle no-arrow">
+                    <span className="micon dw dw-calendar1" /><span className="mtext">Pelajaran</span>
                   </a>
                 </li>
                 <li className="dropdown">
-                  <a href="/admin/kelas" className="dropdown-toggle no-arrow">
-                    <span className="micon dw dw-apartment" /><span className="mtext">Kelas</span>
+                  <a className="dropdown-toggle no-arrow">
+                    <span className="micon dw dw-apartment" /><span className="mtext">Materi</span>
+                  </a>
+                  <ul className="submenu">
+                    return (
+                    {posts.map((data, index) => {
+                      return (
+                        <li><a href={"/guru/materi/"+data.id}>{data.from_pelajaran.nama_pelajaran}</a></li>
+                      )
+                    })}
+                    );
+                  </ul>
+                </li>
+                <li className="dropdown">
+                  <a href="/guru/soal" className="dropdown-toggle no-arrow">
+                    <span className="micon dw dw-apartment" /><span className="mtext">Soal</span>
                   </a>
                 </li>
                 {/* <li className="dropdown">
-                  <a href="/admin/angkatan" className="dropdown-toggle no-arrow">
+                  <a href="/guru/angkatan" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-apartment" /><span className="mtext">Angkatan</span>
                   </a>
                 </li> */}
@@ -51,21 +93,16 @@ export default class MenuGuru extends Component {
                   <div className="dropdown-divider" />
                 </li>
                 <li>
-                  <div className="sidebar-small-cap">Mapping</div>
+                  <div className="sidebar-small-cap">Ujian</div>
                 </li>
                 <li className="dropdown">
-                  <a href="/admin/walikelas" className="dropdown-toggle no-arrow">
-                    <span className="micon dw dw-apartment" /><span className="mtext">Wali Kelas</span>
-                  </a>
-                </li>
-                <li className="dropdown">
-                  <a href="/admin/jadwal" className="dropdown-toggle no-arrow">
-                    <span className="micon dw dw-apartment" /><span className="mtext">Jadwal</span>
-                  </a>
-                </li>
-                <li className="dropdown">
-                  <a href="/admin/ujian" className="dropdown-toggle no-arrow">
+                  <a href="/guru/ujian" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-apartment" /><span className="mtext">Ujian</span>
+                  </a>
+                </li>
+                <li className="dropdown">
+                  <a href="/guru/soalujian" className="dropdown-toggle no-arrow">
+                    <span className="micon dw dw-apartment" /><span className="mtext">Soal Ujian</span>
                   </a>
                 </li>
               </ul>
@@ -76,4 +113,4 @@ export default class MenuGuru extends Component {
       </div>
     )
   }
-}
+export default MenuGuru

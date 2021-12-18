@@ -48,6 +48,12 @@ import IndexAngkatan from './admin/angkatan/IndexAngkatan';
 import CreateAngkatan from './admin/angkatan/CreateAngkatan';
 import EditAngkatan from './admin/angkatan/EditAngkatan';
 
+//dashboardguru
+import DashboardGuru from './guru/DashboardGuru';
+import LoginGuru from './guru/auth/LoginGuru';
+import IndexPelajaranGuru from './guru/pelajaran/IndexPelajaran';
+import IndexMateriGuru from './guru/materi/IndexMateri';
+
 function App() {
   return (
     	<div>
@@ -92,15 +98,17 @@ function App() {
           {/* admin end */}
 
           {/* guru start */}
-          <Route exact path="/guru" component={DashboardAdmin} />
+          <Route exact path="/guru" component={DashboardGuru} />
+          {/* login Guru */}
+          <Route exact path="/guru/login" component={LoginGuru} />
           {/* kelas */}
           <Route exact path="/guru/kelas" component={IndexKelas} />
           {/* materi */}
-          <Route exact path="/guru/materi" component={IndexMataPelajaran} />
-          <Route exact path="/guru/materi/create" component={CreateMataPelajaran} />
+          <Route exact path="/guru/materi/:id" component={IndexMateriGuru} />
+          <Route exact path="/guru/materi/create/:id" component={CreateMataPelajaran} />
           <Route exact path="/guru/materi/edit/:id" component={EditMataPelajaran} />
           {/* pelajaran */}
-          <Route exact path="/guru/pelajaran" component={IndexMataPelajaran} />
+          <Route exact path="/guru/pelajaran" component={IndexPelajaranGuru} />
           {/* rpp */}
           <Route exact path="/guru/rpp" component={IndexMataPelajaran} />
           <Route exact path="/guru/rpp/create" component={CreateMataPelajaran} />

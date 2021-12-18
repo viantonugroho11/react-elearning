@@ -38,7 +38,7 @@ function LoginGuru() {
         localStorage.setItem('token', response.data.token);
 
         //redirect to dashboard
-        history.push('/admin');
+        history.push('/guru');
       })
       .catch((error) => {
 
