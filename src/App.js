@@ -64,6 +64,8 @@ import EditRpp from './guru/rpp/EditRpp';
 import IndexSilabus from './guru/silabus/IndexSilabus';
 import CreateSilabus from './guru/silabus/CreateSilabus';
 import EditSilabus from './guru/silabus/EditSilabus';
+import IndexUjianGuru from './guru/ujian/IndexUjian';
+import CreateSoalUjian from './guru/soalujian/CreateSoalUjian';
 
 function App() {
   return (
@@ -137,12 +139,12 @@ function App() {
           <Route exact path="/guru/soal/create/:id" component={CreateUjian} />
           <Route exact path="/guru/soal/edit/:id" component={EditUjian} />
           {/* ujian */}
-          <Route exact path="/guru/ujian" component={IndexUjian} />
+          <Route exact path="/guru/ujian" component={IndexUjianGuru} />
           <Route exact path="/guru/ujian/create" component={CreateUjian} />
           <Route exact path="/guru/ujian/edit/:id" component={EditUjian} />
           {/* soalujian */}
-          <Route exact path="/guru/soalujian" component={IndexUjian} />
-          <Route exact path="/guru/soalujian/create" component={CreateUjian} />
+          <Route exact path="/guru/soalujian/:id" component={IndexUjian} />
+          <Route exact path="/guru/soalujian/create/:id" component={CreateSoalUjian} />
           <Route exact path="/guru/soalujian/edit/:id" component={EditUjian} />
           {/* end guru */}
 
