@@ -70,6 +70,13 @@ function LoginGuru() {
               <div className="login-box bg-white box-shadow border-radius-10">
                 <div className="login-title">
                   <h2 className="text-center text-primary">Login Admin SDIT AL-MANAR</h2>
+                  {
+                    validation.message && (
+                      <div className="alert alert-danger">
+                        {validation.message}
+                      </div>
+                    )
+                  }
                 </div>
                 <form onSubmit={loginHandler}>
                   <div className="input-group custom">

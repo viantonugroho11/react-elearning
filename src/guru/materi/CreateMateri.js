@@ -26,12 +26,15 @@ function CreateMateri() {
     e.preventDefault();
 
     //send data to server
-    await axios.post('http://localhost:8000/api/guru/materi', {
-      jadwal_id: id,
-      nama_materi: nama,
-      isi_materi: materi,
-      file_materi: file,
-    })
+    //initialize formData
+    const formData = new FormData();
+
+    //append data to formData
+    formData.append('jadwal_id', id);
+    formData.append('nama_materi', nama);
+    formData.append('isi_materi', materi);
+    formData.append('file_materi', file);
+    await axios.post('http://localhost:8000/api/guru/materi',formData)
       .then(() => {
 
         //redirect

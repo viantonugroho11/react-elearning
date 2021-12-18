@@ -8,7 +8,7 @@ import axios from 'axios'
 import { useHistory } from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react'
-function CreateSiswa() {
+function EditSiswa() {
   // inisialiasasi const
   const [nama, setNama] = useState('');
   //nis
@@ -29,7 +29,7 @@ function CreateSiswa() {
   const [notelp, setNoTelp] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [foto, setFoto] = useState('');
+  const [foto, setFoto] = useState();
 
   const [dataKelas, setDataKelas] = useState([])
   //setvalidasi
@@ -42,26 +42,30 @@ function CreateSiswa() {
   const storePost = async (e) => {
     e.preventDefault();
 
+    const formData = new FormData();
+
+    //append data to formData
+    formData.append('nama_siswa', nama);
+    formData.append('nisn', nisn);
+    formData.append('nis', nis);
+    formData.append('kelas_id', kelas);
+    formData.append('tanggal_masuk_sekolah', tgl_masuk);
+    formData.append('tempat_lahir', tmp_lahir);
+    formData.append('tgl_lahir', tgl_lahir);
+    formData.append('usia', usia);
+    formData.append('jenis_kelamin', jkelamin);
+    formData.append('status', status);
+    formData.append('nama_ayah', nmayah);
+    formData.append('pk_ayah', pkayah);
+    formData.append('nama_ibu', nmibu);
+    formData.append('pk_ibu', pkibu);
+    formData.append('alamat', alamat);
+    formData.append('nomor_telepon_orangtua:', notelp);
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('foto', foto);
     //send data to server
-    await axios.post('http://localhost:8000/api/admin/siswa', {
-      nama_siswa: nama,
-      nisn: nisn,
-      nis: nis,
-      kelas_id: kelas,
-      tanggal_masuk_sekolah: tgl_masuk,
-      usia: usia,
-      jenis_kelamin: jkelamin,
-      status: status,
-      nama_ayah: nmayah,
-      pk_ayah: pkayah,
-      nama_ibu: nmibu,
-      pk_ibu: pkibu,
-      alamat: alamat,
-      nomor_telepon_orangtua: notelp,
-      email: email,
-      password: password,
-      foto: foto,
-    })
+    await axios.post('http://localhost:8000/api/admin/siswa', formData)
       .then(() => {
 
         //redirect
@@ -119,6 +123,13 @@ function CreateSiswa() {
                 <div className="pull-left">
                   <h4 className="text-blue h4">Form Biodata</h4>
                   <p className="mb-30">Isilah data tersebut dengan benar !</p>
+                  {
+                    validation.message && (
+                      <div className="alert alert-danger">
+                        {validation.message}
+                      </div>
+                    )
+                  }
                 </div>
               </div>
               <form onSubmit={storePost}>
@@ -195,7 +206,7 @@ function CreateSiswa() {
                 </div> */}
                 <div className="form-group">
                   <label>Foto</label>
-                  <input value={foto} onChange={(e) => setFoto(e.target.value)} className="form-control" type="file" placeholder="Masukkan Usia Anda" />
+                  <input onChange={(e) => setFoto(e.target.files[0])} className="form-control" type="file" placeholder="Masukkan Usia Anda" />
                 </div>
                 <div className="dropdown-divider" />
                 <p><strong>Biodata Orangtua</strong></p>
@@ -243,7 +254,7 @@ function CreateSiswa() {
                 </div>
                 <div className="clearfix">
                   <div className="pull-right">
-                    <a href="#horizontal-basic-form1" className="btn btn-primary btn-sm scroll-click" rel data-toggle="collapse" role="button">Simpan</a>
+                    <button className="btn btn-primary btn-sm scroll-click" type="submit">Simpan</button>
                   </div>
                 </div>
               </form>
@@ -258,4 +269,4 @@ function CreateSiswa() {
     </div>
   )
 }
-export default CreateSiswa
+export default EditSiswa

@@ -121,6 +121,13 @@ function CreateJadwal() {
                 <div className="pull-left">
                   <h4 className="text-blue h4">Form Jadwal Pelajaran</h4>
                   <p className="mb-30">Isilah data tersebut dengan benar !</p>
+                  {
+                    validation.message && (
+                      <div className="alert alert-danger">
+                        {validation.message}
+                      </div>
+                    )
+                  }
                 </div>
               </div>
               <form onSubmit={storePost}>
