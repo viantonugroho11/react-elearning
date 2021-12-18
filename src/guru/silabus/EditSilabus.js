@@ -9,7 +9,7 @@ import axios from 'axios'
 import { useHistory } from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react';
-function CreateSilabus() {
+function EditSilabus() {
   const [nama, setNama] = useState('');
   const [file, setFile] = useState();
   const [materi, setMateri] = useState('');
@@ -131,4 +131,4 @@ function CreateSilabus() {
     </div>
   )
 }
-export default CreateSilabus
+export default EditSilabus

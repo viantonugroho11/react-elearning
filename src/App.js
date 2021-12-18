@@ -61,6 +61,9 @@ import EditMateri from './guru/materi/EditMateri';
 import IndexRpp from './guru/rpp/IndexRpp';
 import CreateRpp from './guru/rpp/CreateRpp';
 import EditRpp from './guru/rpp/EditRpp';
+import IndexSilabus from './guru/silabus/IndexSilabus';
+import CreateSilabus from './guru/silabus/CreateSilabus';
+import EditSilabus from './guru/silabus/EditSilabus';
 
 function App() {
   return (
@@ -123,9 +126,9 @@ function App() {
           <Route exact path="/guru/rpp/create" component={CreateRpp} />
           <Route exact path="/guru/rpp/edit/:id" component={EditRpp} />
           {/* silabus */}
-          <Route exact path="/guru/silabus" component={IndexMataPelajaran} />
-          <Route exact path="/guru/silabus/create" component={CreateMataPelajaran} />
-          <Route exact path="/guru/silabus/edit/:id" component={EditMataPelajaran} />
+          <Route exact path="/guru/silabus" component={IndexSilabus} />
+          <Route exact path="/guru/silabus/create" component={CreateSilabus} />
+          <Route exact path="/guru/silabus/edit/:id" component={EditSilabus} />
           {/* siswa */}
           <Route exact path="/guru/siswa" component={IndexSiswa} />
           <Route exact path="/guru/siswa/show/:id" component={EditSiswa} />
