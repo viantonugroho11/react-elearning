@@ -23,11 +23,11 @@ function IndexUjianGuru() {
   useEffect(() => {
 
     //panggil method "fetchData"
-    fectData();
+    fecthDataUjianGuru();
 
-  });
+  },[]);
   //function "fetchData"
-  const fectData = async () => {
+  const fecthDataUjianGuru = async () => {
     //fetching
     const response = await axios.get(`http://localhost:8000/api/guru/ujian/${id}/edit`);
     //get response data

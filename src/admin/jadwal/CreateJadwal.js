@@ -35,7 +35,7 @@ function CreateJadwal() {
       guru: guru
     })
       .then(() => {
-
+        
         //redirect
         history.push('/admin/jadwal');
 
@@ -172,7 +172,7 @@ function CreateJadwal() {
                 </div>
                 <div className="clearfix">
                   <div className="pull-right">
-                    <a href="#horizontal-basic-form1" className="btn btn-primary btn-sm scroll-click" rel data-toggle="collapse" role="button">Simpan</a>
+                    <button className="btn btn-primary btn-sm scroll-click" type="submit">Simpan</button>
                   </div>
                 </div>
               </form>

@@ -14,6 +14,41 @@ function CreateSoalUjian() {
   const { id } = useParams();
 
   const [dataUjian, setUjian] = useState({})
+  const [audio, setAudio] = useState()
+  const [soal, setSoal] = useState('')
+  // const [audio_ujian, setaudio] = useState('')
+  const [pil_a_ujian, setpil_a] = useState('')
+  const [pil_b_ujian, setpil_b] = useState('')
+  const [pil_c_ujian, setpil_c] = useState('')
+  const [pil_d_ujian, setpil_d] = useState('')
+  const [pil_e_ujian, setpil_e] = useState('')
+  const [jawabkunci, setkuncijawab] = useState('')
+  // const [nilai_ujian, setnilai_ujian] = useState('')
+  //state validation
+  const [validation, setValidation] = useState({});
+  //history
+  const history = useHistory();
+
+  //method "Get Cek Ujian"
+  const getCekUjian = async () => {
+    //send data to server
+    await axios.get(`http://localhost:8000/api/guru/ujian/${id}`)
+
+      .then(res => {
+        if (res.data.data.jumlah_soal == res.data.data.get_soal_ujian_count) {
+          //redirect
+          history.push('/guru/ujian');
+        } else {
+          history.push('/soalujian/create/' + id);
+        }
+      })
+      .catch((error) => {
+
+        //assign validation on state
+        setValidation(error.response.data);
+      })
+    };
+
   //method "getDataGuru"
   const GetUjian = async () => {
     await axios.get(`http://localhost:8000/api/guru/ujian/${id}`)
@@ -25,8 +60,49 @@ function CreateSoalUjian() {
         console.log(err)
       })
   }
+  //method "storePost"
+  const storePost = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    //append data to formData
+    formData.append('ujian_id', id);
+    // formData.append('jenis_soal');
+    formData.append('soal_ujian',soal);
+    formData.append('audio_ujian',audio);
+    formData.append('pil_a_ujian',pil_a_ujian);
+    formData.append('pil_b_ujian',pil_b_ujian);
+    formData.append('pil_c_ujian',pil_c_ujian);
+    formData.append('pil_d_ujian',pil_d_ujian);
+    formData.append('pil_e_ujian',pil_e_ujian);
+    // formData.append('pil_a_ujian');
+    // formData.append('pil_a_ujian');
+    formData.append('kunci_jawab_ujian',jawabkunci);
+    //send data to server
+    await axios.post('http://localhost:8000/api/guru/ujiansoal', formData)
+
+      .then(() => {
+        if (dataUjian.jumlah_soal === dataUjian.get_soal_ujian_count) {
+          //redirect
+          history.push('/guru/ujian');
+        } else {
+          history.push('/soalujian/create/' + id);
+        }
+
+      })
+      .catch((error) => {
+
+        //assign validation on state
+        setValidation(error.response.data);
+      })
+
+  };
+
+
   useEffect(() => {
     GetUjian()
+    getCekUjian()
   }, [])
   return (
     <div>
@@ -57,49 +133,54 @@ function CreateSoalUjian() {
                 <div className="pull-left">
                   <h4 className="text-blue h4">Form Soal Ujian</h4>
                   <p className="mb-30">Isilah data tersebut dengan benar !</p>
-                  {dataUjian.jumlah_soal}
+                  {
+                    validation.message && (
+                      <div className="alert alert-danger">
+                        {validation.message}
+                      </div>
+                    )
+                  }
                 </div>
               </div>
-              <form>
+              <form onSubmit={storePost}>
                 <div className="form-group">
                   <label>Soal Ujian</label>
-                  <textarea className="form-control" rows="5"></textarea>
+                  <textarea value={soal} onChange={(e) => setSoal(e.target.value)} className="form-control" rows="5"></textarea>
                 </div>
                 <div className="form-group">
                   <label>Soal Audio(Optional)</label>
-                  <input type="file" className="form-control" />
+                  <input type="file" onChange={(e) => setAudio(e.target.files)} className="form-control" />
                 </div>
                 <div className="dropdown-divider" />
-                <p><strong>Soal</strong></p>
                 <div className="form-group">
                   <label>A.</label>
-                  <input className="form-control" type="text" placeholder="Masukkan pilihan A" />
+                  <input value={pil_a_ujian} onChange={(e) => setpil_a(e.target.value)} className="form-control" type="text" placeholder="Masukkan pilihan A" />
                 </div>
                 <div className="form-group">
                   <label>B.</label>
-                  <input className="form-control" type="text" placeholder="Masukkan pilihan B" />
+                  <input value={pil_b_ujian} onChange={(e) => setpil_b(e.target.value)} className="form-control" type="text" placeholder="Masukkan pilihan B" />
                 </div>
                 <div className="form-group">
                   <label>C.</label>
-                  <input className="form-control" type="text" placeholder="Masukkan pilihan C" />
+                  <input value={pil_c_ujian} onChange={(e) => setpil_c(e.target.value)} className="form-control" type="text" placeholder="Masukkan pilihan C" />
                 </div>
                 <div className="form-group">
                   <label>D.</label>
-                  <input className="form-control" type="text" placeholder="Masukkan pilihan D" />
+                  <input value={pil_d_ujian} onChange={(e) => setpil_d(e.target.value)} className="form-control" type="text" placeholder="Masukkan pilihan D" />
                 </div>
                 <div className="form-group">
                   <label>E. (Optional)</label>
-                  <input className="form-control" type="text" placeholder="Masukkan pilihan E (Optional)" />
+                  <input value={pil_e_ujian} onChange={(e) => setpil_e(e.target.value)} className="form-control" type="text" placeholder="Masukkan pilihan E (Optional)" />
                 </div>
                 <div className="form-group">
                   <label>Kunci Jawab Ujian</label>
-                  <textarea className="form-control" rows="5"></textarea>
+                  <textarea value={jawabkunci} onChange={(e) => setkuncijawab(e.target.value)} className="form-control" rows="5"></textarea>
                   <supscrip>*Copy Dari pilihan yang tepat</supscrip>
                 </div>
-                
+
                 <div className="clearfix">
                   <div className="pull-right">
-                    <a href="#horizontal-basic-form1" className="btn btn-primary btn-sm scroll-click" rel data-toggle="collapse" role="button">Simpan</a>
+                    <button className="btn btn-primary btn-sm scroll-click" type="submit">Simpan</button>
                   </div>
                 </div>
               </form>
