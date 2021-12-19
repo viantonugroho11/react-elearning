@@ -66,6 +66,7 @@ import CreateSilabus from './guru/silabus/CreateSilabus';
 import EditSilabus from './guru/silabus/EditSilabus';
 import IndexUjianGuru from './guru/ujian/IndexUjian';
 import CreateSoalUjian from './guru/soalujian/CreateSoalUjian';
+import LoginSiswa from './siswa/auth/LoginSiswa';
 
 function App() {
   return (
@@ -149,8 +150,9 @@ function App() {
           {/* end guru */}
 
           {/* siswa start */}
-          <Route exact path="/siswa" component={DashboardAdmin} />
-          
+          <Route exact path="/dashboard" component={DashboardAdmin} />
+          {/* login siswa */}
+          <Route exact path="/" component={LoginSiswa} />
         </Switch>
       </div>
   );
