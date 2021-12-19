@@ -102,7 +102,7 @@ function IndexUjianGuru() {
               <div className="row">
                 <div className="col-md-6 col-sm-12">
                   <div className="title">
-                    <h4>Data Kelas</h4>
+                    <h4>Data Ujian</h4>
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
@@ -116,7 +116,7 @@ function IndexUjianGuru() {
             {/* Simple Datatable start */}
             <div className="card-box mb-30">
               <div className="pd-20 d-flex justify-content-between">
-                <h4 className="text-blue h4">Data Kelas</h4>
+                <h4 className="text-blue h4">Data Ujian</h4>
                 <a href="form-datakelas.html" className="btn btn-sm btn-primary">+ tambah</a>
               </div>
               <div className="pb-20">

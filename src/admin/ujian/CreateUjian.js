@@ -1,6 +1,6 @@
-import Header from '../../compenent/Header'
-import Menu from '../../compenent/Menu'
-import SideBar from '../../compenent/SideBar'
+import Header from '../../compenent/guru/Header'
+import Menu from '../../compenent/guru/Menu'
+import SideBar from '../../compenent/guru/SideBar'
 import axios from 'axios'
 
 //import hook history dari react router dom
@@ -8,6 +8,55 @@ import { useHistory } from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react';
 function CreateUjian() {
+  const [pelajaran, setPelajaran] = useState('');
+  const [kelas, setKelas] = useState('');
+  const [guru, setGuru] = useState('');
+
+  //setdata
+  const [dataGuru, setDataGuru] = useState([])
+  const [dataKelas, setDataKelas] = useState([])
+  const [dataPelajaran, setDataPelajaran] = useState([])
+  //state validation
+  const [validation, setValidation] = useState({});
+
+  //history
+  const history = useHistory();
+
+  //method "storePost"
+  const storePost = async (e) => {
+    e.preventDefault();
+
+    //send data to server
+    await axios.post('http://localhost:8000/api/admin/jadwal', {
+      pelajaran: pelajaran,
+      kelas: kelas,
+      guru: guru
+    })
+      .then(() => {
+
+        //redirect
+        history.push('/admin/jadwal');
+
+      })
+      .catch((error) => {
+
+        //assign validation on state
+        setValidation(error.response.data);
+      })
+
+  };
+
+  //method "getDataGuru"
+  const GetGuru = async () => {
+    await axios.get('http://localhost:8000/api/admin/guru')
+      .then(res => {
+        const dataGuru = res.data.data;
+        setDataGuru(dataGuru);
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
     return (
       <div>
         <Header />

@@ -39,7 +39,7 @@ function CreateSoalUjian() {
           //redirect
           history.push('/guru/ujian');
         } else {
-          history.push('/soalujian/create/' + id);
+          history.push('/guru/soalujian/create/' + id);
         }
       })
       .catch((error) => {
@@ -87,7 +87,7 @@ function CreateSoalUjian() {
           //redirect
           history.push('/guru/ujian');
         } else {
-          history.push('/soalujian/create/' + id);
+          history.push('/guru/soalujian/create/' + id);
         }
 
       })
@@ -98,17 +98,66 @@ function CreateSoalUjian() {
       })
 
   };
+  function FormSoal(){
+    var rows = [];
+    for (let i = 0; i < dataUjian.jumlah_soal; i++) {
+      rows.push(<div>
+        <div className="form-group">
+          <label>Soal Ujian</label>
+          <textarea value={soal} onChange={(e) => setSoal(e.target.value)} className="form-control" rows="5"></textarea>
+        </div>
+        <div className="form-group">
+          <label>Soal Audio(Optional)</label>
+          <input type="file" onChange={(e) => setAudio(e.target.files)} className="form-control" />
+        </div>
+        <div className="dropdown-divider" />
+        <div className="form-group">
+          <label>A.</label>
+          <input value={pil_a_ujian} onChange={(e) => setpil_a(e.target.value)} className="form-control" type="text" placeholder="Masukkan pilihan A" />
+        </div>
+        <div className="form-group">
+          <label>B.</label>
+          <input value={pil_b_ujian} onChange={(e) => setpil_b(e.target.value)} className="form-control" type="text" placeholder="Masukkan pilihan B" />
+        </div>
+        <div className="form-group">
+          <label>C.</label>
+          <input value={pil_c_ujian} onChange={(e) => setpil_c(e.target.value)} className="form-control" type="text" placeholder="Masukkan pilihan C" />
+        </div>
+        <div className="form-group">
+          <label>D.</label>
+          <input value={pil_d_ujian} onChange={(e) => setpil_d(e.target.value)} className="form-control" type="text" placeholder="Masukkan pilihan D" />
+        </div>
+        <div className="form-group">
+          <label>E. (Optional)</label>
+          <input value={pil_e_ujian} onChange={(e) => setpil_e(e.target.value)} className="form-control" type="text" placeholder="Masukkan pilihan E (Optional)" />
+        </div>
+        <div className="form-group">
+          <label>Kunci Jawab Ujian</label>
+          <textarea value={jawabkunci} onChange={(e) => setkuncijawab(e.target.value)} className="form-control" rows="5"></textarea>
+          <supscrip>*Copy Dari pilihan yang tepat</supscrip>
+        </div>
 
+        <div className="clearfix">
+          <div className="pull-right">
+            <button className="btn btn-primary btn-sm scroll-click" type="submit">Simpan</button>
+          </div>
+        </div>
+      </div>);
+    }
+    return rows;
+  }
 
   useEffect(() => {
     GetUjian()
     getCekUjian()
-  }, [])
+  }, []);
+
   return (
     <div>
       <Header />
       <Menu />
       <SideBar />
+      
       <div className="main-container">
         <div className="pd-ltr-20 xs-pd-20-10">
           <div className="min-height-200px">
@@ -142,6 +191,7 @@ function CreateSoalUjian() {
                   }
                 </div>
               </div>
+              <FormSoal />
               <form onSubmit={storePost}>
                 <div className="form-group">
                   <label>Soal Ujian</label>
