@@ -69,9 +69,9 @@ function DashboardSiswa() {
               <div className="col-md-8">
                 <h4 className="font-20 weight-500 mb-10 text-capitalize">
                   <i>Assalamu'alaikum Wr Wb,</i><br />
-                  <i>Ahlan Wa Sahlan</i> <div className="weight-600 font-30 text-blue">{user.nama_guru} !</div>
+                  <i>Ahlan Wa Sahlan</i> <div className="weight-600 font-30 text-blue">{user.name} !</div>
                 </h4>
-                <p className="font-18 max-width-600">Anda login sebagai Guru, akses anda terhadap aplikasi sesuai dengan apa yang telah diberikan JobDesk dalam LMS ini. <br />Keep Hamasah :)</p>
+                <p className="font-18 max-width-600">Anda login sebagai Siswa, akses anda terhadap aplikasi sesuai dengan apa yang telah diberikan JobDesk dalam LMS ini. <br />Keep Hamasah :)</p>
               </div>
             </div>
           </div>
@@ -138,7 +138,7 @@ function DashboardSiswa() {
             </div>
           </div>
           <div className="footer-wrap pd-20 mb-20 card-box">
-            Learning Management System By <a href="/" target="_blank">Dimas Wahyu Pratoomo</a>
+            Learning Management System By <a href="/" target="_blank">Programmer</a>
           </div>
         </div>
       </div>
