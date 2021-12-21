@@ -1,6 +1,6 @@
 
 import './App.css';
-import { Switch,Route } from 'react-router'
+import { Switch, Route } from 'react-router'
 
 //admin
 import DashboardAdmin from './admin/DashboardAdmin';
@@ -67,94 +67,98 @@ import EditSilabus from './guru/silabus/EditSilabus';
 import IndexUjianGuru from './guru/ujian/IndexUjian';
 import CreateSoalUjian from './guru/soalujian/CreateSoalUjian';
 import LoginSiswa from './siswa/auth/LoginSiswa';
+import NotFound from './error/NotFound';
 
 function App() {
   return (
-    	<div>
-        <Switch>
-          {/* admin start */}
-          {/* <Route exact path="/" component={DashboardAdmin} /> */}
-          <Route exact path="/admin" component={DashboardAdmin} />
-          {/* login */}
-          <Route exact path="/admin/login" component={LoginAdmin} />
-          {/* guru */}
-          <Route exact path="/admin/guru" component={IndexGuru} />
-          <Route exact path="/admin/guru/create" component={CreateGuru} />
-          <Route exact path="/admin/guru/edit/:id" component={EditGuru} />
-          {/* siswa */}
-          <Route exact path="/admin/siswa" component={IndexSiswa} />
-          <Route exact path="/admin/siswa/edit/:id" component={EditSiswa} />
-          <Route exact path="/admin/siswa/create" component={CreateSiswa} />
-          {/* kelas */}
-          <Route exact path="/admin/kelas" component={IndexKelas} />
-          <Route exact path="/admin/kelas/create" component={CreateKelas} />
-          <Route exact path="/admin/kelas/edit/:id" component={EditKelas} />
-          {/* mata pelajaran */}
-          <Route exact path="/admin/matapelajaran" component={IndexMataPelajaran} />
-          <Route exact path="/admin/matapelajaran/create" component={CreateMataPelajaran} />
-          <Route exact path="/admin/matapelajaran/edit/:id" component={EditMataPelajaran} />
-          {/* jadwal */}
-          <Route exact path="/admin/jadwal" component={IndexJadwal} />
-          <Route exact path="/admin/jadwal/create" component={CreateJadwal} />
-          <Route exact path="/admin/jadwal/edit/:id" component={EditJadwal} />
-          {/* ujian */}
-          <Route exact path="/admin/ujian" component={IndexUjian} />
-          <Route exact path="/admin/ujian/create" component={CreateUjian} />
-          <Route exact path="/admin/ujian/edit/:id" component={EditUjian} />
-          {/* walikelas */}
-          <Route exact path="/admin/walikelas" component={IndexWaliKelas} />
-          <Route exact path="/admin/walikelas/create" component={CreateWaliKelas} />
-          <Route exact path="/admin/walikelas/edit/:id" component={EditWaliKelas} />
-          {/* Angkatan */}
-          <Route exact path="/admin/angkatan" component={IndexAngkatan} />
-          <Route exact path="/admin/angkatan/create" component={CreateAngkatan} />
-          <Route exact path="/admin/angkatan/edit/:id" component={EditAngkatan} />
-          {/* admin end */}
+    <div>
+      <Switch>
+        {/* admin start */}
+        {/* <Route exact path="/" component={DashboardAdmin} /> */}
+        <Route exact path="/admin" component={DashboardAdmin} />
+        {/* login */}
+        <Route exact path="/admin/login" component={LoginAdmin} />
+        {/* guru */}
+        <Route exact path="/admin/guru" component={IndexGuru} />
+        <Route exact path="/admin/guru/create" component={CreateGuru} />
+        <Route exact path="/admin/guru/edit/:id" component={EditGuru} />
+        {/* siswa */}
+        <Route exact path="/admin/siswa" component={IndexSiswa} />
+        <Route exact path="/admin/siswa/edit/:id" component={EditSiswa} />
+        <Route exact path="/admin/siswa/create" component={CreateSiswa} />
+        {/* kelas */}
+        <Route exact path="/admin/kelas" component={IndexKelas} />
+        <Route exact path="/admin/kelas/create" component={CreateKelas} />
+        <Route exact path="/admin/kelas/edit/:id" component={EditKelas} />
+        {/* mata pelajaran */}
+        <Route exact path="/admin/matapelajaran" component={IndexMataPelajaran} />
+        <Route exact path="/admin/matapelajaran/create" component={CreateMataPelajaran} />
+        <Route exact path="/admin/matapelajaran/edit/:id" component={EditMataPelajaran} />
+        {/* jadwal */}
+        <Route exact path="/admin/jadwal" component={IndexJadwal} />
+        <Route exact path="/admin/jadwal/create" component={CreateJadwal} />
+        <Route exact path="/admin/jadwal/edit/:id" component={EditJadwal} />
+        {/* ujian */}
+        <Route exact path="/admin/ujian" component={IndexUjian} />
+        <Route exact path="/admin/ujian/create" component={CreateUjian} />
+        <Route exact path="/admin/ujian/edit/:id" component={EditUjian} />
+        {/* walikelas */}
+        <Route exact path="/admin/walikelas" component={IndexWaliKelas} />
+        <Route exact path="/admin/walikelas/create" component={CreateWaliKelas} />
+        <Route exact path="/admin/walikelas/edit/:id" component={EditWaliKelas} />
+        {/* Angkatan */}
+        <Route exact path="/admin/angkatan" component={IndexAngkatan} />
+        <Route exact path="/admin/angkatan/create" component={CreateAngkatan} />
+        <Route exact path="/admin/angkatan/edit/:id" component={EditAngkatan} />
+        {/* admin end */}
 
-          {/* guru start */}
-          <Route exact path="/guru" component={DashboardGuru} />
-          {/* login Guru */}
-          <Route exact path="/guru/login" component={LoginGuru} />
-          {/* kelas */}
-          <Route exact path="/guru/kelas" component={IndexKelas} />
-          {/* materi */}
-          <Route exact path="/guru/materi/:id" component={IndexMateriGuru} />
-          <Route exact path="/guru/materi/create/:id" component={CreateMateri} />
-          <Route exact path="/guru/materi/show/:id" component={EditMataPelajaran} />
-          <Route exact path="/guru/materi/edit/:id" component={EditMateri} />
-          {/* pelajaran */}
-          <Route exact path="/guru/pelajaran" component={IndexPelajaranGuru} />
-          {/* rpp */}
-          <Route exact path="/guru/rpp" component={IndexRpp} />
-          <Route exact path="/guru/rpp/create" component={CreateRpp} />
-          <Route exact path="/guru/rpp/edit/:id" component={EditRpp} />
-          {/* silabus */}
-          <Route exact path="/guru/silabus" component={IndexSilabus} />
-          <Route exact path="/guru/silabus/create" component={CreateSilabus} />
-          <Route exact path="/guru/silabus/edit/:id" component={EditSilabus} />
-          {/* siswa */}
-          <Route exact path="/guru/siswa" component={IndexSiswa} />
-          <Route exact path="/guru/siswa/show/:id" component={EditSiswa} />
-          {/* soal */}
-          <Route exact path="/guru/soal/:id" component={IndexUjian} />
-          <Route exact path="/guru/soal/create/:id" component={CreateUjian} />
-          <Route exact path="/guru/soal/edit/:id" component={EditUjian} />
-          {/* ujian */}
-          <Route exact path="/guru/ujian" component={IndexUjianGuru} />
-          <Route exact path="/guru/ujian/create" component={CreateUjian} />
-          <Route exact path="/guru/ujian/edit/:id" component={EditUjian} />
-          {/* soalujian */}
-          <Route exact path="/guru/soalujian/:id" component={IndexUjian} />
-          <Route exact path="/guru/soalujian/create/:id" component={CreateSoalUjian} />
-          <Route exact path="/guru/soalujian/edit/:id" component={EditUjian} />
-          {/* end guru */}
+        {/* guru start */}
+        <Route exact path="/guru" component={DashboardGuru} />
+        {/* login Guru */}
+        <Route exact path="/guru/login" component={LoginGuru} />
+        {/* kelas */}
+        <Route exact path="/guru/kelas" component={IndexKelas} />
+        {/* materi */}
+        <Route exact path="/guru/materi/:id" component={IndexMateriGuru} />
+        <Route exact path="/guru/materi/create/:id" component={CreateMateri} />
+        <Route exact path="/guru/materi/show/:id" component={EditMataPelajaran} />
+        <Route exact path="/guru/materi/edit/:id" component={EditMateri} />
+        {/* pelajaran */}
+        <Route exact path="/guru/pelajaran" component={IndexPelajaranGuru} />
+        {/* rpp */}
+        <Route exact path="/guru/rpp" component={IndexRpp} />
+        <Route exact path="/guru/rpp/create" component={CreateRpp} />
+        <Route exact path="/guru/rpp/edit/:id" component={EditRpp} />
+        {/* silabus */}
+        <Route exact path="/guru/silabus" component={IndexSilabus} />
+        <Route exact path="/guru/silabus/create" component={CreateSilabus} />
+        <Route exact path="/guru/silabus/edit/:id" component={EditSilabus} />
+        {/* siswa */}
+        <Route exact path="/guru/siswa" component={IndexSiswa} />
+        <Route exact path="/guru/siswa/show/:id" component={EditSiswa} />
+        {/* soal */}
+        <Route exact path="/guru/soal/:id" component={IndexUjian} />
+        <Route exact path="/guru/soal/create/:id" component={CreateUjian} />
+        <Route exact path="/guru/soal/edit/:id" component={EditUjian} />
+        {/* ujian */}
+        <Route exact path="/guru/ujian" component={IndexUjianGuru} />
+        <Route exact path="/guru/ujian/create" component={CreateUjian} />
+        <Route exact path="/guru/ujian/edit/:id" component={EditUjian} />
+        {/* soalujian */}
+        <Route exact path="/guru/soalujian/:id" component={IndexUjian} />
+        <Route exact path="/guru/soalujian/create/:id" component={CreateSoalUjian} />
+        <Route exact path="/guru/soalujian/edit/:id" component={EditUjian} />
+        {/* end guru */}
 
-          {/* siswa start */}
-          <Route exact path="/dashboard" component={DashboardAdmin} />
-          {/* login siswa */}
-          <Route exact path="/" component={LoginSiswa} />
-        </Switch>
-      </div>
+        {/* siswa start */}
+        <Route exact path="/dashboard" component={DashboardAdmin} />
+        {/* login siswa */}
+        <Route exact path="/" component={LoginSiswa} />
+
+        {/* NotFound */}
+        <Route component={NotFound} />
+      </Switch>
+    </div>
   );
 }
 
