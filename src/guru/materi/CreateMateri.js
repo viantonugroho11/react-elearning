@@ -34,7 +34,7 @@ function CreateMateri() {
     formData.append('nama_materi', nama);
     formData.append('isi_materi', materi);
     formData.append('file_materi', file);
-    await axios.post('http://localhost:8000/api/guru/materi',formData)
+    await axios.post('http://appsiaksd.ugcorpusskkni.online/api/guru/materi',formData)
       .then(() => {
 
         //redirect

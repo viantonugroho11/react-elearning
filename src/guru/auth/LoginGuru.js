@@ -31,7 +31,7 @@ function LoginGuru() {
     formData.append('password', password);
 
     //send data to server
-    await axios.post('http://localhost:8000/api/loginguru', formData)
+    await axios.post('http://appsiaksd.ugcorpusskkni.online/api/loginguru', formData)
       .then((response) => {
 
         //set token on localStorage

@@ -29,14 +29,14 @@ function IndexUjianGuru() {
   //function "fetchData"
   const fecthDataUjianGuru = async () => {
     //fetching
-    const response = await axios.get(`http://localhost:8000/api/guru/ujian/${id}/edit`);
+    const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/guru/ujian/${id}/edit`);
     //get response data
     const data = await response.data.data;
 
     //assign response data to state "posts"
     setPosts(data);
   }
-  // const url =  `http://localhost:8000/storage/FileMateri/`
+  // const url =  `http://appsiaksd.ugcorpusskkni.online/storage/FileMateri/`
   const dataujian = posts.map((user) => ({
     nama: user.nama_ujian,
     pelajaran: user.get_jadwal.from_pelajaran.nama_pelajaran,

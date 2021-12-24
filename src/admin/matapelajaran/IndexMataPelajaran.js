@@ -25,7 +25,7 @@ function IndexMataPelajaran(){
     //function "fetchData"
     const fectData = async () => {
         //fetching
-        const response = await axios.get('http://localhost:8000/api/admin/pelajaran');
+        const response = await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/pelajaran');
         //get response data
         const data = await response.data.data;
 

@@ -25,7 +25,7 @@ function IndexUjian() {
   //function "fetchData"
   const fectData = async () => {
     //fetching
-    const response = await axios.get('http://localhost:8000/api/admin/ujian');
+    const response = await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/ujian');
     //get response data
     const data = await response.data.data;
 

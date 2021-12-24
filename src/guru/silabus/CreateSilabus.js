@@ -36,7 +36,7 @@ function CreateSilabus() {
     formData.append('nama', nama);
     formData.append('keterangan', materi);
     formData.append('file', file);
-    await axios.post('http://localhost:8000/api/guru/silabus', formData)
+    await axios.post('http://appsiaksd.ugcorpusskkni.online/api/guru/silabus', formData)
       .then(() => {
 
         //redirect

@@ -30,7 +30,7 @@ function IndexMateriGuru() {
   //method "fetchPelajaran"
   // const fectPelajaran = async () => {
   //   //fetching
-  //   const response = await axios.get(`http://localhost:8000/api/guru/pelajaran/${id}`);
+  //   const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/guru/pelajaran/${id}`);
   //   //get response data
   //   const data = await response.data.data;
   //   setPel(data);
@@ -38,14 +38,14 @@ function IndexMateriGuru() {
   //function "fetchData"
   const fectData = async () => {
     //fetching
-    const response = await axios.get(`http://localhost:8000/api/guru/materi/${id}/edit`);
+    const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/guru/materi/${id}/edit`);
     //get response data
     const data = await response.data.data;
 
     //assign response data to state "posts"
     setPosts(data);
   }
-  // const url = `http://localhost:8000/storage/FileMateri/`
+  // const url = `http://appsiaksd.ugcorpusskkni.online/storage/FileMateri/`
   const datamateri = posts.map((user) => ({
     nama: user.nama_materi,
     // file: <a classname="btn btn-secondary" href={url + user.file_materi} download={user.file_materi}>Download</a>,

@@ -32,7 +32,7 @@ function CreateSoalUjian() {
   //method "Get Cek Ujian"
   const getCekUjian = async () => {
     //send data to server
-    await axios.get(`http://localhost:8000/api/guru/ujian/${id}`)
+    await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/guru/ujian/${id}`)
 
       .then(res => {
         if (res.data.data.jumlah_soal == res.data.data.get_soal_ujian_count) {
@@ -51,7 +51,7 @@ function CreateSoalUjian() {
 
   //method "getDataGuru"
   const GetUjian = async () => {
-    await axios.get(`http://localhost:8000/api/guru/ujian/${id}`)
+    await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/guru/ujian/${id}`)
       .then(res => {
         const dataUjian = res.data.data;
         setUjian(dataUjian);
@@ -80,7 +80,7 @@ function CreateSoalUjian() {
     // formData.append('pil_a_ujian');
     formData.append('kunci_jawab_ujian',jawabkunci);
     //send data to server
-    await axios.post('http://localhost:8000/api/guru/ujiansoal', formData)
+    await axios.post('http://appsiaksd.ugcorpusskkni.online/api/guru/ujiansoal', formData)
 
       .then(() => {
         if (dataUjian.jumlah_soal === dataUjian.get_soal_ujian_count) {

@@ -25,7 +25,7 @@ function Header() {
     //set axios header dengan type Authorization + Bearer token
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     //fetch user from Rest API
-    await axios.get('http://localhost:8000/api/admin/user')
+    await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/user')
       .then((response) => {
 
         //set response user to state
@@ -51,7 +51,7 @@ function Header() {
     //set axios header dengan type Authorization + Bearer token
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     //fetch Rest API
-    await axios.post('http://localhost:8000/api/logout')
+    await axios.post('http://appsiaksd.ugcorpusskkni.online/api/logout')
       .then(() => {
 
         //remove token from localStorage

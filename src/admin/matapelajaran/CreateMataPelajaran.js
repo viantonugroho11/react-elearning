@@ -21,7 +21,7 @@ function CreateMataPelajaran() {
         e.preventDefault();
         
         //send data to server
-        await axios.post('http://localhost:8000/api/admin/pelajaran', {
+        await axios.post('http://appsiaksd.ugcorpusskkni.online/api/admin/pelajaran', {
             nama_pelajaran: nama,
         })
         .then(() => {

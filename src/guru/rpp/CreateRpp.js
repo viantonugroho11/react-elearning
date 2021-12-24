@@ -36,7 +36,7 @@ function CreateRpp() {
     formData.append('nama_rpp', nama);
     formData.append('keterangan_materi', materi);
     formData.append('file_file', file);
-    await axios.post('http://localhost:8000/api/guru/rpp', formData)
+    await axios.post('http://appsiaksd.ugcorpusskkni.online/api/guru/rpp', formData)
       .then(() => {
 
         //redirect

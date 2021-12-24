@@ -25,7 +25,7 @@ function IndexGuru(){
     const deletePost = async (id) => {
     
         //sending
-        await axios.delete(`http://localhost:8000/api/admin/guru/${id}`);
+        await axios.delete(`http://appsiaksd.ugcorpusskkni.online/api/admin/guru/${id}`);
     
         //panggil function "fetchData"
         fectData();
@@ -33,7 +33,7 @@ function IndexGuru(){
     //function "fetchData"
     const fectData = async () => {
         //fetching
-        const response = await axios.get('http://localhost:8000/api/admin/guru');
+        const response = await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/guru');
         //get response data
         const data = await response.data.data;
 

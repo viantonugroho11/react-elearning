@@ -27,7 +27,7 @@ function CreateUjian() {
     e.preventDefault();
 
     //send data to server
-    await axios.post('http://localhost:8000/api/admin/jadwal', {
+    await axios.post('http://appsiaksd.ugcorpusskkni.online/api/admin/jadwal', {
       pelajaran: pelajaran,
       kelas: kelas,
       guru: guru
@@ -48,7 +48,7 @@ function CreateUjian() {
 
   //method "getDataGuru"
   const GetGuru = async () => {
-    await axios.get('http://localhost:8000/api/admin/guru')
+    await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/guru')
       .then(res => {
         const dataGuru = res.data.data;
         setDataGuru(dataGuru);

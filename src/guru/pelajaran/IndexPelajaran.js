@@ -34,7 +34,7 @@ function IndexPelajaranGuru() {
   //function "fetchData"
   const fecthPelajaran = async () => {
     //fetching
-    const response = await axios.get(`http://localhost:8000/api/guru/pelajaran/${id}`);
+    const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/guru/pelajaran/${id}`);
     //get response data
     const data = await response.data.data;
 

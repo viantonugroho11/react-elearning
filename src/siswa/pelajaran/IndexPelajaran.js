@@ -25,7 +25,7 @@ function IndexPelajaranSiswa() {
   //fetch data
   const fetchDataPelajaran = async () => {
     //fetching
-    const response = await axios.get(`http://localhost:8000/api/siswa/pelajaran/${id}`);
+    const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/siswa/pelajaran/${id}`);
     //get response data
     const data = await response.data.data;
 

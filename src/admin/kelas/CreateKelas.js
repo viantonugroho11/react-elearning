@@ -23,7 +23,7 @@ function CreateKelas() {
         e.preventDefault();
         
         //send data to server
-        await axios.post('http://localhost:8000/api/admin/kelas', {
+        await axios.post('http://appsiaksd.ugcorpusskkni.online/api/admin/kelas', {
             nama_kelas: nama,
             tingkat: tingkat,
         })

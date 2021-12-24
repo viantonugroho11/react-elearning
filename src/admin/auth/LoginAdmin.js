@@ -31,7 +31,7 @@ function LoginAdmin() {
     formData.append('password', password);
 
     //send data to server
-    await axios.post('http://localhost:8000/api/loginadmin', formData)
+    await axios.post('http://appsiaksd.ugcorpusskkni.online/api/loginadmin', formData)
       .then((response) => {
 
         //set token on localStorage

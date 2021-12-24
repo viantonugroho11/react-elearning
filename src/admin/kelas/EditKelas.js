@@ -23,7 +23,7 @@ function EditKelas() {
   const getPostById = async () => {
 
     //get data from server
-    const response = await axios.get(`http://localhost:8000/api/admin/kelas/${id}`);
+    const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/admin/kelas/${id}`);
     //get response data
     const data = await response.data.data
 
@@ -42,7 +42,7 @@ function EditKelas() {
     e.preventDefault();
 
     //send data to server
-    await axios.patch(`http://localhost:8000/api/admin/kelas/${id}`,
+    await axios.patch(`http://appsiaksd.ugcorpusskkni.online/api/admin/kelas/${id}`,
     {
       nama_kelas: nama,
       tingkat: tingkat,

@@ -28,7 +28,7 @@ function DashboardSiswa() {
     //set axios header dengan type Authorization + Bearer token
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     //fetch user from Rest API
-    await axios.get('http://localhost:8000/api/siswa/user')
+    await axios.get('http://appsiaksd.ugcorpusskkni.online/api/siswa/user')
       .then((response) => {
 
         //set response user to state

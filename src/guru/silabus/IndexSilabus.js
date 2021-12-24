@@ -29,14 +29,14 @@ function IndexSilabus() {
   //function "fetchData"
   const fectData = async () => {
     //fetching
-    const response = await axios.get(`http://localhost:8000/api/guru/silabus/${id}/edit`);
+    const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/guru/silabus/${id}/edit`);
     //get response data
     const data = await response.data.data;
 
     //assign response data to state "posts"
     setPosts(data);
   }
-  // const url =  `http://localhost:8000/storage/FileMateri/`
+  // const url =  `http://appsiaksd.ugcorpusskkni.online/storage/FileMateri/`
   const datarpp = posts.map((user) => ({
     nama: user.nama_rpp,
     // file: <a href={url + user.file}>{user.file}</a>,

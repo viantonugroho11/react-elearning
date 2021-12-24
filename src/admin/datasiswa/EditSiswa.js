@@ -65,7 +65,7 @@ function EditSiswa() {
     formData.append('password', password);
     formData.append('foto', foto);
     //send data to server
-    await axios.post('http://localhost:8000/api/admin/siswa', formData)
+    await axios.post('http://appsiaksd.ugcorpusskkni.online/api/admin/siswa', formData)
       .then(() => {
 
         //redirect
@@ -81,7 +81,7 @@ function EditSiswa() {
   };
   //method "getDataKelas"
   const GetKelas = async () => {
-    await axios.get('http://localhost:8000/api/admin/kelas')
+    await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/kelas')
       .then(res => {
         const dataKelas = res.data.data
         setDataKelas(dataKelas)

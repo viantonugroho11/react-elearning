@@ -31,7 +31,7 @@ function CreateJadwal() {
   const getJadwalById = async () => {
 
     //get data from server
-    const response = await axios.get(`http://localhost:8000/api/admin/jadwal/${id}`);
+    const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/admin/jadwal/${id}`);
     //get response data
     const data = await response.data.data
 
@@ -46,7 +46,7 @@ function CreateJadwal() {
     e.preventDefault();
 
     //send data to server
-    await axios.patch(`http://localhost:8000/api/admin/jadwal/${id}`, {
+    await axios.patch(`http://appsiaksd.ugcorpusskkni.online/api/admin/jadwal/${id}`, {
       pelajaran: pelajaran,
       kelas: kelas,
       guru: guru
@@ -67,7 +67,7 @@ function CreateJadwal() {
 
   //method "getDataGuru"
   const GetGuru = async () => {
-    await axios.get('http://localhost:8000/api/admin/guru')
+    await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/guru')
       .then(res => {
         const dataGuru = res.data.data;
         setDataGuru(dataGuru);
@@ -79,7 +79,7 @@ function CreateJadwal() {
 
   //method "getDataKelas"
   const GetKelas = async () => {
-    await axios.get('http://localhost:8000/api/admin/kelas')
+    await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/kelas')
       .then(res => {
         const dataKelas = res.data.data
         setDataKelas(dataKelas)
@@ -91,7 +91,7 @@ function CreateJadwal() {
 
   //method "getDataPelajaran"
   const GetPelajaran = async () => {
-    await axios.get('http://localhost:8000/api/admin/pelajaran')
+    await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/pelajaran')
       .then(res => {
         const dataPelajaran = res.data.data
         setDataPelajaran(dataPelajaran)

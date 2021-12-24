@@ -31,7 +31,7 @@ function LoginSiswa() {
     formData.append('password', password);
 
     //send data to server
-    await axios.post('http://localhost:8000/api/login', formData)
+    await axios.post('http://appsiaksd.ugcorpusskkni.online/api/login', formData)
       .then((response) => {
 
         //set token on localStorage

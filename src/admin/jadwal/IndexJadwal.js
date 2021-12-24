@@ -25,7 +25,7 @@ function IndexJadwal(){
     //function "fetchData"
     const fectData = async () => {
         //fetching
-        const response = await axios.get('http://localhost:8000/api/admin/jadwal');
+        const response = await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/jadwal');
         //get response data
         const data = await response.data.data;
 

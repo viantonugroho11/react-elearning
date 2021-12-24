@@ -35,7 +35,7 @@ function CreateGuru() {
         e.preventDefault();
         
         //send data to server
-        await axios.post('http://localhost:8000/api/admin/guru', {
+        await axios.post('http://appsiaksd.ugcorpusskkni.online/api/admin/guru', {
             nama_guru: nama,
             nik: nik,
             nu_ptk:nuptk,
