@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-
+import { Link } from "react-router-dom";
 export default class Menu extends Component {
   render() {
     return (
       <div>
         <div className="left-side-bar">
           <div className="brand-logo">
-            <a href="index.html">
+            <Link to="index.html">
               {/* <img src="%PUBLIC_URL%/vendors/images/deskapp-logo.svg" alt className="dark-logo" />
               <img src="%PUBLIC_URL%/vendors/images/deskapp-logo-white.svg" alt className="light-logo" /> */}
-            </a>
+            </Link>
             <div className="close-sidebar" data-toggle="left-sidebar-close">
               <i className="ion-close-round" />
             </div>
@@ -18,34 +18,34 @@ export default class Menu extends Component {
             <div className="sidebar-menu">
               <ul id="accordion-menu">
                 <li className="dropdown">
-                  <a href="/admin" className="dropdown-toggle no-arrow">
+                  <Link to="/admin" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-house-1" /><span className="mtext">Home</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="dropdown">
-                  <a href="/admin/siswa" className="dropdown-toggle no-arrow">
+                  <Link to="/admin/siswa" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-edit2" /><span className="mtext">Data Siswa</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="dropdown">
-                  <a href="/admin/guru" className="dropdown-toggle no-arrow">
+                  <Link to="/admin/guru" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-library" /><span className="mtext">Data Guru</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/admin/matapelajaran" className="dropdown-toggle no-arrow">
+                  <Link to="/admin/matapelajaran" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-calendar1" /><span className="mtext">Mata Pelajaran</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="dropdown">
-                  <a href="/admin/kelas" className="dropdown-toggle no-arrow">
+                  <Link to="/admin/kelas" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-apartment" /><span className="mtext">Kelas</span>
-                  </a>
+                  </Link>
                 </li>
                 {/* <li className="dropdown">
-                  <a href="/admin/angkatan" className="dropdown-toggle no-arrow">
+                  <Link to="/admin/angkatan" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-apartment" /><span className="mtext">Angkatan</span>
-                  </a>
+                  </Link>
                 </li> */}
                 <li>
                   <div className="dropdown-divider" />
@@ -54,19 +54,19 @@ export default class Menu extends Component {
                   <div className="sidebar-small-cap">Mapping</div>
                 </li>
                 <li className="dropdown">
-                  <a href="/admin/walikelas" className="dropdown-toggle no-arrow">
+                  <Link to="/admin/walikelas" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-apartment" /><span className="mtext">Wali Kelas</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="dropdown">
-                  <a href="/admin/jadwal" className="dropdown-toggle no-arrow">
+                  <Link to="/admin/jadwal" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-apartment" /><span className="mtext">Jadwal</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="dropdown">
-                  <a href="/admin/ujian" className="dropdown-toggle no-arrow">
+                  <Link to="/admin/ujian" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-apartment" /><span className="mtext">Ujian</span>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

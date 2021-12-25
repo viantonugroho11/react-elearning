@@ -3,7 +3,7 @@ import Header from '../../compenent/Header'
 import Menu from '../../compenent/Menu'
 import SideBar from '../../compenent/SideBar'
 import axios from 'axios'
-
+import { Link } from "react-router-dom";
 //import hook history dari react router dom
 import { useHistory } from "react-router-dom";
 //import hook useState from react
@@ -79,7 +79,7 @@ function CreateGuru() {
             </div>
             <nav aria-label="breadcrumb" role="navigation">
               <ol className="breadcrumb">
-                <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
                 <li className="breadcrumb-item active" aria-current="page">Form Data Guru</li>
               </ol>
             </nav>
@@ -185,7 +185,7 @@ function CreateGuru() {
       {/* Input Validation End */}
     </div>
     <div className="footer-wrap pd-20 mb-20 card-box">
-      {/* DeskApp - Bootstrap 4 Admin Template By <a href="/" target="_blank">Ankit Hingarajiya</a> */}
+      {/* DeskApp - Bootstrap 4 Admin Template By <Link to="/" target="_blank">Ankit Hingarajiya</Link> */}
     </div>
   </div>
 </div>

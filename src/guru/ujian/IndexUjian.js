@@ -44,12 +44,12 @@ function IndexUjianGuru() {
     tgl_ujian: user.tanggal_ujian,
     jam_mulai: user.jam_mulai_ujian,
     durasi: user.waktu_ujian,
-    // file: <a href={url + user.file}>{user.file}</a>,
+    // file: <Link to={url + user.file}>{user.file}</Link>,
     aksi:
       <div>
-        <a classname="btn btn-secondary" href={"/guru/materi/edit/" + user.id}>Edit</a><br />
-        <a classname="btn btn-secondary" href={"/guru/materi/show/" + user.id}>Show</a><br />
-        <a classname="btn btn-secondary" href={"/guru/soalujian/create/" + user.id}>Tambah Soal</a><br />
+        <Link classname="btn btn-secondary" to={"/guru/materi/edit/" + user.id}>Edit</Link><br />
+        <Link classname="btn btn-secondary" to={"/guru/materi/show/" + user.id}>Show</Link><br />
+        <Link classname="btn btn-secondary" to={"/guru/soalujian/create/" + user.id}>Tambah Soal</Link><br />
       </div>,
   }));
 
@@ -106,7 +106,7 @@ function IndexUjianGuru() {
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
-                      <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                      <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
                       <li className="breadcrumb-item active" aria-current="page">Data Kelas</li>
                     </ol>
                   </nav>
@@ -117,7 +117,7 @@ function IndexUjianGuru() {
             <div className="card-box mb-30">
               <div className="pd-20 d-flex justify-content-between">
                 <h4 className="text-blue h4">Data Ujian</h4>
-                <a href="form-datakelas.html" className="btn btn-sm btn-primary">+ tambah</a>
+                <Link to="form-datakelas.html" className="btn btn-sm btn-primary">+ tambah</Link>
               </div>
               <div className="pb-20">
                 <DataTable

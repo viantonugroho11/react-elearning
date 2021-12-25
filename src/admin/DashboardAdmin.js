@@ -4,7 +4,7 @@ import SideBar from '../compenent/SideBar'
 //import hook react
 import React, { useState, useEffect } from 'react';
 
-
+import { Link } from "react-router-dom";
 //import hook useHitory from react router dom
 import { useHistory } from 'react-router';
 
@@ -138,7 +138,7 @@ function DashboardAdmin() {
               </div>
             </div>
             <div className="footer-wrap pd-20 mb-20 card-box">
-              Learning Management System By <a href="/" target="_blank">Dimas Wahyu Pratoomo</a>
+              Learning Management System By <Link to="/" target="_blank">Dimas Wahyu Pratoomo</Link>
             </div>
           </div>
         </div>

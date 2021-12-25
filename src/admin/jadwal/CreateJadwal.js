@@ -3,7 +3,7 @@ import Header from '../../compenent/Header'
 import Menu from '../../compenent/Menu'
 import SideBar from '../../compenent/SideBar'
 import axios from 'axios'
-
+import { Link } from "react-router-dom";
 //import hook history dari react router dom
 import { useHistory } from "react-router-dom";
 //import hook useState from react
@@ -108,7 +108,7 @@ function CreateJadwal() {
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
-                      <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                      <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
                       <li className="breadcrumb-item active" aria-current="page">Form Data Jadwal Pelajaran</li>
                     </ol>
                   </nav>

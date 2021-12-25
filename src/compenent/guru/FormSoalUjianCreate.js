@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { useParams } from 'react-router';
-
+import { Link } from "react-router-dom";
 export default class FormSoalUjianCreate extends Component {
   // createTable = (id) => {
   //   // Outer loop to create parent

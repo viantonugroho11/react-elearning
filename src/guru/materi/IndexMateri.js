@@ -3,7 +3,7 @@ import Header from '../../compenent/guru/Header'
 import Menu from '../../compenent/guru/Menu'
 import SideBar from '../../compenent/guru/SideBar'
 import DataTable from 'react-data-table-component';
-
+import { Link } from "react-router-dom";
 //import hook useState dan useEffect from react
 import { useState, useEffect } from 'react';
 //import axios
@@ -48,15 +48,15 @@ function IndexMateriGuru() {
   // const url = `http://appsiaksd.ugcorpusskkni.online/storage/FileMateri/`
   const datamateri = posts.map((user) => ({
     nama: user.nama_materi,
-    // file: <a classname="btn btn-secondary" href={url + user.file_materi} download={user.file_materi}>Download</a>,
+    // file: <Link classname="btn btn-secondary" to={url + user.file_materi} download={user.file_materi}>Download</Link>,
     // file: <form method="get" action={url + user.file_materi}>
     //   <button type="submit">Download!</button>
     // </form>,
     aksi:
       <div>
-        <a classname="btn btn-secondary" href={"/guru/materi/edit/" + user.id}>Edit</a><br />
-        <a classname="btn btn-secondary" href={"/guru/materi/show/" + user.id}>Show</a><br />
-        <a classname="btn btn-secondary" href={"/guru/materi/delete/"}>Delete</a><br />
+        <Link classname="btn btn-secondary" to={"/guru/materi/edit/" + user.id}>Edit</Link><br />
+        <Link classname="btn btn-secondary" to={"/guru/materi/show/" + user.id}>Show</Link><br />
+        <Link classname="btn btn-secondary" to={"/guru/materi/delete/"}>Delete</Link><br />
       </div>,
   }));
 
@@ -93,7 +93,7 @@ function IndexMateriGuru() {
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
-                      <li className="breadcrumb-item"><a href="/">Home</a></li>
+                      <li className="breadcrumb-item"><Link to="/">Home</Link></li>
                       <li className="breadcrumb-item active" aria-current="page">Data Materi</li>
                     </ol>
                   </nav>
@@ -104,7 +104,7 @@ function IndexMateriGuru() {
             <div className="card-box mb-30">
               <div className="pd-20 d-flex justify-content-between">
                 <h4 className="text-blue h4">Data Materi</h4>
-                <a href={"/guru/materi/create/" + id} className="btn btn-sm btn-primary">+ tambah</a>
+                <Link to={"/guru/materi/create/" + id} className="btn btn-sm btn-primary">+ tambah</Link>
               </div>
               <div className="pb-20">
                 <DataTable

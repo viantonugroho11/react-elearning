@@ -11,7 +11,7 @@ export default class NotFound extends Component {
               <h3>Error: 404 Page Not Found</h3>
               <p>Sorry, the page you’re looking for cannot be accessed.<br />Either check the URL</p>
               <div className="pt-20 mx-auto max-width-200">
-                <a href="/" className="btn btn-primary btn-block btn-lg">Back To Home</a>
+                <Link to="/" className="btn btn-primary btn-block btn-lg">Back To Home</Link>
               </div>
             </div>
           </div>

@@ -15,7 +15,7 @@ export default class IndexSoalUjian extends Component {
             </div>
             <nav aria-label="breadcrumb" role="navigation">
               <ol className="breadcrumb">
-                <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
                 <li className="breadcrumb-item active" aria-current="page">Data Kelas</li>
               </ol>
             </nav>
@@ -26,7 +26,7 @@ export default class IndexSoalUjian extends Component {
       <div className="card-box mb-30">
         <div className="pd-20 d-flex justify-content-between">
           <h4 className="text-blue h4">Data Kelas</h4>
-          <a href="form-datakelas.html" className="btn btn-sm btn-primary">+ tambah</a>
+          <Link to="form-datakelas.html" className="btn btn-sm btn-primary">+ tambah</Link>
         </div>
         <div className="pb-20">
           <table className="data-table table stripe hover nowrap">

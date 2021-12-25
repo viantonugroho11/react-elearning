@@ -144,7 +144,7 @@
                 title: '<i>HTML</i> <u>example</u>',
                 type: 'info',
                 html: 'You can use <b>bold text</b>, ' +
-                '<a href="#" class="text-blue">links</a> ' +
+                '<Link to="#" class="text-blue">links</a> ' +
                 'and other HTML tags',
                 showCloseButton: true,
                 showCancelButton: true,

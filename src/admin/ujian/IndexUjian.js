@@ -4,7 +4,7 @@ import Menu from '../../compenent/Menu'
 import SideBar from '../../compenent/SideBar'
 
 import DataTable from 'react-data-table-component';
-
+import { Link } from "react-router-dom";
 //import hook useState dan useEffect from react
 import { useState, useEffect } from 'react';
 //import axios
@@ -43,9 +43,9 @@ function IndexUjian() {
     soal_ujian: user.get_soal_ujian_count,
     aksi:
       <div>
-        <a classname="btn btn-secondary btn-sm" href={"/admin/ujian/edit/" + user.id}>Edit</a><br />
-        <a classname="btn btn-secondary btn-sm" href="/">Show</a><br />
-        <a classname="btn btn-secondary btn-sm" href="/">Delete</a><br />
+        <Link classname="btn btn-secondary btn-sm" to={"/admin/ujian/edit/" + user.id}>Edit</Link><br />
+        <Link classname="btn btn-secondary btn-sm" to="/">Show</Link><br />
+        <Link classname="btn btn-secondary btn-sm" to="/">Delete</Link><br />
       </div>,
   }));
 
@@ -102,7 +102,7 @@ function IndexUjian() {
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
-                      <li className="breadcrumb-item"><a href="/">Home</a></li>
+                      <li className="breadcrumb-item"><Link to="/">Home</Link></li>
                       <li className="breadcrumb-item active" aria-current="page">Data guru</li>
                     </ol>
                   </nav>
@@ -113,7 +113,7 @@ function IndexUjian() {
             <div className="card-box mb-kamis">
               <div className="pd-20 d-flex justify-content-between">
                 <h4 className="text-blue h4">Data Ujian</h4>
-                <a href="/admin/ujian/create" className="btn btn-sm btn-primary">+ tambah</a>
+                <Link to="/admin/ujian/create" className="btn btn-sm btn-primary">+ tambah</Link>
               </div>
               <div className="pb-20">
                 <DataTable

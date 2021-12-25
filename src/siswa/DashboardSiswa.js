@@ -138,7 +138,7 @@ function DashboardSiswa() {
             </div>
           </div>
           <div className="footer-wrap pd-20 mb-20 card-box">
-            Learning Management System By <a href="/" target="_blank">Programmer</a>
+            Learning Management System By <Link to="/" target="_blank">Programmer</Link>
           </div>
         </div>
       </div>

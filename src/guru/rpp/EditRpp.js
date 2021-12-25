@@ -3,7 +3,7 @@ import Header from '../../compenent/guru/Header'
 import Menu from '../../compenent/guru/Menu'
 import SideBar from '../../compenent/guru/SideBar'
 import axios from 'axios'
-
+import { Link } from "react-router-dom";
 // import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 //import hook history dari react router dom
 import { useHistory } from "react-router-dom";
@@ -67,7 +67,7 @@ function EditRpp() {
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
-                      <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                      <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
                       <li className="breadcrumb-item active" aria-current="page">Form Data Guru</li>
                     </ol>
                   </nav>
@@ -115,7 +115,7 @@ function EditRpp() {
                 </div>
                 <div className="clearfix">
                   <div className="pull-right">
-                    <a href="#horizontal-basic-form1" className="btn btn-primary btn-sm scroll-click" rel data-toggle="collapse" role="button">Simpan</a>
+                    <Link to="#horizontal-basic-form1" className="btn btn-primary btn-sm scroll-click" rel data-toggle="collapse" role="button">Simpan</Link>
                   </div>
                 </div>
               </form>

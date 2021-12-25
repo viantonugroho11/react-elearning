@@ -2,7 +2,7 @@ import Header from '../../compenent/guru/Header'
 import Menu from '../../compenent/guru/Menu'
 import SideBar from '../../compenent/guru/SideBar'
 import axios from 'axios'
-
+import { Link } from "react-router-dom";
 //import hook history dari react router dom
 import { useHistory } from "react-router-dom";
 //import hook useState from react
@@ -73,7 +73,7 @@ function CreateUjian() {
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                       <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
                         <li className="breadcrumb-item active" aria-current="page">Form Data Guru</li>
                       </ol>
                     </nav>

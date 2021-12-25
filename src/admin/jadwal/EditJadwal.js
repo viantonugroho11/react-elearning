@@ -3,7 +3,7 @@ import Header from '../../compenent/Header'
 import Menu from '../../compenent/Menu'
 import SideBar from '../../compenent/SideBar'
 import axios from 'axios'
-
+import { Link } from "react-router-dom";
 //import hook history dari react router dom
 import { useHistory, useParams } from "react-router-dom";
 //import hook useState from react
@@ -126,7 +126,7 @@ function CreateJadwal() {
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
-                      <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                      <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
                       <li className="breadcrumb-item active" aria-current="page">Form Data Jadwal Pelajaran</li>
                     </ol>
                   </nav>
@@ -190,7 +190,7 @@ function CreateJadwal() {
                 </div>
                 <div className="clearfix">
                   <div className="pull-right">
-                    <a href="#horizontal-basic-form1" className="btn btn-primary btn-sm scroll-click" rel data-toggle="collapse" role="button">Simpan</a>
+                    <Link to="#horizontal-basic-form1" className="btn btn-primary btn-sm scroll-click" rel data-toggle="collapse" role="button">Simpan</Link>
                   </div>
                 </div>
               </form>

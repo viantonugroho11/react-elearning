@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { Link } from "react-router-dom";
 export default class ShowSoalUjian extends Component {
   render() {
     return (
@@ -15,7 +15,7 @@ export default class ShowSoalUjian extends Component {
             </div>
             <nav aria-label="breadcrumb" role="navigation">
               <ol className="breadcrumb">
-                <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
                 <li className="breadcrumb-item" aria-current="page">Ujian</li>
                 <li className="breadcrumb-item active" aria-current="page">Matematika</li>
               </ol>
@@ -55,48 +55,48 @@ export default class ShowSoalUjian extends Component {
             <nav aria-label="...">
               <ul className="pagination flex-wrap">
                 <li className="page-item disabled">
-                  {/* <a className="page-link" href="#" tabIndex={-1}>Previous</a> */}
+                  {/* <Link className="page-link" to="#" tabIndex={-1}>Previous</Link> */}
                 </li>
                 <li className="page-item">
-                  {/* <a className="page-link" href="#">1</a> */}
+                  {/* <Link className="page-link" to="#">1</Link> */}
                   </li>
                 <li className="page-item active">
-                  {/* <a className="page-link" href="#">2 <span className="sr-only">(current)</span></a> */}
+                  {/* <Link className="page-link" to="#">2 <span className="sr-only">(current)</span></Link> */}
                 </li>
                 <li className="page-item">
-                  {/* <a className="page-link" href="#">3</a> */}
-                </li>
-                <br />
-                <li className="page-item">
-                  {/* <a className="page-link" href="#">4</a> */}
+                  {/* <Link className="page-link" to="#">3</Link> */}
                 </li>
                 <br />
                 <li className="page-item">
-                  {/* <a className="page-link" href="#">5</a> */}
+                  {/* <Link className="page-link" to="#">4</Link> */}
+                </li>
+                <br />
+                <li className="page-item">
+                  {/* <Link className="page-link" to="#">5</Link> */}
                   </li>
                 <li className="page-item">
-                  {/* <a className="page-link" href="#">6</a> */}
+                  {/* <Link className="page-link" to="#">6</Link> */}
                   </li>
                 <li className="page-item">
-                  {/* <a className="page-link" href="#">7</a> */}
+                  {/* <Link className="page-link" to="#">7</Link> */}
                   </li>
                 <li className="page-item">
-                  {/* <a className="page-link" href="#">8</a> */}
+                  {/* <Link className="page-link" to="#">8</Link> */}
                   </li>
                 <li className="page-item">
-                  {/* <a className="page-link" href="#">9</a> */}
+                  {/* <Link className="page-link" to="#">9</Link> */}
                   </li>
                 <li className="page-item">
-                  {/* <a className="page-link" href="#">10</a> */}
+                  {/* <Link className="page-link" to="#">10</Link> */}
                   </li>
                 <li className="page-item">
-                  {/* <a className="page-link" href="#">11</a> */}
+                  {/* <Link className="page-link" to="#">11</Link> */}
                   </li>
                 <li className="page-item">
-                  {/* <a className="page-link" href="#">12</a> */}
+                  {/* <Link className="page-link" to="#">12</Link> */}
                   </li>
                 <li className="page-item">
-                  {/* <a className="page-link" href="#">Next</a> */}
+                  {/* <Link className="page-link" to="#">Next</Link> */}
                 </li>
               </ul>
             </nav>

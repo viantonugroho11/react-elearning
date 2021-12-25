@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { Link } from "react-router-dom";
 export default class SideBar extends Component {
   render() {
     return (
@@ -18,13 +18,13 @@ export default class SideBar extends Component {
             <div className="right-sidebar-body-content">
               <h4 className="weight-600 font-18 pb-10">Header Background</h4>
               <div className="sidebar-btn-group pb-30 mb-10">
-                {/* <a href="javascript:void(0);" className="btn btn-outline-primary header-white active">White</a> */}
-                {/* <a href="javascript:void(0);" className="btn btn-outline-primary header-dark">Dark</a> */}
+                {/* <Link to="javascript:void(0);" className="btn btn-outline-primary header-white active">White</Link> */}
+                {/* <Link to="javascript:void(0);" className="btn btn-outline-primary header-dark">Dark</Link> */}
               </div>
               <h4 className="weight-600 font-18 pb-10">Sidebar Background</h4>
               <div className="sidebar-btn-group pb-30 mb-10">
-                {/* <a href="javascript:void(0);" className="btn btn-outline-primary sidebar-light ">White</a> */}
-                {/* <a href="javascript:void(0);" className="btn btn-outline-primary sidebar-dark active">Dark</a> */}
+                {/* <Link to="javascript:void(0);" className="btn btn-outline-primary sidebar-light ">White</Link> */}
+                {/* <Link to="javascript:void(0);" className="btn btn-outline-primary sidebar-dark active">Dark</Link> */}
               </div>
               <h4 className="weight-600 font-18 pb-10">Menu Dropdown Icon</h4>
               <div className="sidebar-radio-group pb-10 mb-10">

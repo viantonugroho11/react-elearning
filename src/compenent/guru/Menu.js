@@ -34,10 +34,10 @@ function MenuGuru() {
       <div>
         <div className="left-side-bar">
           <div className="brand-logo">
-            <a href="index.html">
+            <Link to="index.html">
               {/* <img src="%PUBLIC_URL%/vendors/images/deskapp-logo.svg" alt className="dark-logo" />
               <img src="%PUBLIC_URL%/vendors/images/deskapp-logo-white.svg" alt className="light-logo" /> */}
-            </a>
+            </Link>
             <div className="close-sidebar" data-toggle="left-sidebar-close">
               <i className="ion-close-round" />
             </div>
@@ -46,57 +46,57 @@ function MenuGuru() {
             <div className="sidebar-menu">
               <ul id="accordion-menu">
                 <li className="dropdown">
-                  <a href="/guru" className="dropdown-toggle no-arrow">
+                  <Link to="/guru" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-house-1" /><span className="mtext">Home</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="dropdown">
-                  <a href="/guru/rpp" className="dropdown-toggle no-arrow">
+                  <Link to="/guru/rpp" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-edit2" /><span className="mtext">RPP</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="dropdown">
-                  <a href="/guru/silabus" className="dropdown-toggle no-arrow">
+                  <Link to="/guru/silabus" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-library" /><span className="mtext">Silabus</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/guru/pelajaran" className="dropdown-toggle no-arrow">
+                  <Link to="/guru/pelajaran" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-calendar1" /><span className="mtext">Pelajaran</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="dropdown">
-                  <a className="dropdown-toggle">
+                  <Link className="dropdown-toggle">
                     <span className="micon dw dw-apartment" /><span className="mtext">Materi</span>
-                  </a>
+                  </Link>
                   <ul className="submenu">
                     return (
                     {posts.map((data, index) => {
                       return (
-                        <li><a href={"/guru/materi/"+data.id}>{data.from_pelajaran.nama_pelajaran}</a></li>
+                        <li><Link to={"/guru/materi/"+data.id}>{data.from_pelajaran.nama_pelajaran}</Link></li>
                       )
                     })}
                     );
                   </ul>
                 </li>
                 <li className="dropdown">
-                  <a className="dropdown-toggle">
+                  <Link className="dropdown-toggle">
                     <span className="micon dw dw-apartment" /><span className="mtext">Soal</span>
-                  </a>
+                  </Link>
                   <ul className="submenu">
                     return (
                     {posts.map((data, index) => {
                       return (
-                        <li><a href={"/guru/soal/" + data.id}>{data.from_pelajaran.nama_pelajaran}</a></li>
+                        <li><Link to={"/guru/soal/" + data.id}>{data.from_pelajaran.nama_pelajaran}</Link></li>
                       )
                     })}
                     );
                   </ul>
                 </li>
                 {/* <li className="dropdown">
-                  <a href="/guru/angkatan" className="dropdown-toggle no-arrow">
+                  <Link to="/guru/angkatan" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-apartment" /><span className="mtext">Angkatan</span>
-                  </a>
+                  </Link>
                 </li> */}
                 <li>
                   <div className="dropdown-divider" />
@@ -105,14 +105,14 @@ function MenuGuru() {
                   <div className="sidebar-small-cap">Ujian</div>
                 </li>
                 <li className="dropdown">
-                  <a href="/guru/ujian" className="dropdown-toggle no-arrow">
+                  <Link to="/guru/ujian" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-apartment" /><span className="mtext">Ujian</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="dropdown">
-                  <a href="/guru/soalujian" className="dropdown-toggle no-arrow">
+                  <Link to="/guru/soalujian" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-apartment" /><span className="mtext">Soal Ujian</span>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

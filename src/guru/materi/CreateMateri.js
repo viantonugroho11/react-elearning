@@ -3,7 +3,7 @@ import Header from '../../compenent/guru/Header'
 import Menu from '../../compenent/guru/Menu'
 import SideBar from '../../compenent/guru/SideBar'
 import axios from 'axios'
-
+import { Link } from "react-router-dom";
 // import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 //import hook history dari react router dom
 import { useHistory, useParams } from "react-router-dom";
@@ -65,7 +65,7 @@ function CreateMateri() {
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
-                      <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                      <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
                       <li className="breadcrumb-item active" aria-current="page">Form Data Materi </li>
                     </ol>
                   </nav>

@@ -52,9 +52,9 @@ function LoginGuru() {
       <div className="login-header box-shadow">
         <div className="container-fluid d-flex justify-content-between align-items-center">
           <div className="brand-logo">
-            <a href="login.html">
+            <Link to="login.html">
               {/* <img src="" alt /> */}
-            </a>
+            </Link>
           </div>
           <div className="login-menu">
           </div>
@@ -99,7 +99,7 @@ function LoginGuru() {
                       </div>
                     </div> */}
                     <div className="col-6">
-                      <div className="forgot-password"><a href="forgot-password.html">Lupa Password</a></div>
+                      <div className="forgot-password"><Link to="forgot-password.html">Lupa Password</Link></div>
                     </div>
                   </div>
                   <div className="row">
