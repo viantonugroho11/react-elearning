@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-elearning/static/css/main.a617e044.chunk.css",
-    "main.js": "/react-elearning/static/js/main.c838e961.chunk.js",
-    "main.js.map": "/react-elearning/static/js/main.c838e961.chunk.js.map",
+    "main.js": "/react-elearning/static/js/main.c4dd6438.chunk.js",
+    "main.js.map": "/react-elearning/static/js/main.c4dd6438.chunk.js.map",
     "runtime-main.js": "/react-elearning/static/js/runtime-main.ddfbcb74.js",
     "runtime-main.js.map": "/react-elearning/static/js/runtime-main.ddfbcb74.js.map",
     "static/js/2.178c795d.chunk.js": "/react-elearning/static/js/2.178c795d.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.ddfbcb74.js",
     "static/js/2.178c795d.chunk.js",
     "static/css/main.a617e044.chunk.css",
-    "static/js/main.c838e961.chunk.js"
+    "static/js/main.c4dd6438.chunk.js"
   ]
 }
