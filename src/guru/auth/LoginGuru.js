@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 //import hook useHitory from react router dom
 import { useHistory } from 'react-router';
-
+import { Link } from "react-router-dom";
 //import axios
 import axios from 'axios';
 

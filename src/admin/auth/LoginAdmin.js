@@ -6,7 +6,7 @@ import { useHistory } from 'react-router';
 
 //import axios
 import axios from 'axios';
-
+import { Link } from "react-router-dom";
 function LoginAdmin() {
 
   //define state
