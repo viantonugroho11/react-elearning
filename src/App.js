@@ -74,7 +74,6 @@ function App() {
     <div>
       <Switch>
         {/* admin start */}
-        <Route basepath="/admin/login" component={LoginAdmin} />
         {/* <Route exact path="/" component={DashboardAdmin} /> */}
         <Route exact path="/admin" component={DashboardAdmin} />
         {/* login */}
@@ -154,7 +153,7 @@ function App() {
         <Route exact path="/dashboard" component={DashboardAdmin} />
         {/* login siswa */}
         <Route exact path="/" component={LoginSiswa} />
-
+        <Route basepath="/admin/login" component={LoginAdmin} />
         {/* NotFound */}
         <Route component={NotFound} />
       </Switch>
