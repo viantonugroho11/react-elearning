@@ -36,7 +36,7 @@ function LoginSiswa() {
 
         //set token on localStorage
         localStorage.setItem('token', response.data.token);
-        localStorage.setItem('token', response.data.user.id);
+        localStorage.setItem('id', response.data.user.id);
 
         //redirect to dashboard
         history.push('/siswa');

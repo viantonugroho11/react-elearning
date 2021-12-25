@@ -69,7 +69,7 @@ function LoginGuru() {
             <div className="col-md-6 col-lg-5">
               <div className="login-box bg-white box-shadow border-radius-10">
                 <div className="login-title">
-                  <h2 className="text-center text-primary">Login Admin SDIT AL-MANAR</h2>
+                  <h2 className="text-center text-primary">Login Guru SDIT AL-MANAR</h2>
                   {
                     validation.message && (
                       <div className="alert alert-danger">

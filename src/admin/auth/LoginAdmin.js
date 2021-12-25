@@ -44,7 +44,8 @@ function LoginAdmin() {
       .catch((error) => {
 
         //assign error to state "validation"
-        setValidation(error.response.data);
+        // setValidation(error.response.data);
+        console.log(error);
       })
   };
   return (
