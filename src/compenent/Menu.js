@@ -1,7 +1,10 @@
-import React, { Component } from 'react'
-import { Link } from "react-router-dom";
-export default class Menu extends Component {
-  render() {
+import React from 'react'
+import { Link, useHistory } from "react-router-dom";
+function Menu() {
+  const history = useHistory();
+  function handleclickSiswa() {
+    history.push('/admin/siswa');
+  }
     return (
       <div>
         <div className="left-side-bar">
@@ -23,9 +26,9 @@ export default class Menu extends Component {
                   </Link>
                 </li>
                 <li className="dropdown">
-                  <Link to="/admin/siswa" className="dropdown-toggle no-arrow">
+                  <a onClick={handleclickSiswa} className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-edit2" /><span className="mtext">Data Siswa</span>
-                  </Link>
+                  </a>
                 </li>
                 <li className="dropdown">
                   <Link to="/admin/guru" className="dropdown-toggle no-arrow">
@@ -76,4 +79,4 @@ export default class Menu extends Component {
       </div>
     )
   }
-}
+export default Menu
