@@ -79,7 +79,7 @@ function CreateGuru() {
             </div>
             <nav aria-label="breadcrumb" role="navigation">
               <ol className="breadcrumb">
-                <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+                <li className="breadcrumb-item"><a href="/admin">Home</a></li>
                 <li className="breadcrumb-item active" aria-current="page">Form Data Guru</li>
               </ol>
             </nav>
@@ -185,7 +185,7 @@ function CreateGuru() {
       {/* Input Validation End */}
     </div>
     <div className="footer-wrap pd-20 mb-20 card-box">
-      {/* DeskApp - Bootstrap 4 Admin Template By <Link to="/" target="_blank">Ankit Hingarajiya</Link> */}
+      {/* DeskApp - Bootstrap 4 Admin Template By <a href="/" target="_blank">Ankit Hingarajiya</a> */}
     </div>
   </div>
 </div>

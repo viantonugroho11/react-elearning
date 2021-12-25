@@ -15,7 +15,7 @@ export default class ShowSoalUjian extends Component {
             </div>
             <nav aria-label="breadcrumb" role="navigation">
               <ol className="breadcrumb">
-                <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+                <li className="breadcrumb-item"><a href="index.html">Home</a></li>
                 <li className="breadcrumb-item" aria-current="page">Ujian</li>
                 <li className="breadcrumb-item active" aria-current="page">Matematika</li>
               </ol>
@@ -55,48 +55,48 @@ export default class ShowSoalUjian extends Component {
             <nav aria-label="...">
               <ul className="pagination flex-wrap">
                 <li className="page-item disabled">
-                  {/* <Link className="page-link" to="#" tabIndex={-1}>Previous</Link> */}
+                  {/* <a className="page-link" href="#" tabIndex={-1}>Previous</a> */}
                 </li>
                 <li className="page-item">
-                  {/* <Link className="page-link" to="#">1</Link> */}
+                  {/* <a className="page-link" href="#">1</a> */}
                   </li>
                 <li className="page-item active">
-                  {/* <Link className="page-link" to="#">2 <span className="sr-only">(current)</span></Link> */}
+                  {/* <a className="page-link" href="#">2 <span className="sr-only">(current)</span></a> */}
                 </li>
                 <li className="page-item">
-                  {/* <Link className="page-link" to="#">3</Link> */}
-                </li>
-                <br />
-                <li className="page-item">
-                  {/* <Link className="page-link" to="#">4</Link> */}
+                  {/* <a className="page-link" href="#">3</a> */}
                 </li>
                 <br />
                 <li className="page-item">
-                  {/* <Link className="page-link" to="#">5</Link> */}
+                  {/* <a className="page-link" href="#">4</a> */}
+                </li>
+                <br />
+                <li className="page-item">
+                  {/* <a className="page-link" href="#">5</a> */}
                   </li>
                 <li className="page-item">
-                  {/* <Link className="page-link" to="#">6</Link> */}
+                  {/* <a className="page-link" href="#">6</a> */}
                   </li>
                 <li className="page-item">
-                  {/* <Link className="page-link" to="#">7</Link> */}
+                  {/* <a className="page-link" href="#">7</a> */}
                   </li>
                 <li className="page-item">
-                  {/* <Link className="page-link" to="#">8</Link> */}
+                  {/* <a className="page-link" href="#">8</a> */}
                   </li>
                 <li className="page-item">
-                  {/* <Link className="page-link" to="#">9</Link> */}
+                  {/* <a className="page-link" href="#">9</a> */}
                   </li>
                 <li className="page-item">
-                  {/* <Link className="page-link" to="#">10</Link> */}
+                  {/* <a className="page-link" href="#">10</a> */}
                   </li>
                 <li className="page-item">
-                  {/* <Link className="page-link" to="#">11</Link> */}
+                  {/* <a className="page-link" href="#">11</a> */}
                   </li>
                 <li className="page-item">
-                  {/* <Link className="page-link" to="#">12</Link> */}
+                  {/* <a className="page-link" href="#">12</a> */}
                   </li>
                 <li className="page-item">
-                  {/* <Link className="page-link" to="#">Next</Link> */}
+                  {/* <a className="page-link" href="#">Next</a> */}
                 </li>
               </ul>
             </nav>

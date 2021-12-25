@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { Component, useState } from 'react'
 import { useEffect } from 'react';
 import { useHistory } from 'react-router';
+import { Link } from "react-router-dom";
 
 function IndexPelajaranSiswa() {
   //define history
@@ -45,7 +46,7 @@ function IndexPelajaranSiswa() {
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
-                      <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+                      <li className="breadcrumb-item"><a href="index.html">Home</a></li>
                       <li className="breadcrumb-item active" aria-current="page">Cards</li>
                     </ol>
                   </nav>
@@ -58,7 +59,7 @@ function IndexPelajaranSiswa() {
                   <div className="card-body">
                     <h5 className="card-title">Special title treatment</h5>
                     <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <Link to="#" className="btn btn-primary">Klik Me</Link>
+                    {/* <a href="#" className="btn btn-primary">Klik Me</a> */}
                   </div>
                 </div>
               </div>
@@ -67,7 +68,7 @@ function IndexPelajaranSiswa() {
                   <div className="card-body">
                     <h5 className="card-title">Special title treatment</h5>
                     <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <Link to="#" className="btn btn-primary">Klik Me</Link>
+                    {/* <a href="#" className="btn btn-primary">Klik Me</a> */}
                   </div>
                 </div>
               </div>
@@ -76,7 +77,7 @@ function IndexPelajaranSiswa() {
                   <div className="card-body">
                     <h5 className="card-title">Special title treatment</h5>
                     <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <Link to="#" className="btn btn-primary">Klik Me</Link>
+                    {/* <a href="#" className="btn btn-primary">Klik Me</a> */}
                   </div>
                 </div>
               </div>
@@ -85,14 +86,14 @@ function IndexPelajaranSiswa() {
                   <div className="card-body">
                     <h5 className="card-title">Special title treatment</h5>
                     <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <Link to="#" className="btn btn-primary">Klik Me</Link>
+                    {/* <a href="#" className="btn btn-primary">Klik Me</a> */}
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div className="footer-wrap pd-20 mb-20 card-box">
-            DeskApp - Bootstrap 4 Admin Template By <Link to="https://github.com/dropways" target="_blank">Ankit Hingarajiya</Link>
+            DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
           </div>
         </div>
       </div>

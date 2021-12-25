@@ -15,7 +15,7 @@ export default class CreateAngkatan extends Component {
             </div>
             <nav aria-label="breadcrumb" role="navigation">
               <ol className="breadcrumb">
-                <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+                <li className="breadcrumb-item"><a href="index.html">Home</a></li>
                 <li className="breadcrumb-item active" aria-current="page">Form Data tahun AJaran</li>
               </ol>
             </nav>
@@ -47,7 +47,7 @@ export default class CreateAngkatan extends Component {
           </div>
           <div className="clearfix">
             <div className="pull-right">
-              <Link to="#horizontal-basic-form1" className="btn btn-primary btn-sm scroll-click" rel data-toggle="collapse" role="button">Simpan</Link>
+              {/* <a href="#horizontal-basic-form1" className="btn btn-primary btn-sm scroll-click" rel data-toggle="collapse" role="button">Simpan</a> */}
             </div>
           </div>
         </form>

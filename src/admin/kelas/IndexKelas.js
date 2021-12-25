@@ -40,9 +40,9 @@ function IndexKelas(){
           jumlah:user.get_siswa_count,
           aksi:
           <div>
-            <Link classname="btn btn-secondary" to={"/admin/kelas/edit/"+user.id}>Edit</Link><br/>
-            <Link classname="btn btn-secondary" to="/">Show</Link><br/>
-            <Link classname="btn btn-secondary" to="/">Delete</Link><br/>
+            <a classname="btn btn-secondary" href={"/admin/kelas/edit/"+user.id}>Edit</a><br/>
+            <a classname="btn btn-secondary" href="/">Show</a><br/>
+            <a classname="btn btn-secondary" href="/">Delete</a><br/>
           </div>,
     }));
     
@@ -84,7 +84,7 @@ function IndexKelas(){
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                       <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
                         <li className="breadcrumb-item active" aria-current="page">Data Kelas</li>
                       </ol>
                     </nav>
@@ -95,7 +95,7 @@ function IndexKelas(){
               <div className="card-box mb-30">
                 <div className="pd-20 d-flex justify-content-between">
                   <h4 className="text-blue h4">Data Kelas</h4>
-                  <Link to="/admin/kelas/create" className="btn btn-sm btn-primary">+ tambah</Link>
+                  <a href="/admin/kelas/create" className="btn btn-sm btn-primary">+ tambah</a>
                 </div>
                 <div className="pb-20">
                   <DataTable

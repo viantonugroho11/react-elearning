@@ -73,7 +73,7 @@ function CreateUjian() {
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                       <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
                         <li className="breadcrumb-item active" aria-current="page">Form Data Guru</li>
                       </ol>
                     </nav>

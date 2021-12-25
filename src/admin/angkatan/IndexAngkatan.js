@@ -25,7 +25,7 @@ function IndexAngkatan(){
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
-                      <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+                      <li className="breadcrumb-item"><a href="index.html">Home</a></li>
                       <li className="breadcrumb-item active" aria-current="page">Form Data Soal </li>
                     </ol>
                   </nav>
@@ -55,7 +55,7 @@ function IndexAngkatan(){
                 </div>
                 <div className="clearfix">
                   <div className="pull-right">
-                    <Link to="#horizontal-basic-form1" className="btn btn-primary btn-sm scroll-click" rel data-toggle="collapse" role="button"><i className="icon-copy fi-save" />Simpan</Link>
+                    {/* <a href="#horizontal-basic-form1" className="btn btn-primary btn-sm scroll-click" rel data-toggle="collapse" role="button"><i className="icon-copy fi-save" />Simpan</a> */}
                   </div>
                 </div>
               </div>

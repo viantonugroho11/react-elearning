@@ -73,9 +73,9 @@ function Header() {
                 <i className="dw dw-search2 search-icon" />
                 <input type="text" className="form-control search-input" placeholder="Search Here" />
                 <div className="dropdown">
-                  <Link className="dropdown-toggle no-arrow" to="/" role="button" data-toggle="dropdown">
+                  {/* <a className="dropdown-toggle no-arrow" href="/" role="button" data-toggle="dropdown">
                     <i className="ion-arrow-down-c" />
-                  </Link>
+                  </a> */}
                   <div className="dropdown-menu dropdown-menu-right">
                     <div className="form-group row">
                       <label className="col-sm-12 col-md-2 col-form-label">From</label>
@@ -107,61 +107,61 @@ function Header() {
         <div className="header-right">
           <div className="dashboard-setting user-notification">
             <div className="dropdown">
-              <Link className="dropdown-toggle no-arrow" to="/" data-toggle="right-sidebar">
+              <a className="dropdown-toggle no-arrow" href="/" data-toggle="right-sidebar">
                 <i className="dw dw-settings2" />
-              </Link>
+              </a>
             </div>
           </div>
           <div className="user-notification">
             <div className="dropdown">
-              <Link className="dropdown-toggle no-arrow" to="/" role="button" data-toggle="dropdown">
+              {/* <a className="dropdown-toggle no-arrow" href="/" role="button" data-toggle="dropdown">
                 <i className="icon-copy dw dw-notification" />
                 <span className="badge notification-active" />
-              </Link>
+              </a> */}
               <div className="dropdown-menu dropdown-menu-right">
                 <div className="notification-list mx-h-350 customscroll">
                   <ul>
                     <li>
-                      <Link to="/">
+                      <a href="/">
                         {/* <img src="vendors/images/img.jpg" alt /> */}
                         <h3>John Doe</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-                      </Link>
+                      </a>
                     </li>
                     <li>
-                      <Link to="/">
+                      <a href="/">
                         {/* <img src="vendors/images/photo1.jpg" alt /> */}
                         <h3>Lea R. Frith</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-                      </Link>
+                      </a>
                     </li>
                     <li>
-                      <Link to="/">
+                      <a href="/">
                         {/* <img src="vendors/images/photo2.jpg" alt /> */}
                         <h3>Erik L. Richards</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-                      </Link>
+                      </a>
                     </li>
                     <li>
-                      <Link to="/">
+                      <a href="/">
                         {/* <img src="vendors/images/photo3.jpg" alt /> */}
                         <h3>John Doe</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-                      </Link>
+                      </a>
                     </li>
                     <li>
-                      <Link to="/">
+                      <a href="/">
                         {/* <img src="vendors/images/photo4.jpg" alt /> */}
                         <h3>Renee I. Hansen</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-                      </Link>
+                      </a>
                     </li>
                     <li>
-                      <Link to="/">
+                      <a href="/">
                         {/* <img src="vendors/images/img.jpg" alt /> */}
                         <h3>Vicki M. Coleman</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-                      </Link>
+                      </a>
                     </li>
                   </ul>
                 </div>
@@ -170,17 +170,17 @@ function Header() {
           </div>
           <div className="user-info-dropdown">
             <div className="dropdown">
-              <Link className="dropdown-toggle" to="/" role="button" data-toggle="dropdown">
+              <a className="dropdown-toggle" href="/" role="button" data-toggle="dropdown">
                 <span className="user-icon">
                   {/* <img src="vendors/images/photo1.jpg" alt /> */}
                 </span>
                 <span className="user-name">{user.name}</span>
-              </Link>
+              </a>
               <div className="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                <Link className="dropdown-item" to="profile.html"><i className="dw dw-user1" /> Profile</Link>
-                <Link className="dropdown-item" to="profile.html"><i className="dw dw-settings2" /> Setting</Link>
-                <Link className="dropdown-item" to="faq.html"><i className="dw dw-help" /> Help</Link>
-                <Link className="dropdown-item" onClick={logoutHanlder}><i className="dw dw-logout" /> Log Out</Link>
+                {/* <a className="dropdown-item" href="profile.html"><i className="dw dw-user1" /> Profile</a>
+                <a className="dropdown-item" href="profile.html"><i className="dw dw-settings2" /> Setting</a>
+                <a className="dropdown-item" href="faq.html"><i className="dw dw-help" /> Help</a> */}
+                <a className="dropdown-item" onClick={logoutHanlder}><i className="dw dw-logout" /> Log Out</a>
               </div>
             </div>
           </div>

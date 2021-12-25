@@ -138,7 +138,7 @@ function DashboardGuru() {
             </div>
           </div>
           <div className="footer-wrap pd-20 mb-20 card-box">
-            Learning Management System By <Link to="/" target="_blank">Dimas Wahyu Pratoomo</Link>
+            Learning Management System By <a href="/" target="_blank">Dimas Wahyu Pratoomo</a>
           </div>
         </div>
       </div>

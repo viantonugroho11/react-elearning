@@ -74,10 +74,10 @@ function App() {
     <div>
       <Switch>
         {/* admin start */}
+        <Route basepath="/admin/login" component={LoginAdmin} />
         {/* <Route exact path="/" component={DashboardAdmin} /> */}
         <Route exact path="/admin" component={DashboardAdmin} />
         {/* login */}
-        <Route basepath="/admin/login" component={LoginAdmin} />
         {/* guru */}
         <Route exact path="/admin/guru" component={IndexGuru} />
         <Route exact path="/admin/guru/create" component={CreateGuru} />
@@ -115,7 +115,7 @@ function App() {
         {/* guru start */}
         <Route exact path="/guru" component={DashboardGuru} />
         {/* login Guru */}
-        <Route basepath="/guru/login" component={LoginGuru} />
+        <Route exact path="/guru/login" component={LoginGuru} />
         {/* kelas */}
         <Route exact path="/guru/kelas" component={IndexKelas} />
         {/* materi */}

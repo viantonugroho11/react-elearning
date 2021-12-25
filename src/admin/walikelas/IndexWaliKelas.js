@@ -41,9 +41,9 @@ function IndexWaliKelas() {
     soal_ujian: user.get_soal_ujian_count,
     aksi:
       <div>
-        <Link classname="btn btn-secondary btn-sm" to={"/admin/ujian/edit/" + user.id}>Edit</Link><br />
-        <Link classname="btn btn-secondary btn-sm" to="/">Show</Link><br />
-        <Link classname="btn btn-secondary btn-sm" to="/">Delete</Link><br />
+        <a classname="btn btn-secondary btn-sm" href={"/admin/ujian/edit/" + user.id}>Edit</a><br />
+        <a classname="btn btn-secondary btn-sm" href="/">Show</a><br />
+        <a classname="btn btn-secondary btn-sm" href="/">Delete</a><br />
       </div>,
   }));
   const columns = [
@@ -98,7 +98,7 @@ function IndexWaliKelas() {
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
-                      <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+                      <li className="breadcrumb-item"><a href="index.html">Home</a></li>
                       <li className="breadcrumb-item active" aria-current="page">Data Kelas</li>
                     </ol>
                   </nav>
@@ -109,7 +109,7 @@ function IndexWaliKelas() {
             <div className="card-box mb-30">
               <div className="pd-20 d-flex justify-content-between">
                 <h4 className="text-blue h4">Data Kelas</h4>
-                <Link to="form-datakelas.html" className="btn btn-sm btn-primary">+ tambah</Link>
+                <a href="form-datakelas.html" className="btn btn-sm btn-primary">+ tambah</a>
               </div>
               <div className="pb-20">
                 <table className="data-table table stripe hover nowrap">

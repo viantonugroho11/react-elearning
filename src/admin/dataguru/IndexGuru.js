@@ -47,8 +47,8 @@ function IndexGuru() {
     email: user.email,
     status: user.status_kepegawaian,
     aksi: <div>
-      <Link classname="btn btn-secondary btn-sm" to={"/admin/guru/edit/" + user.id}>Edit</Link><br />
-      <Link classname="btn btn-secondary btn-sm" to="/">Show</Link><br />
+      <a classname="btn btn-secondary btn-sm" href={"/admin/guru/edit/" + user.id}>Edit</a><br />
+      <a classname="btn btn-secondary btn-sm" href="/">Show</a><br />
       <button classname="btn btn-secondary btn-sm" onClick={() => deletePost(user.id)}>DELETE</button><br />
     </div>
     ,
@@ -101,12 +101,12 @@ function IndexGuru() {
                   <div className="title">
                     <h4>Data Guru</h4>
                     <br />
-                    {/* <Link classname="btn btn-secondary btn-sm" to="/admin/guru/create">Tambah Data</Link> */}
+                    {/* <a classname="btn btn-secondary btn-sm" href="/admin/guru/create">Tambah Data</a> */}
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
-                      <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-                      <li className="breadcrumb-item active" aria-current="page"><Link to="/admin/guru">Data Guru</Link></li>
+                      <li className="breadcrumb-item"><a href="/">Home</a></li>
+                      <li className="breadcrumb-item active" aria-current="page"><a href="/admin/guru">Data Guru</a></li>
                     </ol>
                   </nav>
                 </div>
@@ -116,7 +116,7 @@ function IndexGuru() {
             <div className="card-box mb-30">
               <div className="pd-20">
                 <h4 className="text-blue h4">Data Guru</h4><br />
-                <Link classname="btn btn-secondary btn-sm" to="/admin/guru/create">Tambah Data</Link>
+                <a classname="btn btn-secondary btn-sm" href="/admin/guru/create">Tambah Data</a>
               </div>
               <div className="pb-20">
                 <DataTable
@@ -147,13 +147,13 @@ function IndexGuru() {
                 <td>29-03-2018</td>
                 <td>
                   <div className="dropdown">
-                    <Link className="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" to="/" role="button" data-toggle="dropdown">
+                    <a className="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="/" role="button" data-toggle="dropdown">
                       <i className="dw dw-more" />
-                    </Link>
+                    </a>
                     <div className="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                      <Link className="dropdown-item" to="."><i className="dw dw-eye" /> View</Link>
-                      <Link className="dropdown-item" to="/"><i className="dw dw-edit2" /> Edit</Link>
-                      <Link className="dropdown-item" to="/"><i className="dw dw-delete-3" /> Delete</Link>
+                      <a className="dropdown-item" href="."><i className="dw dw-eye" /> View</a>
+                      <a className="dropdown-item" href="/"><i className="dw dw-edit2" /> Edit</a>
+                      <a className="dropdown-item" href="/"><i className="dw dw-delete-3" /> Delete</a>
                     </div>
                   </div>
                 </td>
@@ -167,7 +167,7 @@ function IndexGuru() {
 
           </div>
           <div className="footer-wrap pd-20 mb-20 card-box">
-            DeskApp - Bootstrap 4 Admin Template By <Link to="/" target="_blank">Ankit Hingarajiya</Link>
+            DeskApp - Bootstrap 4 Admin Template By <a href="/" target="_blank">Ankit Hingarajiya</a>
           </div>
         </div>
       </div>

@@ -53,7 +53,7 @@ function CreateMataPelajaran() {
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                       <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
                         <li className="breadcrumb-item active" aria-current="page">Form Data Mata Pelajaran</li>
                       </ol>
                     </nav>
@@ -97,7 +97,7 @@ function CreateMataPelajaran() {
               {/* Input Validation End */}
             </div>
             <div className="footer-wrap pd-20 mb-20 card-box">
-              {/* DeskApp - Bootstrap 4 Admin Template By <Link to="https://github.com/dropways" target="_blank">Ankit Hingarajiya</Link> */}
+              {/* DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a> */}
             </div>
           </div>
         </div>

@@ -37,9 +37,9 @@ function IndexMataPelajaran(){
           nama:user.nama_pelajaran,
           aksi:
           <div>
-            <Link classname="btn btn-secondary btn-sm" to={"/admin/pelajaran/edit/"+user.id}>Edit</Link><br/>
-            <Link classname="btn btn-secondary btn-sm" to="/">Show</Link><br/>
-            <Link classname="btn btn-secondary btn-sm" to="/">Delete</Link><br/>
+            <a classname="btn btn-secondary btn-sm" href={"/admin/pelajaran/edit/"+user.id}>Edit</a><br/>
+            <a classname="btn btn-secondary btn-sm" href="/">Show</a><br/>
+            <a classname="btn btn-secondary btn-sm" href="/">Delete</a><br/>
           </div>,
     }));
     
@@ -71,7 +71,7 @@ function IndexMataPelajaran(){
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                       <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                        <li className="breadcrumb-item"><a href="/">Home</a></li>
                         <li className="breadcrumb-item active" aria-current="page">Data Mata Pelajaran</li>
                       </ol>
                     </nav>
@@ -82,7 +82,7 @@ function IndexMataPelajaran(){
               <div className="card-box mb-II">
                 <div className="pd-20 d-flex justify-content-between">
                   <h4 className="text-blue h4">Data  Mata Pelajaran</h4>
-                  <Link to="/admin/matapelajaran/create" className="btn btn-sm btn-primary">tambah</Link>
+                  <a href="/admin/matapelajaran/create" className="btn btn-sm btn-primary">tambah</a>
                 </div>
                 <div className="pb-20">
                   <DataTable

@@ -6,10 +6,10 @@ export default class SideBarUjian extends Component {
       <div>
         <div className="left-side-bar">
           <div className="brand-logo">
-            <Link to="index.html">
+            <a href="index.html">
               {/* <img src="%PUBLIC_URL%/vendors/images/deskapp-logo.svg" className="dark-logo" /> */}
               {/* <img src="%PUBLIC_URL%/vendors/images/deskapp-logo-white.svg"className="light-logo" /> */}
-            </Link>
+            </a>
             <div className="close-sidebar" data-toggle="left-sidebar-close">
               <i className="ion-close-round" />
             </div>
@@ -19,10 +19,10 @@ export default class SideBarUjian extends Component {
               <div className="col-md-12 col-sm-12">
                 <div className="row">
                   <div className="col-3" style={{margin: '10px 0px 10px 0px'}}>
-                    {/* <Link className="btn btn-primary btn-sm" to="#" role="button">20</Link> */}
+                    {/* <a className="btn btn-primary btn-sm" href="#" role="button">20</a> */}
                   </div>
                   <div className="col-3" style={{margin: '10px 0px 10px 0px'}}>
-                    {/* <Link className="btn btn-primary btn-sm" to="#" role="button">20</Link> */}
+                    {/* <a className="btn btn-primary btn-sm" href="#" role="button">20</a> */}
                   </div>
 
                 </div>

@@ -39,9 +39,9 @@ function IndexJadwal(){
           pelajaran:user.from_pelajaran.nama_pelajaran,
           aksi:
           <div>
-            <Link classname="btn btn-secondary btn-sm" to={"/admin/siswa/edit/"+user.id}>Edit</Link><br/>
-            <Link classname="btn btn-secondary btn-sm" to="/">Show</Link><br/>
-            <Link classname="btn btn-secondary btn-sm" to="/">Delete</Link><br/>
+            <a classname="btn btn-secondary btn-sm" href={"/admin/siswa/edit/"+user.id}>Edit</a><br/>
+            <a classname="btn btn-secondary btn-sm" href="/">Show</a><br/>
+            <a classname="btn btn-secondary btn-sm" href="/">Delete</a><br/>
           </div>
           ,
     }));
@@ -84,7 +84,7 @@ function IndexJadwal(){
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                       <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
                         <li className="breadcrumb-item active" aria-current="page">Data Jadwal</li>
                       </ol>
                     </nav>
@@ -95,7 +95,7 @@ function IndexJadwal(){
               <div className="card-box mb-30">
                 <div className="pd-20 d-flex justify-content-between">
                   <h4 className="text-blue h4">Data Jadwal</h4>
-                  <Link to="/admin/jadwal/create" className="btn btn-sm btn-primary">+ tambah</Link>
+                  <a href="/admin/jadwal/create" className="btn btn-sm btn-primary">+ tambah</a>
                 </div>
                 <div className="pb-20">
                   <DataTable

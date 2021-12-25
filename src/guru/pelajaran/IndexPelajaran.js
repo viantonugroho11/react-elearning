@@ -48,8 +48,8 @@ function IndexPelajaranGuru() {
     nmpelajaran: pelajaran.from_pelajaran.nama_pelajaran,
     aksi:
       <div>
-        <Link classname="btn btn-secondary" to={"/guru/kelas/edit/" + pelajaran.id}>Tambah Materi</Link><br />
-        <Link classname="btn btn-secondary" to="/guru">Tambah Soal</Link><br />
+        <a classname="btn btn-secondary" href={"/guru/kelas/edit/" + pelajaran.id}>Tambah Materi</a><br />
+        <a classname="btn btn-secondary" href="/guru">Tambah Soal</a><br />
       </div>,
   }));
 
@@ -91,7 +91,7 @@ function IndexPelajaranGuru() {
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
-                      <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+                      <li className="breadcrumb-item"><a href="index.html">Home</a></li>
                       <li className="breadcrumb-item active" aria-current="page">Data Kelas</li>
                     </ol>
                   </nav>
@@ -102,7 +102,7 @@ function IndexPelajaranGuru() {
             <div className="card-box mb-30">
               <div className="pd-20 d-flex justify-content-between">
                 <h4 className="text-blue h4">Data Kelas</h4>
-                <Link to="form-datakelas.html" className="btn btn-sm btn-primary">+ tambah</Link>
+                <a href="form-datakelas.html" className="btn btn-sm btn-primary">+ tambah</a>
               </div>
               <div className="pb-20">
                 <DataTable
