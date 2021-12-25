@@ -75,13 +75,13 @@ function App() {
       <Switch>
         {/* admin start */}
         {/* <Route exact path="/" component={DashboardAdmin} /> */}
-        <Route path="/admin" component={DashboardAdmin} />
+        <Route exact path="/admin" component={DashboardAdmin} />
         {/* login */}
         <Route basepath="/admin/login" component={LoginAdmin} />
         {/* guru */}
         <Route exact path="/admin/guru" component={IndexGuru} />
-        <Route path="/admin/guru/create" component={CreateGuru} />
-        <Route path="/admin/guru/edit/:id" component={EditGuru} />
+        <Route exact path="/admin/guru/create" component={CreateGuru} />
+        <Route exact path="/admin/guru/edit/:id" component={EditGuru} />
         {/* siswa */}
         <Route exact path="/admin/siswa" component={IndexSiswa} />
         <Route exact path="/admin/siswa/edit/:id" component={EditSiswa} />
