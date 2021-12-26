@@ -1,6 +1,6 @@
 
 import './App.css';
-import { Switch, Route } from 'react-router'
+import { Switch, Route, Redirect } from 'react-router'
 
 //admin
 import DashboardAdmin from './admin/DashboardAdmin';
@@ -76,6 +76,7 @@ function App() {
         {/* admin start */}
         {/* <Route exact path="/" component={DashboardAdmin} /> */}
         <Route exact path="/admin" component={DashboardAdmin} />
+        <Redirect from="/admin" to="/admin" />
         {/* login */}
         {/* guru */}
         <Route exact path="/admin/guru" component={IndexGuru} />
