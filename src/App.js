@@ -76,7 +76,7 @@ function App() {
         {/* admin start */}
         {/* <Route exact path="/" component={DashboardAdmin} /> */}
         <Route exact path="/admin" component={DashboardAdmin} />
-        <Redirect from="/admin" to="/admin" />
+        {/* <Redirect from="/admin" to="/admin" /> */}
         {/* login */}
         {/* guru */}
         <Route exact path="/admin/guru" component={IndexGuru} />
