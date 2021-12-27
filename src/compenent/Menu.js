@@ -1,10 +1,6 @@
 import React from 'react'
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 function Menu() {
-  const history = useHistory();
-  function handleclickSiswa() {
-    history.push('/admin/siswa');
-  }
     return (
       <div>
         <div className="left-side-bar">
@@ -26,9 +22,9 @@ function Menu() {
                   </Link>
                 </li>
                 <li className="dropdown">
-                  <a onClick={handleclickSiswa} className="dropdown-toggle no-arrow">
+                  <Link to="/admin/siswa" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-edit2" /><span className="mtext">Data Siswa</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="dropdown">
                   <Link to="/admin/guru" className="dropdown-toggle no-arrow">

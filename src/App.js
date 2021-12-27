@@ -68,6 +68,7 @@ import IndexUjianGuru from './guru/ujian/IndexUjian';
 import CreateSoalUjian from './guru/soalujian/CreateSoalUjian';
 import LoginSiswa from './siswa/auth/LoginSiswa';
 import NotFound from './error/NotFound';
+import DashboardSiswa from './siswa/DashboardSiswa';
 
 function App() {
   return (
@@ -151,10 +152,10 @@ function App() {
         {/* end guru */}
 
         {/* siswa start */}
-        <Route exact path="/dashboard" component={DashboardAdmin} />
+        <Route exact path="/dashboard" component={DashboardSiswa} />
         {/* login siswa */}
         <Route exact path="/" component={LoginSiswa} />
-        <Route basepath="/admin/login" component={LoginAdmin} />
+        {/* <Route basepath="/admin/login" component={LoginAdmin} /> */}
         {/* NotFound */}
         <Route component={NotFound} />
       </Switch>

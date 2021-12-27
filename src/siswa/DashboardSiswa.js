@@ -1,6 +1,4 @@
-import Header from '../compenent/guru/Header'
-import Menu from '../compenent/guru/Menu'
-import SideBar from '../compenent/guru/SideBar'
+
 //import hook react
 import React from 'react'
 import { useState, useEffect } from 'react'
@@ -10,7 +8,9 @@ import { useHistory } from 'react-router';
 
 //import axios
 import axios from 'axios';
-
+import SidebarSiswa from '../compenent/siswa/Sidebar';
+import HeaderSiswa from '../compenent/siswa/Header';
+import MenuSiswa from '../compenent/siswa/Menu';
 function DashboardSiswa() {
 
   //state user
@@ -30,11 +30,12 @@ function DashboardSiswa() {
     //fetch user from Rest API
     await axios.get('http://appsiaksd.ugcorpusskkni.online/api/siswa/user')
       .then((response) => {
-
+        console.log(response.data);
         //set response user to state
         setUser(response.data);
       })
       .catch((error) => {
+        console.log(error);
         //redirect halaman login
         history.push('/');
       })
@@ -56,9 +57,9 @@ function DashboardSiswa() {
   }, []);
   return (
     <div>
-      <Header />
-      <SideBar />
-      <Menu />
+      <HeaderSiswa />
+      <SidebarSiswa />
+      <MenuSiswa />
       <div className="main-container">
         <div className="pd-ltr-20">
           <div className="card-box pd-20 height-100-p mb-30">
@@ -69,7 +70,7 @@ function DashboardSiswa() {
               <div className="col-md-8">
                 <h4 className="font-20 weight-500 mb-10 text-capitalize">
                   <i>Assalamu'alaikum Wr Wb,</i><br />
-                  <i>Ahlan Wa Sahlan</i> <div className="weight-600 font-30 text-blue">{user.name} !</div>
+                  <i>Ahlan Wa Sahlan</i> <div className="weight-600 font-30 text-blue">{user.nama_siswa} !</div>
                 </h4>
                 <p className="font-18 max-width-600">Anda login sebagai Siswa, akses anda terhadap aplikasi sesuai dengan apa yang telah diberikan JobDesk dalam LMS ini. <br />Keep Hamasah :)</p>
               </div>
