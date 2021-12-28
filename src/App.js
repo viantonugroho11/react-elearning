@@ -69,6 +69,7 @@ import CreateSoalUjian from './guru/soalujian/CreateSoalUjian';
 import LoginSiswa from './siswa/auth/LoginSiswa';
 import NotFound from './error/NotFound';
 import DashboardSiswa from './siswa/DashboardSiswa';
+import IndexPelajaranSiswa from './siswa/pelajaran/IndexPelajaran';
 
 function App() {
   return (
@@ -155,6 +156,9 @@ function App() {
         <Route exact path="/dashboard" component={DashboardSiswa} />
         {/* login siswa */}
         <Route exact path="/" component={LoginSiswa} />
+        {/* pelajaran siswa */}
+        <Route exact path="/pelajaran" component={IndexPelajaranSiswa} />
+        {/* end siswa */}
         {/* <Route basepath="/admin/login" component={LoginAdmin} /> */}
         {/* NotFound */}
         <Route component={NotFound} />

@@ -3,6 +3,9 @@ import React, { Component, useState } from 'react'
 import { useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from "react-router-dom";
+import HeaderSiswa from '../../compenent/siswa/Header';
+import MenuSiswa from '../../compenent/siswa/Menu';
+import SidebarSiswa from '../../compenent/siswa/Sidebar';
 
 function IndexPelajaranSiswa() {
   //define history
@@ -28,13 +31,16 @@ function IndexPelajaranSiswa() {
     //fetching
     const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/siswa/pelajaran/${id}`);
     //get response data
-    const data = await response.data.data;
-
+    const data = await response.data.data.to_user.get_jadwal;
+    console.log(data);
     //assign response data to state "posts"
     setPosts(data);
   }
   return (
     <div>
+      <HeaderSiswa />
+      <SidebarSiswa />
+      <MenuSiswa />
       <div className="main-container">
         <div className="pd-ltr-20 xs-pd-20-10">
           <div className="min-height-200px">
@@ -54,15 +60,23 @@ function IndexPelajaranSiswa() {
               </div>
             </div>
             <div className="row clearfix">
-              <div className="col-sm-12 col-md-4 mb-30">
-                <div className="card card-box">
-                  <div className="card-body">
-                    <h5 className="card-title">Special title treatment</h5>
-                    <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    {/* <a href="#" className="btn btn-primary">Klik Me</a> */}
-                  </div>
-                </div>
-              </div>
+              {/* return ( */}
+              {posts.map((data, index) => {
+                return (
+                  // <div>
+                    <div className="col-sm-12 col-md-4 mb-30">
+                      <div className="card card-box">
+                        <div className="card-body">
+                          <h5 className="card-title">{data.get_pelajaran.nama_pelajaran}</h5>
+                          <p className="card-text">{data.get_guru.nama_guru}</p>
+                          {/* <a href="#" className="btn btn-primary">Klik Me</a> */}
+                        </div>
+                      </div>
+                    </div>
+                  // </div>
+                  // <option key={index} value={data.id}>{data.nama_kelas}</option>
+                )
+              })}
             </div>
           </div>
           <div className="footer-wrap pd-20 mb-20 card-box">
