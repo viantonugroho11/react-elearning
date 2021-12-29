@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class ShowMateri extends Component {
+export default class ShowMateriSiswa extends Component {
   render() {
     return (
       <div>

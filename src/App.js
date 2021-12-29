@@ -1,12 +1,12 @@
 
 import './App.css';
-import { Switch, Route, Redirect } from 'react-router'
+import { Switch, Route } from 'react-router'
 
 //admin
 import DashboardAdmin from './admin/DashboardAdmin';
 
 //loginadmin
-import LoginAdmin from './admin/auth/LoginAdmin';
+// import LoginAdmin from './admin/auth/LoginAdmin';
 
 //guru
 import IndexGuru from './admin/dataguru/IndexGuru';
@@ -70,6 +70,10 @@ import LoginSiswa from './siswa/auth/LoginSiswa';
 import NotFound from './error/NotFound';
 import DashboardSiswa from './siswa/DashboardSiswa';
 import IndexPelajaranSiswa from './siswa/pelajaran/IndexPelajaran';
+import IndexListMateri from './siswa/materi/IndexListMateri';
+import IndexListTugas from './siswa/tugas/IndexListTugas';
+import ShowTugasSiswa from './siswa/tugas/ShowTugas';
+import ShowMateriSiswa from './siswa/materi/ShowMateri';
 
 function App() {
   return (
@@ -160,6 +164,14 @@ function App() {
         <Route exact path="/pelajaran" component={IndexPelajaranSiswa} />
         {/* end siswa */}
         {/* <Route basepath="/admin/login" component={LoginAdmin} /> */}
+        {/* materi */}
+        <Route exact path="/materi/:id" component={IndexListMateri} />
+        <Route exact path="/materi/show/:id" component={ShowMateriSiswa} />
+        {/* materi */}
+        {/* Tugas */}
+        <Route exact path="/tugas/:id" component={IndexListTugas} />
+        <Route exact path="/tugas/show/:id" component={ShowTugasSiswa} />
+        {/* Tugas */}
         {/* NotFound */}
         <Route component={NotFound} />
       </Switch>

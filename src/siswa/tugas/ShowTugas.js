@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class ShowTugas extends Component {
+export default class ShowTugasSiswa extends Component {
   render() {
     return (
       <div>
