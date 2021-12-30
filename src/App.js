@@ -163,7 +163,6 @@ function App() {
         {/* pelajaran siswa */}
         <Route exact path="/pelajaran" component={IndexPelajaranSiswa} />
         {/* end siswa */}
-        <Route basepath="/admin/login" component={LoginAdmin} />
         {/* materi */}
         <Route exact path="/pelajaran/materi/:id" component={IndexListMateri} />
         <Route exact path="/pelajaran/materi/show/:id" component={ShowMateriSiswa} />
@@ -174,6 +173,7 @@ function App() {
         {/* Tugas */}
         {/* NotFound */}
         <Route component={NotFound} />
+        <Route basepath="/admin/login" component={LoginAdmin} />
       </Switch>
     </div>
   );
