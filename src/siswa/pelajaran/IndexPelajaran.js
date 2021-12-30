@@ -71,10 +71,10 @@ function IndexPelajaranSiswa() {
                           <p className="card-text">{data.get_guru.nama_guru}</p>
                           <div className="row">
                             <div className="col-md-6">
-                              <Link to={`/siswa/pelajaran/detail/${data.id}`} className="btn btn-primary">Materi</Link>
+                              <Link to={`/pelajaran/materi/${data.id}`} className="btn btn-primary">Materi</Link>
                             </div>
                             <div className="col-md-6">
-                              <Link to={`/siswa/pelajaran/detail/${data.id}`} className="btn btn-primary">Tugas</Link>
+                              <Link to={`/pelajaran/tugas/${data.id}`} className="btn btn-primary">Tugas</Link>
                             </div>
                           </div>
                           {/* <a href="#" className="btn btn-primary">Klik Me</a> */}

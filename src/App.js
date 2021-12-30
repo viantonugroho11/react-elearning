@@ -165,12 +165,12 @@ function App() {
         {/* end siswa */}
         {/* <Route basepath="/admin/login" component={LoginAdmin} /> */}
         {/* materi */}
-        <Route exact path="/materi/:id" component={IndexListMateri} />
-        <Route exact path="/materi/show/:id" component={ShowMateriSiswa} />
+        <Route exact path="/pelajaran/materi/:id" component={IndexListMateri} />
+        <Route exact path="/pelajaran/materi/show/:id" component={ShowMateriSiswa} />
         {/* materi */}
         {/* Tugas */}
-        <Route exact path="/tugas/:id" component={IndexListTugas} />
-        <Route exact path="/tugas/show/:id" component={ShowTugasSiswa} />
+        <Route exact path="/pelajaran/tugas/:id" component={IndexListTugas} />
+        <Route exact path="/pelajaran/tugas/show/:id" component={ShowTugasSiswa} />
         {/* Tugas */}
         {/* NotFound */}
         <Route component={NotFound} />

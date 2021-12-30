@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { Component, useEffect, useState } from 'react'
-import { useHistory } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import HeaderSiswa from '../../compenent/siswa/Header';
 import MenuSiswa from '../../compenent/siswa/Menu';
@@ -18,17 +18,17 @@ function IndexListTugas() {
   useEffect(() => {
 
     //panggil method "fetchData"
-    fetchDataPelajaran();
+    fetchDataTugasSiswa();
 
   }, []);
 
   //token
-  const id = localStorage.getItem("id");
+  const { id } = useParams('id');
 
   //fetch data
-  const fetchDataPelajaran = async () => {
+  const fetchDataTugasSiswa = async () => {
     //fetching
-    const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/siswa/pelajaran/${id}`);
+    const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/siswa/tugas/${id}`);
     //get response data
     const data = await response.data.data.to_user.get_jadwal;
     console.log(data);
@@ -71,9 +71,6 @@ function IndexListTugas() {
                         <div className="row">
                           <div className="col-md-6">
                             <Link to={`/siswa/pelajaran/detail/${data.id}`} className="btn btn-primary">Materi</Link>
-                          </div>
-                          <div className="col-md-6">
-                            <Link to={`/siswa/pelajaran/detail/${data.id}`} className="btn btn-primary">Tugas</Link>
                           </div>
                         </div>
                         {/* <a href="#" className="btn btn-primary">Klik Me</a> */}

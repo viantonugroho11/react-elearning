@@ -1,37 +1,39 @@
 import axios from 'axios';
-import React, { Component, useEffect, useState } from 'react'
-import { useHistory } from 'react-router';
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import HeaderSiswa from '../../compenent/siswa/Header';
 import MenuSiswa from '../../compenent/siswa/Menu';
 import SidebarSiswa from '../../compenent/siswa/Sidebar';
+import moment from 'moment';
 
 function IndexListMateri(){
   //define history
-  const history = useHistory();
+  // const history = useHistory();
 
   //define state
   const[posts, setPosts] = useState([]);
   // A super simple expandable component.
-  const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
+  // const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
   //useEffect hook
   useEffect(() => {
 
     //panggil method "fetchData"
-    fetchDataPelajaran();
+    fetchDataMateriSiswa();
 
   }, []);
 
 //token
-const id = localStorage.getItem("id");
+  const { id } = useParams('id');
 
 //fetch data
-const fetchDataPelajaran = async () => {
+const fetchDataMateriSiswa = async () => {
   //fetching
-  const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/siswa/pelajaran/${id}`);
+  const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/siswa/materi/${id}`);
   //get response data
-  const data = await response.data.data.to_user.get_jadwal;
+  const data = await response.data.data;
   console.log(data);
+  console.log(id);
   //assign response data to state "posts"
   setPosts(data);
 }
@@ -52,7 +54,7 @@ return (
                 <nav aria-label="breadcrumb" role="navigation">
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li className="breadcrumb-item active" aria-current="page">Cards</li>
+                    <li className="breadcrumb-item active" aria-current="page"></li>
                   </ol>
                 </nav>
               </div>
@@ -66,14 +68,14 @@ return (
                 <div className="col-sm-12 col-md-4 mb-30">
                   <div className="card card-box">
                     <div className="card-body">
-                      <h5 className="card-title">{data.get_pelajaran.nama_pelajaran}</h5>
-                      <p className="card-text">{data.get_guru.nama_guru}</p>
+                      <h5 className="card-title">{data.nama_materi}</h5>
+                      <p className="card-text">{moment(data.created_at).format("YYYY/MM/DD kk:mm:ss")}</p>
                       <div className="row">
                         <div className="col-md-6">
-                          <Link to={`/siswa/pelajaran/detail/${data.id}`} className="btn btn-primary">Materi</Link>
+                          <Link to={`/pelajaran/materi/show/${data.id}`} className="btn btn-primary">Lihat Materi</Link>
                         </div>
                         <div className="col-md-6">
-                          <Link to={`/siswa/pelajaran/detail/${data.id}`} className="btn btn-primary">Tugas</Link>
+                          {/* <Link to={`/pelajaran/materi/show/${data.id}`} className="btn btn-primary">Tugas</Link> */}
                         </div>
                       </div>
                       {/* <a href="#" className="btn btn-primary">Klik Me</a> */}
@@ -87,7 +89,7 @@ return (
           </div>
         </div>
         <div className="footer-wrap pd-20 mb-20 card-box">
-          DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
+          DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways">Ankit Hingarajiya</a>
         </div>
       </div>
     </div>
