@@ -6,7 +6,7 @@ import { Switch, Route } from 'react-router'
 import DashboardAdmin from './admin/DashboardAdmin';
 
 //loginadmin
-// import LoginAdmin from './admin/auth/LoginAdmin';
+import LoginAdmin from './admin/auth/LoginAdmin';
 
 //guru
 import IndexGuru from './admin/dataguru/IndexGuru';
@@ -163,7 +163,7 @@ function App() {
         {/* pelajaran siswa */}
         <Route exact path="/pelajaran" component={IndexPelajaranSiswa} />
         {/* end siswa */}
-        {/* <Route basepath="/admin/login" component={LoginAdmin} /> */}
+        <Route basepath="/admin/login" component={LoginAdmin} />
         {/* materi */}
         <Route exact path="/pelajaran/materi/:id" component={IndexListMateri} />
         <Route exact path="/pelajaran/materi/show/:id" component={ShowMateriSiswa} />
