@@ -1,7 +1,7 @@
 import axios from 'axios';
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import { useEffect } from 'react';
-import { useHistory } from 'react-router';
+// import { useHistory } from 'react-router';
 import { Link } from "react-router-dom";
 import HeaderSiswa from '../../compenent/siswa/Header';
 import MenuSiswa from '../../compenent/siswa/Menu';
@@ -9,12 +9,12 @@ import SidebarSiswa from '../../compenent/siswa/Sidebar';
 
 function IndexPelajaranSiswa() {
   //define history
-  const history = useHistory();
+  // const history = useHistory();
 
   //define state
   const [posts, setPosts] = useState([]);
   // A super simple expandable component.
-  const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
+  // const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
   //useEffect hook
   useEffect(() => {
 
@@ -88,7 +88,7 @@ function IndexPelajaranSiswa() {
             </div>
           </div>
           <div className="footer-wrap pd-20 mb-20 card-box">
-            DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
+            DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways">Ankit Hingarajiya</a>
           </div>
         </div>
       </div>
