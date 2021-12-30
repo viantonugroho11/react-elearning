@@ -68,7 +68,7 @@ return (
                 <div className="col-sm-12 col-md-4 mb-30">
                   <div className="card card-box">
                     <div className="card-body">
-                      <h5 className="card-title">{data.nama_materi}</h5>
+                      <h5 className="card-title">{index+1} {data.nama_materi}</h5>
                       <p className="card-text">{moment(data.created_at).format("YYYY/MM/DD kk:mm:ss")}</p>
                       <div className="row">
                         <div className="col-md-6">
