@@ -178,7 +178,7 @@ function App() {
         <Route exact path="/ujian/:ujianid/:hal" component={AnswerUjianSiswa} />
         {/* NotFound */}
         <Route component={NotFound} />
-        <Route basepath="/admin/login" component={LoginAdmin} />
+        <Route exact path="/admin/login" component={LoginAdmin} />
       </Switch>
     </div>
   );
