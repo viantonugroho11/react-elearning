@@ -74,6 +74,8 @@ import IndexListMateri from './siswa/materi/IndexListMateri';
 import IndexListTugas from './siswa/tugas/IndexListTugas';
 import ShowTugasSiswa from './siswa/tugas/ShowTugas';
 import ShowMateriSiswa from './siswa/materi/ShowMateri';
+import IndexListUjian from './siswa/ujian/IndexListUjian';
+import AnswerUjianSiswa from './siswa/ujian/AnswerUjian';
 
 function App() {
   return (
@@ -170,7 +172,10 @@ function App() {
         {/* Tugas */}
         <Route exact path="/pelajaran/tugas/:id" component={IndexListTugas} />
         <Route exact path="/pelajaran/tugas/show/:id" component={ShowTugasSiswa} />
-        {/* Tugas */}
+        {/* Tugas selesai */}
+        {/* ujian list */}
+        <Route exact path="/ujian" component={IndexListUjian} />
+        <Route exact path="/ujian/:ujianid/:hal" component={AnswerUjianSiswa} />
         {/* NotFound */}
         <Route component={NotFound} />
         <Route basepath="/admin/login" component={LoginAdmin} />
