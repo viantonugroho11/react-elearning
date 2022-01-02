@@ -6,6 +6,7 @@ import HeaderSiswa from '../../compenent/siswa/Header';
 import SidebarUjian from '../../compenent/siswa/SidebarUjian';
 import MenuSiswa from '../../compenent/siswa/Menu';
 // import SideNavUjian from '../../compenent/siswa/SIdeNavUjian';
+import swal from 'sweetalert';
 function AnswerUjianSiswa() {
   //token
   const userid = localStorage.getItem("id");

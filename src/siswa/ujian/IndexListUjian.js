@@ -7,7 +7,7 @@ import MenuSiswa from '../../compenent/siswa/Menu';
 import SidebarSiswa from '../../compenent/siswa/Sidebar';
 import moment from 'moment';
 import { useHistory } from 'react-router';
-
+import swal from 'sweetalert';
 function IndexListUjian() {
   //now
   var now = new Date().toLocaleString("en-US", { day: '2-digit', month: 'numeric', year: 'numeric' });
@@ -39,11 +39,32 @@ function IndexListUjian() {
     setPosts(data);
   }
 
+  const ButtonMulai = async (e) =>{
+    const idujianbtn = e.currentTarget.id
+    swal({
+      title: "Ujian",
+      text: "Apakah Anda mau memulai ujian???",
+      icon: "info",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          // swal("Ujian anda Dimulai", {
+          //   icon: "info",
+          // });
+          MulaiUjian(idujianbtn);
+        } else {
+          swal("anda tidak jadi ujian");
+        }
+      });
+  }
   //method "storePost"
   const MulaiUjian = async (e) => {
-    e.preventDefault();
-    console.log(e.currentTarget.id)
-    const idujian = e.currentTarget.id
+    console.log(e);
+    // e.preventDefault();
+    // console.log(e.currentTarget.id)
+    const idujian = e
     //send data to server
     //initialize formData
 
@@ -58,7 +79,7 @@ function IndexListUjian() {
         // console.log(error.message)
         // console.log(res);
         console.log(error.response.data);
-        alert(error.response.data.message)
+        swal(error.response.data.message)
       })
 
   };
@@ -91,29 +112,29 @@ function IndexListUjian() {
                 return (
                   // <div
 
-                  data.get_ujian.map((dataujian,indexkey) => {
-                    return(
-                    <div className="col-sm-12 col-md-4 mb-30">
-                      <div className="card card-box">
-                        <div className="card-body">
-                          <h5 className="card-title">{indexkey + 1} {dataujian.nama_ujian}</h5>
-                          <p className="card-text">
-                            Ujian: {moment(dataujian.tanggal_ujian).format("MM/DD/YYYY")}<br/>
+                  data.get_ujian.map((dataujian, indexkey) => {
+                    return (
+                      <div className="col-sm-12 col-md-4 mb-30">
+                        <div className="card card-box">
+                          <div className="card-body">
+                            <h5 className="card-title">{indexkey + 1} {dataujian.nama_ujian}</h5>
+                            <p className="card-text">
+                              Ujian: {moment(dataujian.tanggal_ujian).format("MM/DD/YYYY")}<br />
                               Jam Mulai: {dataujian.jam_mulai_ujian}<br />
                               Jam Mulai: {dataujian.jam_selesai_ujian}<br />
-                          </p>
-                          <div className="row">
-                            <div className="col-md-6">
-                              {dataujian.status_ujian == "Aktif" &&
-                              // <Link to={`/ujian/${data.id}`} className="btn btn-primary">Lihat Soal</Link>
-                                  <button id={dataujian.id} onClick={MulaiUjian} className="btn btn-success">Mulai Ujian</button>
-                              }
+                            </p>
+                            <div className="row">
+                              <div className="col-md-6">
+                                {dataujian.status_ujian == "Aktif" &&
+                                  // <Link to={`/ujian/${data.id}`} className="btn btn-primary">Lihat Soal</Link>
+                                  <button id={dataujian.id} onClick={ButtonMulai} className="btn btn-success">Mulai Ujian</button>
+                                }
+                              </div>
                             </div>
+                            {/* <a href="#" className="btn btn-primary">Klik Me</a> */}
                           </div>
-                          {/* <a href="#" className="btn btn-primary">Klik Me</a> */}
                         </div>
                       </div>
-                    </div>
                     )
                   })
                   // </div>

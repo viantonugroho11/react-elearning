@@ -76,6 +76,7 @@ import ShowTugasSiswa from './siswa/tugas/ShowTugas';
 import ShowMateriSiswa from './siswa/materi/ShowMateri';
 import IndexListUjian from './siswa/ujian/IndexListUjian';
 import AnswerUjianSiswa from './siswa/ujian/AnswerUjian';
+import ReviewUjian from './siswa/ujian/ReviewUjian';
 
 function App() {
   return (
@@ -176,6 +177,7 @@ function App() {
         {/* ujian list */}
         <Route exact path="/ujian" component={IndexListUjian} />
         <Route exact path="/ujian/:ujianid/:hal" component={AnswerUjianSiswa} />
+        <Route exact path="/review/ujian/:ujianid" component={ReviewUjian}/>
         {/* NotFound */}
         <Route component={NotFound} />
         <Route exact path="/admin/login" component={LoginAdmin} />
