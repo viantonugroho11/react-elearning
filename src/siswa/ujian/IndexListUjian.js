@@ -55,8 +55,10 @@ function IndexListUjian() {
 
       })
       .catch((error) => {
+        // console.log(error.message)
         // console.log(res);
         console.log(error.response.data);
+        alert(error.response.data.message)
       })
 
   };

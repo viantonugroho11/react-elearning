@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import HeaderSiswa from '../../compenent/siswa/Header';
 // import SidebarSiswa from '../../compenent/siswa/Sidebar';
 import SidebarUjian from '../../compenent/siswa/SidebarUjian';
@@ -10,6 +10,9 @@ function AnswerUjianSiswa() {
   //token
   const userid = localStorage.getItem("id");
   
+  //history
+  const history = useHistory();
+
   //form
   const [pil_ujian, setpil_ujian] = useState('')
   
@@ -29,31 +32,26 @@ function AnswerUjianSiswa() {
     fetchDataCekUjian();
   }, []);
 
-  //fetch data
-  const fetchDataUjianSiswa = async () => {
-    //fetching
-    const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/siswa/ujian/pertanyaan/${userid}/${hal}/${ujianid}`);
-    //get response data
-    const data = await response.data.data;
-    console.log(data);
-    //assign response data to state "posts"
-    setUjian(data);
-  }
+  
   // const store data
   const PostJawab = async (e) => {
     e.preventDefault();
-
+    const keyhal=e.target.getAttribute("halkey")
     const formData = new FormData(); 
     formData.append('jawab', pil_ujian);
-    await axios.post(`http://appsiaksd.ugcorpusskkni.online/api/siswa/ujian/${userid}/${hal}/${ujianid}`)
 
-      .then(res => {
-        if (res) {
-          //redirect
-          // history.push('/guru/ujian');
-        } else {
-          // history.push('/guru/soalujian/create/');
-        }
+    await axios.post(`http://appsiaksd.ugcorpusskkni.online/api/siswa/ujian/${userid}/${hal}/${ujianid}`,formData)
+
+      .then(() => {
+        // setpil_ujian(null)
+        //redirect
+        history.push(`/ujian/${ujianid}/${keyhal}`);
+        fetchDataUjianSiswa();
+        history.go(0)
+        // Redirect.Redirect=
+        // Redirect(``)
+        //fetching
+
       })
       .catch((error) => {
 
@@ -64,6 +62,7 @@ function AnswerUjianSiswa() {
 
   //fetch data
   const fetchDataCekUjian = async () => {
+    // console.log("test"+keyhal)
     //fetching
     const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/siswa/ujian/${ujianid}/cek`);
     //get response data
@@ -72,7 +71,20 @@ function AnswerUjianSiswa() {
     //assign response data to state "posts"
     setCekujian(data);
   }
+  //fetch data
+  const fetchDataUjianSiswa = async () => {
+    //fetching
+    const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/siswa/ujian/pertanyaan/${userid}/${hal}/${ujianid}`);
+    //get response data
+    const data = await response.data.data;
+    console.log(data);
+    //assign response data to state "posts"
+    setUjian(data);
+  }
 
+  const fecthCekSoalUjian = async() =>{
+    const response = await axios.get(``)
+  }
 
   function Navsoal() {
     var rows = [];
@@ -82,13 +94,13 @@ function AnswerUjianSiswa() {
 
           {i == hal &&
             <li className="page-item active">
-              <a className="page-link" onClick={PostJawab} href={"/ujian/" + ujianid + "/" + i}>{i}</a>
+              <a className="page-link" halkey={i} onClick={PostJawab} href={"/ujian/" + ujianid + "/" + i}>{i}</a>
               {/* <Link className="page-link" to={"/ujian/" + ujianid + "/" + i}>{i}</Link> */}
             </li>
           }
           {i != hal &&
             <li className="page-item">
-            <a className="page-link" onClick={PostJawab} href={"/ujian/" + ujianid + "/" + i}>{i}</a>
+            <a className="page-link" halkey={i} onClick={PostJawab} href={"/ujian/" + ujianid + "/" + i}>{i}</a>
               {/* <Link className="page-link" to={"/ujian/" + ujianid + "/" + i}>{i}</Link> */}
             </li>
           }
@@ -178,8 +190,18 @@ function AnswerUjianSiswa() {
             <div className="row clearfix">
               <div className="col-lg-12 col-md-12 col-sm-12 mb-30">
                 <div className="pd-20 card-box">
-                  <a href="dt-ujian.html" className="btn btn-outline-primary">Kembali</a>
-                  <a href="dt-ujian.html" className="btn btn-outline-primary">Selesai</a>
+                  {hal == 1 &&
+                  <b></b>
+                  }
+                  {hal >1 &&
+                    <a halkey={hal-1} onClick={PostJawab} href={"/ujian/" + ujianid + "/" + (hal - 1)} className="btn btn-outline-primary">Kembali</a>
+                  }
+                  {hal < cekujian.jumlah_soal &&
+                    <a halkey={(hal+1)} onClick={PostJawab} href={"/ujian/" + ujianid + "/" + (hal+1)} className="btn btn-outline-primary">Next</a>
+                  }
+                  {hal == cekujian.jumlah_soal &&
+                    <a halkey={(hal+1)} onClick={PostJawab} href={"/ujian/" + ujianid + "/" + (hal+1)} className="btn btn-outline-primary">Selesai</a>
+                  }
                 </div>
               </div>
               {/* Simple Datatable End */}
