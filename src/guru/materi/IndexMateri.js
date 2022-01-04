@@ -54,9 +54,9 @@ function IndexMateriGuru() {
     // </form>,
     aksi:
       <div>
-        <a classname="btn btn-secondary" href={"/guru/materi/edit/" + user.id}>Edit</a><br />
-        <a classname="btn btn-secondary" href={"/guru/materi/show/" + user.id}>Show</a><br />
-        <a classname="btn btn-secondary" href={"/guru/materi/delete/"}>Delete</a><br />
+        <a className="btn btn-sm btn-primary" href={"/guru/materi/edit/" + user.id}>Edit</a><br />
+        <a className="btn btn-sm btn-success" href={"/guru/materi/show/" + user.id}>Show</a><br />
+        <a className="btn btn-sm btn-danger" href={"/guru/materi/delete/"}>Delete</a><br />
       </div>,
   }));
 
@@ -104,7 +104,7 @@ function IndexMateriGuru() {
             <div className="card-box mb-30">
               <div className="pd-20 d-flex justify-content-between">
                 <h4 className="text-blue h4">Data Materi</h4>
-                <a href={"/guru/materi/create/" + id} className="btn btn-sm btn-primary">+ tambah</a>
+                <Link to={"/guru/materi/create/" + id} className="btn btn-sm btn-primary">+ Tambah</Link>
               </div>
               <div className="pb-20">
                 <DataTable
@@ -119,7 +119,7 @@ function IndexMateriGuru() {
             {/* Simple Datatable End */}
           </div>
           <div className="footer-wrap pd-20 mb-20 card-box">
-            Learning Management System By  Developer
+            Learning Management System By Vianto Nugroho
           </div>
         </div>
       </div>

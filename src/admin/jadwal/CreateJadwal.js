@@ -3,11 +3,12 @@ import Header from '../../compenent/Header'
 import Menu from '../../compenent/Menu'
 import SideBar from '../../compenent/SideBar'
 import axios from 'axios'
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 //import hook history dari react router dom
 import { useHistory } from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react';
+import swal from 'sweetalert'
 // import M from 'minimatch'
 function CreateJadwal() {
   const [pelajaran, setPelajaran] = useState('');
@@ -19,29 +20,34 @@ function CreateJadwal() {
   const [dataKelas, setDataKelas] = useState([])
   const [dataPelajaran, setDataPelajaran] = useState([])
   //state validation
-  const [validation, setValidation] = useState({});
+  const [validation, setValidation] = useState([]);
 
   //history
   const history = useHistory();
 
+  //token
+  const token = localStorage.getItem("token");
   //method "storePost"
   const storePost = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('pelajaran', pelajaran);
+    formData.append('kelas', kelas);
+    formData.append('guru', guru);
 
+    //set axios header dengan type Authorization + Bearer token
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     //send data to server
-    await axios.post('http://appsiaksd.ugcorpusskkni.online/api/admin/jadwal', {
-      pelajaran: pelajaran,
-      kelas: kelas,
-      guru: guru
-    })
+    await axios.post('http://appsiaksd.ugcorpusskkni.online/api/admin/jadwal', formData)
       .then(() => {
         
+        swal("Berhasil", "Data berhasil ditambahkan", "success");
         //redirect
         history.push('/admin/jadwal');
 
       })
       .catch((error) => {
-
+        swal("Gagal", error.response.data.message, "error");
         //assign validation on state
         setValidation(error.response.data);
       })

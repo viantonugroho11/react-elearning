@@ -3,11 +3,12 @@ import Header from '../../compenent/Header'
 import Menu from '../../compenent/Menu'
 import SideBar from '../../compenent/SideBar'
 import axios from 'axios'
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 //import hook history dari react router dom
 import { useHistory } from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react';
+import swal from 'sweetalert'
 function CreateMataPelajaran() {
     const [nama, setNama] = useState('');
     //state validation
@@ -16,22 +17,25 @@ function CreateMataPelajaran() {
     //history
     const history = useHistory();
 
+    //token
+    const token = localStorage.getItem('token');
     //method "storePost"
     const storePost = async (e) => {
         e.preventDefault();
-        
+      const formData = new FormData();
+      formData.append('nama_pelajaran', nama);
+      //set axios header dengan type Authorization + Bearer token
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
         //send data to server
-        await axios.post('http://appsiaksd.ugcorpusskkni.online/api/admin/pelajaran', {
-            nama_pelajaran: nama,
-        })
+        await axios.post('http://appsiaksd.ugcorpusskkni.online/api/admin/pelajaran', formData)
         .then(() => {
-
+          swal("Berhasil", "Data Berhasil Ditambahkan", "success");
             //redirect
             history.push('/admin/matapelajaran');
 
         })
         .catch((error) => {
-
+          swal("Gagal", error.response.data.message, "error");
             //assign validation on state
             setValidation(error.response.data);
         })
@@ -67,12 +71,11 @@ function CreateMataPelajaran() {
                     <h4 className="text-blue h4">Form Mata Pelajaran</h4>
                     <p className="mb-30">Isilah data tersebut dengan benar !</p>
                     {
-                      validation.errors &&
-                      <div className="alert alert-danger" role="alert">
-                        { validation.errors.map((error, index) => (
-                            <div key={index}>{ `${error.param} : ${error.msg}` }</div>
-                        )) }
-                      </div>
+                      validation.message && (
+                        <div className="alert alert-danger">
+                          {validation.message}
+                        </div>
+                      )
                     }
                   </div>
                 </div>

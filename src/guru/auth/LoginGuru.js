@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 
 //import hook useHitory from react router dom
 import { useHistory } from 'react-router';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 //import axios
 import axios from 'axios';
-
+import swal from 'sweetalert'
 function LoginGuru() {
 
   //define state
@@ -37,12 +37,12 @@ function LoginGuru() {
         //set token on localStorage
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('id', response.data.user.id);
-
+        swal("Berhasil", "Login Berhasil", "success");
         //redirect to dashboard
         history.push('/guru');
       })
       .catch((error) => {
-
+        swal("Gagal", "Login gagal", "danger");
         //assign error to state "validation"
         setValidation(error.response.data);
       })

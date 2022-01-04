@@ -37,9 +37,9 @@ function IndexMataPelajaran(){
           nama:user.nama_pelajaran,
           aksi:
           <div>
-            <a classname="btn btn-secondary btn-sm" href={"/admin/pelajaran/edit/"+user.id}>Edit</a><br/>
-            <a classname="btn btn-secondary btn-sm" href="/">Show</a><br/>
-            <a classname="btn btn-secondary btn-sm" href="/">Delete</a><br/>
+              <Link classname="btn btn-sm btn-primary" href={"/admin/pelajaran/edit/"+user.id}>Edit</Link><br/>
+              <Link classname="btn btn-sm btn-primary" href="/">Show</Link><br/>
+              <Link classname="btn btn-sm btn-primary" href="/">Delete</Link><br/>
           </div>,
     }));
     

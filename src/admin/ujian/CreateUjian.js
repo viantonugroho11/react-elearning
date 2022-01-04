@@ -2,11 +2,12 @@ import Header from '../../compenent/Header'
 import Menu from '../../compenent/Menu'
 import SideBar from '../../compenent/SideBar'
 import axios from 'axios'
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 //import hook history dari react router dom
 import { useHistory } from "react-router-dom";
 //import hook useState from react
 import { useState, useEffect } from 'react';
+import swal from 'sweetalert';
 function CreateUjian() {
   //variable value
   const [nama_ujian, setNamaujian] = useState('');
@@ -18,7 +19,7 @@ function CreateUjian() {
   const [jadwal, setJadwal] = useState('');
 
   //state validation
-  const [validation, setValidation] = useState({});
+  const [validation, setValidation] = useState([]);
 
   //set variable jadwal
   const [getjadwal, setJadwalUjian] = useState([]);
@@ -26,8 +27,13 @@ function CreateUjian() {
   //history
   const history = useHistory();
 
+  //token
+  const token = localStorage.getItem("token");
+
   // fetch data jadwal
   const getJadwal = async () => {
+    //set axios header dengan type Authorization + Bearer token
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     const response = await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/jadwal');
     //get response data
     const data = await response.data.data;
@@ -39,19 +45,41 @@ function CreateUjian() {
   //method "storePost"
   const storePost = async (e) => {
     e.preventDefault();
+    // console.log(token);
+    
+    const formData = new FormData();
+
+    //append data to formData
+    formData.append('nama_ujian', nama_ujian);
+    formData.append('jadwal_id', jadwal);
+    formData.append('tanggal_ujian', tgl_ujian);
+    formData.append('jam_mulai_ujian', jam_mulai);
+    formData.append('jam_selesai_ujian', jam_selesai);
+    formData.append('waktu_ujian', waktu_ujian);
+    formData.append('jumlah_soal', jumlah_soal);
+    formData.append('status_ujian', 'a');
 
     //send data to server
-    await axios.post('http://appsiaksd.ugcorpusskkni.online/api/admin/jadwal')
+    // axios.defaults.headers.common = { 'Authorization': `Bearer ${token}` }
+    await axios.post('http://appsiaksd.ugcorpusskkni.online/api/admin/ujian',formData,{
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Authorization': `Bearer ${token}`
+      }
+    })
       .then(() => {
-
+        swal("Berhasil", "Data Berhasil Disimpan", "success");
         //redirect
-        history.push('/admin/jadwal');
+        history.push('/admin/ujian');
 
       })
       .catch((error) => {
-
+        swal("Gagal", error.response.data.message , "error");
         //assign validation on state
+        console.log(error.response.data.message);
+        console.log(error.response.data.data);
         setValidation(error.response.data);
+        console.log(validation);
       })
 
   };
@@ -91,9 +119,16 @@ function CreateUjian() {
                 <div className="pull-left">
                   <h4 className="text-blue h4">FormData Ujian</h4>
                   <p className="mb-30">Isilah data tersebut dengan benar !</p>
+                  {
+                    validation.message && (
+                      <div className="alert alert-danger">
+                        {validation.message}
+                      </div>
+                    )
+                  }
                 </div>
               </div>
-              <form>
+              <form onSubmit={storePost}>
                 <div className="dropdown-divider" />
                 <p><strong>Data Ujian</strong></p>
                 <div className="row">
@@ -106,7 +141,7 @@ function CreateUjian() {
                   <div className="col-md-6">
                     <div className="form-group">
                       <label>Tanggal Ujian</label>
-                      <input className="form-control" type="date" placeholder="Masukkan NU-PTK Anda" />
+                      <input value={tgl_ujian} onChange={(e)=>setTglUjian(e.target.value)} className="form-control" type="date" placeholder="Masukkan NU-PTK Anda" />
                     </div>
                   </div>
                 </div>
@@ -137,13 +172,13 @@ function CreateUjian() {
                   <div className="col-md-6">
                     <div className="form-group">
                       <label>Waktu Mulai</label>
-                      <input className="form-control time-picker-default" placeholder="time" type="text" />
+                      <input value={jam_mulai} onChange={(e)=>setJamMulai(e.target.value)} className="form-control" placeholder="time" type="time" />
                     </div>
                   </div>
                   <div className="col-md-6">
                     <div className="form-group">
                       <label>Waktu Selesai</label>
-                      <input className="form-control time-picker-default" placeholder="time" type="text" />
+                      <input value={jam_selesai} onChange={(e)=>setJamSelesai(e.target.value)} className="form-control" placeholder="time" type="time" />
                     </div>
                   </div>
                 </div>
@@ -151,14 +186,19 @@ function CreateUjian() {
                   <div className="col-md-6">
                     <div className="form-group">
                       <label>Waktu Pengerjaan</label>
-                      <input className="form-control" type="text" placeholder="Masukkan Waktu Pengerjaan" />
+                      <input value={waktu_ujian} onChange={(e)=>setWaktuUjian(e.target.value)} className="form-control" type="text" placeholder="Masukkan Waktu Pengerjaan" />
                     </div>
                   </div>
                   <div className="col-md-6">
                     <div className="form-group">
                       <label>Jumlah Soal</label>
-                      <input className="form-control" type="text" placeholder="Masukkan Jumlah Soal" />
+                      <input value={jumlah_soal} onChange={(e)=>setJumlahSoal(e.target.value)} className="form-control" type="text" placeholder="Masukkan Jumlah Soal" />
                     </div>
+                  </div>
+                </div>
+                <div className="clearfix">
+                  <div className="pull-right">
+                    <button className="btn btn-primary btn-sm scroll-click" type="submit">Simpan</button>
                   </div>
                 </div>
               </form>

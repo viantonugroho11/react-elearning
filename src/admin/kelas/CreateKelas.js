@@ -8,12 +8,13 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react';
+import swal from 'sweetalert'
 
 function CreateKelas() {
     const [nama, setNama] = useState('');
     const [tingkat, setTingkat] = useState('');
     //state validation
-    const [validation, setValidation] = useState({});
+    const [validation, setValidation] = useState([]);
 
     //history
     const history = useHistory();
@@ -28,13 +29,14 @@ function CreateKelas() {
             tingkat: tingkat,
         })
         .then(() => {
-
+          swal("Berhasil", "Data Berhasil Ditambahkan", "success");
             //redirect
             history.push('/admin/kelas');
 
         })
         .catch((error) => {
 
+          swal("Gagal", error.response.data.message, "error");
             //assign validation on state
             setValidation(error.response.data);
         })
@@ -70,12 +72,11 @@ function CreateKelas() {
                     <h4 className="text-blue h4">Form Kelas</h4>
                     <p className="mb-30">Isilah data tersebut dengan benar !</p>
                     {
-                      validation.errors &&
-                      <div className="alert alert-danger" role="alert">
-                        { validation.errors.map((error, index) => (
-                            <div key={index}>{ `${error.param} : ${error.msg}` }</div>
-                        )) }
-                      </div>
+                      validation.message && (
+                        <div className="alert alert-danger">
+                          {validation.message}
+                        </div>
+                      )
                     }
                   </div>
                 </div>
