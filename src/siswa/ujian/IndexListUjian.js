@@ -55,7 +55,12 @@ function IndexListUjian() {
           // });
           MulaiUjian(idujianbtn);
         } else {
-          swal("anda tidak jadi ujian");
+          swal("Ujian anda tidak Dimulai", {
+            icon: "info",
+            title: "Ujian",
+            text: "Ujian anda tidak Dimulai",
+          });
+          // swal("anda tidak jadi ujian");
         }
       });
   }
@@ -79,7 +84,7 @@ function IndexListUjian() {
         // console.log(error.message)
         // console.log(res);
         console.log(error.response.data);
-        swal(error.response.data.message)
+        swal("Gagal",error.response.data.message,"error")
       })
 
   };

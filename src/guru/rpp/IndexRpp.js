@@ -25,7 +25,7 @@ function IndexRpp() {
     //panggil method "fetchData"
     fectData();
 
-  });
+  },[]);
   //function "fetchData"
   const fectData = async () => {
     //fetching

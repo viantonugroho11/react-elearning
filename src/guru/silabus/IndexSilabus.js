@@ -86,8 +86,8 @@ function IndexSilabus() {
             {/* Simple Datatable start */}
             <div className="card-box mb-30">
               <div className="pd-20 d-flex justify-content-between">
-                <h4 className="text-blue h4">Data RPP</h4>
-                <a href="/guru/rpp/create" className="btn btn-sm btn-primary">+ tambah</a>
+                <h4 className="text-blue h4">Data Silabus</h4>
+                <Link to="/guru/rpp/create" className="btn btn-sm btn-primary">+ Tambah</Link>
               </div>
               <div className="pb-20">
                 <DataTable

@@ -29,6 +29,12 @@ function CreateSoalUjian() {
   //history
   const history = useHistory();
 
+  //const handlechangesetpil
+  const handlechangesetpil = (e) => {
+  
+  }
+
+
   //method "Get Cek Ujian"
   const getCekUjian = async () => {
     //send data to server

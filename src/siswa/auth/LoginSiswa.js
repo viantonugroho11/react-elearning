@@ -1,12 +1,12 @@
 //import hook react
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 //import hook useHitory from react router dom
 import { useHistory } from 'react-router';
 
 //import axios
 import axios from 'axios';
-
+import swal from 'sweetalert';
 function LoginSiswa() {
 
   //define state
@@ -37,12 +37,12 @@ function LoginSiswa() {
         //set token on localStorage
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('id', response.data.user.id);
-
+        swal("Berhasil", "Login Berhasil", "success");
         //redirect to dashboard
         history.push('/dashboard');
       })
       .catch((error) => {
-
+        swal("Gagal", "Login Gagal", "error");
         //assign error to state "validation"
         setValidation(error.response.data);
       })
@@ -70,6 +70,13 @@ function LoginSiswa() {
               <div className="login-box bg-white box-shadow border-radius-10">
                 <div className="login-title">
                   <h2 className="text-center text-primary">Login Siswa SDIT AL-MANAR</h2>
+                  {
+                    validation.message && (
+                      <div className="alert alert-danger">
+                        {validation.message}
+                      </div>
+                    )
+                  }
                 </div>
                 <form onSubmit={loginHandler}>
                   <div className="input-group custom">

@@ -179,8 +179,8 @@ function App() {
         <Route exact path="/ujian/:ujianid/:hal" component={AnswerUjianSiswa} />
         <Route exact path="/review/ujian/:ujianid" component={ReviewUjian}/>
         {/* NotFound */}
-        <Route component={NotFound} />
         <Route exact path="/admin/login" component={LoginAdmin} />
+        <Route component={NotFound} />
       </Switch>
     </div>
   );
