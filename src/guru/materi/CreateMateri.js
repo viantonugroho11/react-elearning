@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useHistory, useParams } from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react';
+import swal from 'sweetalert'
 
 function CreateMateri() {
   const [nama, setNama] = useState('');
@@ -18,12 +19,18 @@ function CreateMateri() {
   //state validation
   const [validation, setValidation] = useState({});
 
+  //token
+  const token = localStorage.getItem("token");
+
   //history
   const history = useHistory();
 
   //method "storePost"
   const storePost = async (e) => {
     e.preventDefault();
+
+//auth
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
     //send data to server
     //initialize formData
@@ -37,11 +44,13 @@ function CreateMateri() {
     await axios.post('http://appsiaksd.ugcorpusskkni.online/api/guru/materi',formData)
       .then(() => {
 
+        swal("Berhasil", "Data berhasil ditambahkan", "success");
         //redirect
         history.push('/guru/materi/' + id);
 
       })
       .catch((error) => {
+        swal("Gagal", error.response.data.message, "error");
         // console.log(res);
         console.log(error.response.data);
         //assign validation on state

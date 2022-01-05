@@ -9,7 +9,7 @@ function MenuGuru() {
   const [posts, setPosts] = useState([]);
 
   //token
-  // const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
   //id
   const id = localStorage.getItem("id");
   //useEffect hook
@@ -22,6 +22,8 @@ function MenuGuru() {
 
   //function "fetchData"
   const fectMenuPelajaran = async () => {
+    // auth
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     //fetching
     const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/guru/pelajaran/${id}`);
     //get response data

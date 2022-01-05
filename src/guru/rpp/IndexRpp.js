@@ -15,6 +15,9 @@ function IndexRpp() {
   const [posts, setPosts] = useState([]);
   // const [pel, setPel] = useState([]);
 
+  //token
+  const token = localStorage.getItem('token');
+
   // const { id } = useParams();
   const id = localStorage.getItem("id");
   // A super simple expandable component.
@@ -28,6 +31,9 @@ function IndexRpp() {
   },[]);
   //function "fetchData"
   const fectData = async () => {
+    //authotizen
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
     //fetching
     const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/guru/rpp/${id}/edit`);
     //get response data
@@ -42,9 +48,9 @@ function IndexRpp() {
     // file: <a href={url + user.file}>{user.file}</a>,
     aksi:
       <div>
-        <a classname="btn btn-secondary" href={"/guru/materi/edit/" + user.id}>Edit</a><br />
-        <a classname="btn btn-secondary" href={"/guru/materi/show/" + user.id}>Show</a><br />
-        <a classname="btn btn-secondary" href={"/guru/materi/delete/"}>Delete</a><br />
+        <button className="btn btn-sm btn-secondary" href={"/guru/materi/edit/" + user.id}>Edit</button><br />
+        <button className="btn btn-sm btn-secondary" href={"/guru/materi/show/" + user.id}>Show</button><br />
+        <button className="btn btn-sm btn-secondary" href={"/guru/materi/delete/"}>Delete</button><br />
       </div>,
   }));
 
@@ -87,7 +93,7 @@ function IndexRpp() {
             <div className="card-box mb-30">
               <div className="pd-20 d-flex justify-content-between">
                 <h4 className="text-blue h4">Data RPP</h4>
-                <a href="/guru/rpp/create" className="btn btn-sm btn-primary">+ tambah</a>
+                <Link to="/guru/rpp/create" className="btn btn-sm btn-primary">+ Tambah</Link>
               </div>
               <div className="pb-20">
                 <DataTable

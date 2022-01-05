@@ -15,6 +15,9 @@ function IndexMateriGuru() {
   const [posts, setPosts] = useState([]);
   // const [pel, setPel] = useState([]);
 
+  //token
+  const token = localStorage.getItem('token');
+
   const { id } = useParams();
   // A super simple expandable component.
   const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
@@ -37,6 +40,9 @@ function IndexMateriGuru() {
   // }
   //function "fetchData"
   const fectData = async () => {
+    // auth
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
     //fetching
     const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/guru/materi/${id}/edit`);
     //get response data
@@ -47,16 +53,16 @@ function IndexMateriGuru() {
   }
   // const url = `http://appsiaksd.ugcorpusskkni.online/storage/FileMateri/`
   const datamateri = posts.map((user) => ({
-    nama: user.nama_materi,
+    nama: <div>{user.nama_materi}</div>,
     // file: <a classname="btn btn-secondary" href={url + user.file_materi} download={user.file_materi}>Download</a>,
     // file: <form method="get" action={url + user.file_materi}>
     //   <button type="submit">Download!</button>
     // </form>,
     aksi:
       <div>
-        <a className="btn btn-sm btn-primary" href={"/guru/materi/edit/" + user.id}>Edit</a><br />
-        <a className="btn btn-sm btn-success" href={"/guru/materi/show/" + user.id}>Show</a><br />
-        <a className="btn btn-sm btn-danger" href={"/guru/materi/delete/"}>Delete</a><br />
+        <Link className="btn btn-sm btn-primary" href={"/guru/materi/edit/" + user.id}>Edit</Link><br />
+        <Link className="btn btn-sm btn-success" href={"/guru/materi/show/" + user.id}>Show</Link><br />
+        <Link className="btn btn-sm btn-danger" href={"/guru/materi/delete/"}>Delete</Link><br />
       </div>,
   }));
 

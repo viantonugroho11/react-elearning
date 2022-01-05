@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react';
+import swal from 'sweetalert'
 function CreateSilabus() {
   const [nama, setNama] = useState('');
   const [file, setFile] = useState();
@@ -23,10 +24,15 @@ function CreateSilabus() {
   //history
   const history = useHistory();
 
+  //token
+  const token = localStorage.getItem("token");
+
   //method "storePost"
   const storePost = async (e) => {
     e.preventDefault();
 
+    //auth
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     //send data to server
     //initialize formData
     const formData = new FormData();
@@ -38,12 +44,13 @@ function CreateSilabus() {
     formData.append('file', file);
     await axios.post('http://appsiaksd.ugcorpusskkni.online/api/guru/silabus', formData)
       .then(() => {
-
+        swal("Berhasil", "Data berhasil ditambahkan", "success");
         //redirect
         history.push('/guru/silabus/');
 
       })
       .catch((error) => {
+        swal("Gagal", error.response.data.message, "error");
         // console.log(res);
         console.log(error.response.data);
         //assign validation on state
@@ -63,7 +70,7 @@ function CreateSilabus() {
               <div className="row">
                 <div className="col-md-6 col-sm-12">
                   <div className="title">
-                    <h4>Form Data Guru</h4>
+                    <h4>Form Tambah Silabus</h4>
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
@@ -78,7 +85,7 @@ function CreateSilabus() {
             <div className="pd-20 card-box mb-30">
               <div className="clearfix">
                 <div className="pull-left">
-                  <h4 className="text-blue h4">Form Biodata Guru</h4>
+                  <h4 className="text-blue h4">Form Silabus</h4>
                   <p className="mb-30">Isilah data tersebut dengan benar !</p>
                   {
                     validation.message && (
@@ -94,7 +101,7 @@ function CreateSilabus() {
                 <div className="row">
                   <div className="col-md-12">
                     <div className="form-group">
-                      <label>Nama RPP</label>
+                      <label>Nama Silabus</label>
                       <input value={nama} onChange={(e) => setNama(e.target.value)} className="form-control" type="text" placeholder="Masukkan nama Rpp Anda" />
                     </div>
                   </div>
@@ -108,8 +115,8 @@ function CreateSilabus() {
                   </div>
                   <div className="col-md-6">
                     <div className="form-group">
-                      <label>File RPP</label>
-                      <input onChange={(e) => setFile(e.target.files[0])} className="form-control" type="text" placeholder="Masukkan Tempat Lahir Anda" />
+                      <label>File Silabus</label>
+                      <input onChange={(e) => setFile(e.target.files[0])} className="form-control" type="file" placeholder="Masukkan Tempat Lahir Anda" />
                     </div>
                   </div>
                 </div>

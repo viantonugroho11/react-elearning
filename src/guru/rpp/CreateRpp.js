@@ -3,12 +3,13 @@ import Header from '../../compenent/guru/Header'
 import Menu from '../../compenent/guru/Menu'
 import SideBar from '../../compenent/guru/SideBar'
 import axios from 'axios'
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 //import hook history dari react router dom
 import { useHistory } from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react';
+import swal from 'sweetalert'
 function CreateRpp() {
   const [nama, setNama] = useState('');
   const [file, setFile] = useState();
@@ -23,6 +24,7 @@ function CreateRpp() {
   //history
   const history = useHistory();
 
+  const token = localStorage.getItem("token");
   //method "storePost"
   const storePost = async (e) => {
     e.preventDefault();
@@ -31,19 +33,23 @@ function CreateRpp() {
     //initialize formData
     const formData = new FormData();
 
+    //auth
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     //append data to formData
     formData.append('guru_id', id);
     formData.append('nama_rpp', nama);
-    formData.append('keterangan_materi', materi);
-    formData.append('file_file', file);
+    formData.append('keterangan_rpp', materi);
+    formData.append('file_rpp', file);
     await axios.post('http://appsiaksd.ugcorpusskkni.online/api/guru/rpp', formData)
       .then(() => {
 
+        swal("Berhasil", "Data berhasil ditambahkan", "success");
         //redirect
         history.push('/guru/rpp/');
 
       })
       .catch((error) => {
+        swal("Gagal", error.response.data.message, "error");
         // console.log(res);
         console.log(error.response.data);
         //assign validation on state
@@ -109,7 +115,7 @@ function CreateRpp() {
                   <div className="col-md-6">
                     <div className="form-group">
                       <label>File RPP</label>
-                      <input onChange={(e) => setFile(e.target.files[0])} className="form-control" type="text" placeholder="Masukkan Tempat Lahir Anda" />
+                      <input onChange={(e) => setFile(e.target.files[0])} className="form-control" type="file" placeholder="Masukkan Tempat Lahir Anda" />
                     </div>
                   </div>
                 </div>
