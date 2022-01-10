@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Header from '../../compenent/Header'
 import Menu from '../../compenent/Menu'
 import SideBar from '../../compenent/SideBar'
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 export default class EditGuru extends Component {
   render() {
     return (

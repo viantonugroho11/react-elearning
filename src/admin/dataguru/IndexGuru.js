@@ -2,13 +2,17 @@ import React from 'react'
 import Header from '../../compenent/Header'
 import Menu from '../../compenent/Menu'
 import SideBar from '../../compenent/SideBar'
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import DataTable from 'react-data-table-component';
 //import hook useState dan useEffect from react
 import { useState, useEffect } from 'react';
 //import axios
 import axios from 'axios';
+import swal from 'sweetalert';
 function IndexGuru() {
+
+  //token
+  const token = localStorage.getItem("token");
   //define state
   const [posts, setPosts] = useState([]);
   // A super simple expandable component.
@@ -23,15 +27,25 @@ function IndexGuru() {
 
   //function "deletePost"
   const deletePost = async (id) => {
+    // auth
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
     //sending
-    await axios.delete(`http://appsiaksd.ugcorpusskkni.online/api/admin/guru/${id}`);
+    await axios.delete(`http://appsiaksd.ugcorpusskkni.online/api/admin/guru/${id}`)
+    .then(() => {
+      swal("Berhasil!", "Data berhasil dihapus", "success");
+    })
+    .catch((error) => {
+      swal("Gagal!", "Data gagal dihapus", "error");
+    })
 
     //panggil function "fetchData"
     fectData();
   }
   //function "fetchData"
   const fectData = async () => {
+    // auth
+    // axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     //fetching
     const response = await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/guru');
     //get response data
@@ -47,9 +61,8 @@ function IndexGuru() {
     email: user.email,
     status: user.status_kepegawaian,
     aksi: <div>
-      <a classname="btn btn-secondary btn-sm" href={"/admin/guru/edit/" + user.id}>Edit</a><br />
-      <a classname="btn btn-secondary btn-sm" href="/">Show</a><br />
-      <button classname="btn btn-secondary btn-sm" onClick={() => deletePost(user.id)}>DELETE</button><br />
+      <a className="btn btn-primary btn-sm" href={"/admin/guru/edit/" + user.id}>Edit</a><br />
+      <button className="btn btn-sm btn-danger" onClick={() => deletePost(user.id)}>DELETE</button><br />
     </div>
     ,
   }));
@@ -76,11 +89,11 @@ function IndexGuru() {
       selector: row => row.status,
       sortable: true,
     },
-    {
-      name: 'Foto',
-      selector: row => row.foto,
-      // sortable: true,
-    },
+    // {
+    //   name: 'Foto',
+    //   selector: row => row.foto,
+    //   // sortable: true,
+    // },
     {
       name: 'Aksi',
       selector: row => row.aksi
@@ -116,7 +129,7 @@ function IndexGuru() {
             <div className="card-box mb-30">
               <div className="pd-20">
                 <h4 className="text-blue h4">Data Guru</h4><br />
-                <a classname="btn btn-secondary btn-sm" href="/admin/guru/create">Tambah Data</a>
+                <a className="btn btn-secondary btn-sm" href="/admin/guru/create">Tambah Data</a>
               </div>
               <div className="pb-20">
                 <DataTable

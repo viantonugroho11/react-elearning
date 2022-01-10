@@ -4,12 +4,15 @@ import Menu from '../../compenent/Menu'
 import SideBar from '../../compenent/SideBar'
 
 import DataTable from 'react-data-table-component';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 //import hook useState dan useEffect from react
 import { useState, useEffect } from 'react';
 //import axios
 import axios from 'axios';
+import swal from 'sweetalert';
 function IndexUjian() {
+  //token
+  const token = localStorage.getItem("token");
   //define state
   const [posts, setPosts] = useState([]);
   // A super simple expandable component.
@@ -24,6 +27,8 @@ function IndexUjian() {
 
   //function "fetchData"
   const fectData = async () => {
+    // auth
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     //fetching
     const response = await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/ujian');
     //get response data
@@ -32,6 +37,30 @@ function IndexUjian() {
     //assign response data to state "posts"
     setPosts(data);
   }
+
+  const deletePost = async (id) => {
+    // auth
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+    //sending
+    await axios.delete(`http://appsiaksd.ugcorpusskkni.online/api/admin/ujian/${id}`)
+      .then(() => {
+        //panggil function "fetchData"
+        fectData();
+        swal("Berhasil!", "Data berhasil dihapus", "success");
+        //redirect
+        // history.push('/admin/siswa');
+      })
+      .catch((error) => {
+        swal("Gagal!", "Data gagal dihapus", "error");
+        //assign validation on state
+        // setValidation(error.response.data);
+      })
+    //panggil function "fetchData"
+    fectData();
+  }
+
+  
 
   const dataujian = posts.map((user) => ({
     nama: user.nama_ujian,
@@ -43,9 +72,9 @@ function IndexUjian() {
     soal_ujian: user.get_soal_ujian_count,
     aksi:
       <div>
-        <a classname="btn btn-secondary btn-sm" href={"/admin/ujian/edit/" + user.id}>Edit</a><br />
-        <a classname="btn btn-secondary btn-sm" href="/">Show</a><br />
-        <a classname="btn btn-secondary btn-sm" href="/">Delete</a><br />
+        <a className="btn btn-secondary btn-sm" href={"/admin/ujian/edit/" + user.id}>Edit</a><br />
+        {/* <a className="btn btn-secondary btn-sm" href="/">Show</a><br /> */}
+        <button className="btn btn-secondary btn-sm" onClick={() => deletePost(user.id)}>Delete</button><br />
       </div>,
   }));
 

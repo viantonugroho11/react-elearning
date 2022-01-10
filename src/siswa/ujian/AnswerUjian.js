@@ -14,6 +14,9 @@ function AnswerUjianSiswa() {
   //history
   const history = useHistory();
 
+  //token
+  const token = localStorage.getItem("token");
+
   //form
   const [pil_ujian, setpil_ujian] = useState('')
   
@@ -37,6 +40,9 @@ function AnswerUjianSiswa() {
   // const store data
   const PostJawab = async (e) => {
     e.preventDefault();
+    //set axios header dengan type Authorization + Bearer token
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+
     const keyhal=e.target.getAttribute("halkey")
     const formData = new FormData(); 
     formData.append('jawab', pil_ujian);
@@ -63,6 +69,8 @@ function AnswerUjianSiswa() {
 
   //fetch data
   const fetchDataCekUjian = async () => {
+    //set axios header dengan type Authorization + Bearer token
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     // console.log("test"+keyhal)
     //fetching
     const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/siswa/ujian/${ujianid}/cek`);
@@ -74,6 +82,8 @@ function AnswerUjianSiswa() {
   }
   //fetch data
   const fetchDataUjianSiswa = async () => {
+    //set axios header dengan type Authorization + Bearer token
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     //fetching
     const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/siswa/ujian/pertanyaan/${userid}/${hal}/${ujianid}`);
     //get response data
@@ -83,9 +93,9 @@ function AnswerUjianSiswa() {
     setUjian(data);
   }
 
-  const fecthCekSoalUjian = async() =>{
-    const response = await axios.get(``)
-  }
+  // const fecthCekSoalUjian = async() =>{
+  //   const response = await axios.get(``)
+  // }
 
   function Navsoal() {
     var rows = [];

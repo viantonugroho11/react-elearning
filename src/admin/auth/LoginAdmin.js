@@ -4,9 +4,10 @@ import React, { useState } from 'react';
 //import hook useHitory from react router dom
 import { useHistory } from 'react-router';
 
+import swal from 'sweetalert';
 //import axios
 import axios from 'axios';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 function LoginAdmin() {
 
   //define state
@@ -37,14 +38,14 @@ function LoginAdmin() {
         //set token on localStorage
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('id', response.data.user.id);
-
+        swal("Berhasil", "Login Berhasil", "success");
         //redirect to dashboard
         history.push('/admin');
       })
       .catch((error) => {
 
         //assign error to state "validation"
-        // setValidation(error.response.data);
+        setValidation(error.response.data);
         console.log(error);
       })
   };

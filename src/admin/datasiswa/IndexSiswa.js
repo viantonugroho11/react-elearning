@@ -5,11 +5,15 @@ import SideBar from '../../compenent/SideBar'
 import { Link } from "react-router-dom";
 import DataTable from 'react-data-table-component';
 
+import swal from 'sweetalert';
 //import hook useState dan useEffect from react
 import { useState, useEffect } from 'react';
 //import axios
 import axios from 'axios';
 function IndexSiswa() {
+  //token
+  const token = localStorage.getItem("token");
+
   //define state
   const [posts, setPosts] = useState([]);
   // A super simple expandable component.
@@ -24,6 +28,8 @@ function IndexSiswa() {
 
   //function "fetchData"
   const fectData = async () => {
+    // auth
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     //fetching
     const response = await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/siswa');
     //get response data
@@ -32,6 +38,30 @@ function IndexSiswa() {
     //assign response data to state "posts"
     setPosts(data);
   }
+  //function "deletePost"
+  const deletePost = async (id) => {
+    // auth
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+    //sending
+    await axios.delete(`http://appsiaksd.ugcorpusskkni.online/api/admin/siswa/${id}`)
+      .then(() => {
+        //panggil function "fetchData"
+        fectData();
+        swal("Berhasil!", "Data berhasil dihapus", "success");
+        //redirect
+        // history.push('/admin/siswa');
+
+      })
+      .catch((error) => {
+        swal("Gagal!", "Data gagal dihapus", "error");
+        //assign validation on state
+        // setValidation(error.response.data);
+      })
+
+    //panggil function "fetchData"
+    fectData();
+  }
 
   const datasiswa = posts.map((user) => ({
     nama: user.nama_siswa,
@@ -39,9 +69,8 @@ function IndexSiswa() {
     email: user.email,
     status: user.status,
     aksi: <div>
-      <Link classname="btn btn-secondary btn-sm" to={"/admin/siswa/edit/" + user.id}>Edit</Link><br />
-      <Link classname="btn btn-secondary btn-sm" to="/">Show</Link><br />
-      <Link classname="btn btn-secondary btn-sm" to="/">Delete</Link><br />
+      <Link className="btn btn-secondary btn-sm" to={"/admin/siswa/edit/" + user.id}>Edit</Link><br />
+      <Link className="btn btn-danger btn-sm" onClick={() => deletePost(user.id)}>Delete</Link><br />
     </div>
     ,
   }));
@@ -68,11 +97,11 @@ function IndexSiswa() {
       selector: row => row.status,
       sortable: true,
     },
-    {
-      name: 'Foto',
-      selector: row => row.foto,
-      // sortable: true,
-    },
+    // {
+    //   name: 'Foto',
+    //   selector: row => row.foto,
+    //   // sortable: true,
+    // },
     {
       name: 'Aksi',
       selector: row => row.aksi

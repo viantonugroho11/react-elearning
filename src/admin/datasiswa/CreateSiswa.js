@@ -8,7 +8,14 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react'
+import swal from 'sweetalert'
 function CreateSiswa() {
+  useEffect(() => {
+    GetKelas()
+  }, [])
+  // token
+  const token = localStorage.getItem('token');
+
   // inisialiasasi const
   const [nama, setNama] = useState('');
   //nis
@@ -41,7 +48,8 @@ function CreateSiswa() {
   //method "storePost"
   const storePost = async (e) => {
     e.preventDefault();
-
+    //set axios header dengan type Authorization + Bearer token
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     const formData = new FormData();
 
     //append data to formData
@@ -53,34 +61,37 @@ function CreateSiswa() {
     formData.append('tempat_lahir', tmp_lahir);
     formData.append('tgl_lahir', tgl_lahir);
     formData.append('usia', usia);
-    formData.append('jenis_kelamin',jkelamin);
-    formData.append('status',status);
-    formData.append('nama_ayah',nmayah);
-    formData.append('pk_ayah',pkayah);
-    formData.append('nama_ibu',nmibu);
-    formData.append('pk_ibu',pkibu);
-    formData.append('alamat',alamat);
-    formData.append('nomor_telepon_orangtua:',notelp);
-    formData.append('email',email);
-    formData.append('password',password);
-      formData.append('foto',foto);
+    formData.append('jenis_kelamin', jkelamin);
+    formData.append('status', status);
+    formData.append('nama_ayah', nmayah);
+    formData.append('pk_ayah', pkayah);
+    formData.append('nama_ibu', nmibu);
+    formData.append('pk_ibu', pkibu);
+    formData.append('alamat', alamat);
+    formData.append('nomor_telepon_orangtua:', notelp);
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('foto', foto);
     //send data to server
     await axios.post('http://appsiaksd.ugcorpusskkni.online/api/admin/siswa', formData)
-        .then(() => {
+      .then(() => {
+        swal("Berhasil", "Data berhasil ditambahkan", "success");
+        //redirect
+        history.push('/admin/siswa');
 
-          //redirect
-          history.push('/admin/siswa');
+      })
+      .catch((error) => {
+        swal("Gagal", "Data gagal ditambahkan", "error");
 
-        })
-        .catch((error) => {
-
-          //assign validation on state
-          setValidation(error.response.data);
-        })
+        //assign validation on state
+        setValidation(error.response.data);
+      })
 
   };
   //method "getDataKelas"
   const GetKelas = async () => {
+    //set axios header dengan type Authorization + Bearer token
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/kelas')
       .then(res => {
         const dataKelas = res.data.data
@@ -90,9 +101,7 @@ function CreateSiswa() {
         console.log(err)
       })
   }
-  useEffect(() => {
-    GetKelas()
-  }, [])
+
 
   return (
     <div>
@@ -178,11 +187,11 @@ function CreateSiswa() {
                 </div>
                 <div className="form-group">
                   <label htmlFor="example-datetime-local-input">Tanggal Lahir</label>
-                  <input value={tgl_lahir} onChange={(e) => setTglLahir(e.target.value)} className="form-control datetimepicker" placeholder="Masukkan Tanggal Lahir Anda" type="text" />
+                  <input value={tgl_lahir} onChange={(e) => setTglLahir(e.target.value)} className="form-control" placeholder="Masukkan Tanggal Lahir Anda" type="date" />
                 </div>
                 <div className="form-group">
                   <label htmlFor="example-datetime-local-input">Per Tanggal</label>
-                  <input value={tgl_masuk} onChange={(e) => setTglMasuk(e.target.value)} className="form-control datetimepicker" placeholder="Masukkan Per Tanggal Anda" type="text" />
+                  <input value={tgl_masuk} onChange={(e) => setTglMasuk(e.target.value)} className="form-control" placeholder="Masukkan Per Tanggal Anda" type="date" />
                 </div>
                 <div className="form-group">
                   <label>Usia</label>
@@ -242,7 +251,7 @@ function CreateSiswa() {
                 </div>
                 <div className="form-group">
                   <label>Password</label>
-                  <input value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" type="text" placeholder="Masukkan Password Anda" />
+                  <input value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" type="password" placeholder="Masukkan Password Anda" />
                 </div>
                 <div className="form-group">
                   <label>Status</label>
@@ -269,4 +278,4 @@ function CreateSiswa() {
     </div>
   )
 }
-export default CreateSiswa
+export default CreateSiswa;

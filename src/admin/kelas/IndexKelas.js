@@ -8,9 +8,12 @@ import DataTable from 'react-data-table-component';
 //import hook useState dan useEffect from react
 import { useState, useEffect } from 'react';
 //import axios
+import swal from 'sweetalert';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 function IndexKelas(){
+  //token
+  const token = localStorage.getItem("token");
     //define state
     const [posts, setPosts] = useState([]);
     // A super simple expandable component.
@@ -25,6 +28,9 @@ function IndexKelas(){
 
     //function "fetchData"
     const fectData = async () => {
+
+        // auth
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         //fetching
         const response = await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/kelas');
         //get response data
@@ -33,6 +39,28 @@ function IndexKelas(){
         //assign response data to state "posts"
         setPosts(data);
     }
+    //function "deletePost"
+  const deletePost = async (id) => {
+    // auth
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+    //sending
+    await axios.delete(`http://appsiaksd.ugcorpusskkni.online/api/admin/kelas/${id}`)
+      .then(() => {
+        //panggil function "fetchData"
+        fectData();
+        swal("Berhasil!", "Data berhasil dihapus", "success");
+        //redirect
+        // history.push('/admin/siswa');
+      })
+      .catch((error) => {
+        swal("Gagal!", "Data gagal dihapus", "error");
+        //assign validation on state
+        // setValidation(error.response.data);
+      })
+    //panggil function "fetchData"
+    fectData();
+  }
 
     const datakelas = posts.map((user) => ({
           nama:user.nama_kelas,
@@ -40,9 +68,9 @@ function IndexKelas(){
           jumlah:user.get_siswa_count,
           aksi:
           <div>
-            <Link classname="btn btn-secondary" to={"/admin/kelas/edit/"+user.id}>Edit</Link><br/>
-            <Link classname="btn btn-secondary" to="/">Show</Link><br/>
-            <Link classname="btn btn-secondary" to="/">Delete</Link><br/>
+            <Link className="btn btn-secondary" to={"/admin/kelas/edit/"+user.id}>Edit</Link><br/>
+            {/* <Link className="btn btn-secondary" to="/">Show</Link><br/> */}
+            <Link className="btn btn-secondary" onClick={() => deletePost(user.id)}>Delete</Link><br/>
           </div>,
     }));
     

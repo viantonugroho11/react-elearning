@@ -22,12 +22,11 @@ function CreateKelas() {
     //method "storePost"
     const storePost = async (e) => {
         e.preventDefault();
-        
+        const formData = new FormData();
+        formData.append('nama_kelas', nama);
+        formData.append('tingkat', tingkat);
         //send data to server
-        await axios.post('http://appsiaksd.ugcorpusskkni.online/api/admin/kelas', {
-            nama_kelas: nama,
-            tingkat: tingkat,
-        })
+        await axios.post('http://appsiaksd.ugcorpusskkni.online/api/admin/kelas', formData)
         .then(() => {
           swal("Berhasil", "Data Berhasil Ditambahkan", "success");
             //redirect

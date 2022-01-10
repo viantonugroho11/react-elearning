@@ -12,6 +12,7 @@ function IndexListUjian() {
   //now
   var now = new Date().toLocaleString("en-US", { day: '2-digit', month: 'numeric', year: 'numeric' });
   //token
+  const token = localStorage.getItem("token");
   const id = localStorage.getItem("id");
 
   //history
@@ -30,6 +31,8 @@ function IndexListUjian() {
 
   //fetch data
   const fetchDataUjianSiswa = async () => {
+    //set axios header dengan type Authorization + Bearer token
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     //fetching
     const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/siswa/ujian/${id}`);
     //get response data
@@ -67,6 +70,8 @@ function IndexListUjian() {
   //method "storePost"
   const MulaiUjian = async (e) => {
     console.log(e);
+    //set axios header dengan type Authorization + Bearer token
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     // e.preventDefault();
     // console.log(e.currentTarget.id)
     const idujian = e

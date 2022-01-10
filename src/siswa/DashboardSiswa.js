@@ -85,7 +85,7 @@ function DashboardSiswa() {
                   </div>
                   <div className="widget-data">
                     <div className="h4 mb-0">40</div>
-                    <div className="weight-600 font-14">Guru</div>
+                    <div className="weight-600 font-14">Tugas</div>
                   </div>
                 </div>
               </div>
@@ -98,7 +98,7 @@ function DashboardSiswa() {
                   </div>
                   <div className="widget-data">
                     <div className="h4 mb-0">400</div>
-                    <div className="weight-600 font-14">Siswa</div>
+                    <div className="weight-600 font-14">Soal</div>
                   </div>
                 </div>
               </div>
@@ -111,7 +111,7 @@ function DashboardSiswa() {
                   </div>
                   <div className="widget-data">
                     <div className="h4 mb-0">12</div>
-                    <div className="weight-600 font-14">Kelas</div>
+                    <div className="weight-600 font-14">Ujian</div>
                   </div>
                 </div>
               </div>

@@ -56,6 +56,8 @@ function CreateJadwal() {
 
   //method "getDataGuru"
   const GetGuru = async () => {
+    //set axios header dengan type Authorization + Bearer token
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/guru')
       .then(res => {
         const dataGuru = res.data.data;
@@ -68,6 +70,8 @@ function CreateJadwal() {
 
   //method "getDataKelas"
   const GetKelas = async () => {
+    //set axios header dengan type Authorization + Bearer token
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/kelas')
       .then(res => {
         const dataKelas = res.data.data
@@ -80,6 +84,8 @@ function CreateJadwal() {
 
   //method "getDataPelajaran"
   const GetPelajaran = async () => {
+    //set axios header dengan type Authorization + Bearer token
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/pelajaran')
       .then(res => {
         const dataPelajaran = res.data.data
