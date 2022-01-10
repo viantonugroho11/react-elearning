@@ -62,14 +62,15 @@ function IndexJadwal(){
   }
 
     const datasiswa = posts.map((user) => ({
-          nama:user.from_guru.nama_guru,
-          kelas:user.from_kelas.nama_kelas,
-          pelajaran:user.from_pelajaran.nama_pelajaran,
+          // nama:{user.from_guru.nama_guru == null && "-"},
+          nama: user.from_guru == null ? "-" : user.from_guru.nama_guru,
+          kelas: user.from_kelas == null ? "-" : user.from_kelas.nama_kelas,
+          pelajaran: user.from_pelajaran == null ? "-" : user.from_pelajaran.nama_pelajaran,
           aksi:
           <div>
-            <a className="btn btn-secondary btn-sm" href={"/admin/siswa/edit/"+user.id}>Edit</a><br/>
+            <a className="btn btn-secondary btn-sm" href={"/admin/jadwal/edit/"+user.id}>Edit</a><br/>
             {/* <a className="btn btn-secondary btn-sm" href="/">Show</a><br/> */}
-            <button className="btn btn-secondary btn-sm" onClick={() => deletePost(user.id)}>Delete</button><br/>
+            <button className="btn btn-danger btn-sm" onClick={() => deletePost(user.id)}>Delete</button><br/>
           </div>
           ,
     }));

@@ -64,7 +64,8 @@ function IndexUjian() {
 
   const dataujian = posts.map((user) => ({
     nama: user.nama_ujian,
-    jadwal: user.get_jadwal.from_pelajaran.nama_pelajaran,
+    // jadwal: user.get_jadwal.from_pelajaran.nama_pelajaran,
+    jadwal: user.get_jadwal == null ? "-" : user.get_jadwal.from_pelajaran.nama_pelajaran,
     tanggal: user.tanggal_ujian,
     waktu: user.waktu_ujian + " Menit",
     jumlah: user.jumlah_soal,

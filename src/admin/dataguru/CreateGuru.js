@@ -58,7 +58,7 @@ function CreateGuru() {
       .then(() => {
         swal("Berhasil", "Data Tersimpan", "success");
         //redirect
-        history.push('/admin/guru/create');
+        history.push('/admin/guru');
 
       })
       .catch((error) => {

@@ -4,26 +4,29 @@ import Menu from '../../compenent/Menu'
 import SideBar from '../../compenent/SideBar'
 
 import DataTable from 'react-data-table-component';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 //import hook useState dan useEffect from react
 import { useState, useEffect } from 'react';
 //import axios
+
+import swal from 'sweetalert';
 import axios from 'axios';
 function IndexWaliKelas() {
+  //token
+  const token = localStorage.getItem("token");
   //define state
   const [posts, setPosts] = useState([]);
   // A super simple expandable component.
   const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
   //useEffect hook
-  useEffect(() => {
-    //panggil method "fetchData"
-    fectData();
-  }, []);
+  
 
   //function "fetchData"
-  const fectData = async () => {
+  const fectDataWalikelas = async () => {
+    // auth
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     //fetching
-    const response = await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/ujian');
+    const response = await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/walikelas');
     //get response data
     const data = await response.data.data;
 
@@ -32,18 +35,15 @@ function IndexWaliKelas() {
   }
 
   const dataujian = posts.map((user) => ({
-    nama: user.nama_ujian,
-    jadwal: user.get_jadwal.from_pelajaran.nama_pelajaran,
-    tanggal: user.tanggal_ujian,
-    waktu: user.waktu_ujian + " Menit",
-    jumlah: user.jumlah_soal,
-    status: user.status_ujian,
-    soal_ujian: user.get_soal_ujian_count,
+    nama: user.nama_guru,
+    nik: user.nik,
+    email: user.email,
+    nama_kelas: user.get_kelas.nama_kelas,
     aksi:
       <div>
-        <a classname="btn btn-secondary btn-sm" href={"/admin/ujian/edit/" + user.id}>Edit</a><br />
-        <a classname="btn btn-secondary btn-sm" href="/">Show</a><br />
-        <a classname="btn btn-secondary btn-sm" href="/">Delete</a><br />
+        <a className="btn btn-secondary btn-sm" href={"/admin/walikelas/edit/" + user.id}>Edit</a><br />
+        {/* <a classname="btn btn-secondary btn-sm" href="/">Show</a><br /> */}
+        <button className="btn btn-danger btn-sm" onClick={() => deletePost(user.id)}>Delete</button><br />
       </div>,
   }));
   const columns = [
@@ -53,28 +53,18 @@ function IndexWaliKelas() {
       sortable: true,
     },
     {
-      name: 'Jadwal',
-      selector: row => row.jadwal,
+      name: 'NIK',
+      selector: row => row.nik,
       sortable: true,
     },
     {
-      name: 'Tanggal',
-      selector: row => row.tanggal,
+      name: 'Email',
+      selector: row => row.email,
       sortable: true,
     },
     {
-      name: 'Waktu',
-      selector: row => row.waktu,
-      sortable: true,
-    },
-    {
-      name: 'Jumlah',
-      selector: row => row.jumlah,
-      sortable: true,
-    },
-    {
-      name: 'Status',
-      selector: row => row.status,
+      name: 'Nama Kelas',
+      selector: row => row.nama_kelas,
       sortable: true,
     },
     {
@@ -82,6 +72,31 @@ function IndexWaliKelas() {
       selector: row => row.aksi
     },
   ];
+  useEffect(() => {
+    //panggil method "fetchData"
+    fectDataWalikelas();
+  }, []);
+  const deletePost = async (id) => {
+    // auth
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+    //sending
+    await axios.delete(`http://appsiaksd.ugcorpusskkni.online/api/admin/walikelas/${id}`)
+      .then(() => {
+        //panggil function "fetchData"
+        fectDataWalikelas();
+        swal("Berhasil!", "Data berhasil dihapus", "success");
+        //redirect
+        // history.push('/admin/siswa');
+      })
+      .catch((error) => {
+        swal("Gagal!", "Data gagal dihapus", "error");
+        //assign validation on state
+        // setValidation(error.response.data);
+      })
+    //panggil function "fetchData"
+    fectDataWalikelas();
+  }
   return (
     <div>
       <Header />
@@ -109,21 +124,16 @@ function IndexWaliKelas() {
             <div className="card-box mb-30">
               <div className="pd-20 d-flex justify-content-between">
                 <h4 className="text-blue h4">Data Kelas</h4>
-                <a href="form-datakelas.html" className="btn btn-sm btn-primary">+ tambah</a>
+                <a href="/admin/walikelas/create" className="btn btn-sm btn-primary">+ tambah</a>
               </div>
               <div className="pb-20">
-                <table className="data-table table stripe hover nowrap">
-                  <thead>
-                    <tr>
-                      <th className="table-plus datatable-nosort">Nama Kelas</th>
-                      <th>Abjad Rombongan Belajar</th>
-                      <th>Tingkatan</th>
-                      <th className="datatable-nosort">Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  </tbody>
-                </table>
+                <DataTable
+                  columns={columns}
+                  data={dataujian}
+                  // expandableRows
+                  pagination
+                  expandableRowsComponent={ExpandedComponent}
+                />
               </div>
             </div>
             {/* Simple Datatable End */}

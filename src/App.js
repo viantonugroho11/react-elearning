@@ -119,6 +119,10 @@ function App() {
         <Route exact path="/admin/angkatan" component={IndexAngkatan} />
         <Route exact path="/admin/angkatan/create" component={CreateAngkatan} />
         <Route exact path="/admin/angkatan/edit/:id" component={EditAngkatan} />
+
+        {/* walikelas */}
+        <Route exact path="/admin/walikelas" component={IndexWaliKelas} />
+        <Route exact path="/admin/walikelas/create" component={CreateWaliKelas} />
         {/* admin end */}
 
         {/* guru start */}
