@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 // import { useParams } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 function IndexSilabus() {
   //define state
   const [posts, setPosts] = useState([]);
@@ -41,14 +42,35 @@ function IndexSilabus() {
     //assign response data to state "posts"
     setPosts(data);
   }
+  const deletePost = async (id) => {
+    // auth
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+    //sending
+    await axios.delete(`http://appsiaksd.ugcorpusskkni.online/api/guru/rpp/${id}`)
+      .then(() => {
+        //panggil function "fetchData"
+        fectData();
+        swal("Berhasil!", "Data berhasil dihapus", "success");
+        //redirect
+        // history.push('/admin/siswa');
+      })
+      .catch((error) => {
+        swal("Gagal!", "Data gagal dihapus", "error");
+        //assign validation on state
+        // setValidation(error.response.data);
+      })
+    //panggil function "fetchData"
+    fectData();
+  }
   // const url =  `http://appsiaksd.ugcorpusskkni.online/storage/FileMateri/`
   const datarpp = posts.map((user) => ({
     nama: user.nama_silabus,
     // file: <a href={url + user.file}>{user.file}</a>,
     aksi:
       <div>
-        <Link className="btn btn-secondary" href={"/guru/materi/edit/" + user.id}>Edit</Link><br />
-        <Link className="btn btn-secondary" href={"/guru/materi/show/" + user.id}>Show</Link><br />
+        <Link className="btn btn-secondary" href={"/guru/silabus/edit/" + user.id}>Edit</Link><br />
+        {/* <Link className="btn btn-secondary" href={"/guru/materi/show/" + user.id}>Show</Link><br /> */}
         <Link className="btn btn-secondary" href={"/guru/materi/delete/"}>Delete</Link><br />
       </div>,
   }));
@@ -77,12 +99,12 @@ function IndexSilabus() {
               <div className="row">
                 <div className="col-md-6 col-sm-12">
                   <div className="title">
-                    <h4>Data Kelas</h4>
+                    <h4>Data Silabus</h4>
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                      <li className="breadcrumb-item active" aria-current="page">Data Kelas</li>
+                      <li className="breadcrumb-item active" aria-current="page">Data Silabus</li>
                     </ol>
                   </nav>
                 </div>

@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 // import { useParams } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 function IndexRpp() {
   //define state
   const [posts, setPosts] = useState([]);
@@ -42,15 +43,36 @@ function IndexRpp() {
     //assign response data to state "posts"
     setPosts(data);
   }
+  const deletePost = async (id) => {
+    // auth
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+    //sending
+    await axios.delete(`http://appsiaksd.ugcorpusskkni.online/api/guru/rpp/${id}`)
+      .then(() => {
+        //panggil function "fetchData"
+        fectData();
+        swal("Berhasil!", "Data berhasil dihapus", "success");
+        //redirect
+        // history.push('/admin/siswa');
+      })
+      .catch((error) => {
+        swal("Gagal!", "Data gagal dihapus", "error");
+        //assign validation on state
+        // setValidation(error.response.data);
+      })
+    //panggil function "fetchData"
+    fectData();
+  }
   // const url =  `http://appsiaksd.ugcorpusskkni.online/storage/FileMateri/`
   const datarpp = posts.map((user) => ({
     nama: user.nama_rpp,
     // file: <a href={url + user.file}>{user.file}</a>,
     aksi:
       <div>
-        <button className="btn btn-sm btn-secondary" href={"/guru/materi/edit/" + user.id}>Edit</button><br />
-        <button className="btn btn-sm btn-secondary" href={"/guru/materi/show/" + user.id}>Show</button><br />
-        <button className="btn btn-sm btn-secondary" href={"/guru/materi/delete/"}>Delete</button><br />
+        <button className="btn btn-sm btn-secondary" href={"/guru/rpp/edit/" + user.id}>Edit</button><br />
+        {/* <button className="btn btn-sm btn-secondary" href={"/guru/materi/show/" + user.id}>Show</button><br /> */}
+        <button className="btn btn-sm btn-danger" onClick={() => deletePost(user.id)}>Delete</button><br />
       </div>,
   }));
 
@@ -78,12 +100,12 @@ function IndexRpp() {
               <div className="row">
                 <div className="col-md-6 col-sm-12">
                   <div className="title">
-                    <h4>Data Kelas</h4>
+                    <h4>Data Rpp</h4>
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                      <li className="breadcrumb-item active" aria-current="page">Data Kelas</li>
+                      <li className="breadcrumb-item active" aria-current="page">Data RPP</li>
                     </ol>
                   </nav>
                 </div>

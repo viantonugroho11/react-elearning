@@ -3,7 +3,7 @@ import Header from '../../compenent/guru/Header'
 import Menu from '../../compenent/guru/Menu'
 import SideBar from '../../compenent/guru/SideBar'
 import DataTable from 'react-data-table-component';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 //import hook useState dan useEffect from react
 import { useState, useEffect } from 'react';
 //import axios
@@ -33,6 +33,8 @@ function IndexPelajaranGuru() {
 
   //function "fetchData"
   const fecthPelajaran = async () => {
+    // auth
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     //fetching
     const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/guru/pelajaran/${id}`);
     //get response data
@@ -48,8 +50,8 @@ function IndexPelajaranGuru() {
     nmpelajaran: pelajaran.from_pelajaran.nama_pelajaran,
     aksi:
       <div>
-        <a classname="btn btn-secondary" href={"/guru/kelas/edit/" + pelajaran.id}>Tambah Materi</a><br />
-        <a classname="btn btn-secondary" href="/guru">Tambah Soal</a><br />
+        <a className="btn btn-secondary" href={"/guru/materi/create/" + pelajaran.id}>Tambah Materi</a><br />
+        <a className="btn btn-secondary" href="/guru">Tambah Soal</a><br />
       </div>,
   }));
 
@@ -87,12 +89,12 @@ function IndexPelajaranGuru() {
               <div className="row">
                 <div className="col-md-6 col-sm-12">
                   <div className="title">
-                    <h4>Data Kelas</h4>
+                    {/* <h4>Data Kelas</h4> */}
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                      <li className="breadcrumb-item active" aria-current="page">Data Kelas</li>
+                      <li className="breadcrumb-item active" aria-current="page">Data Pelajaran</li>
                     </ol>
                   </nav>
                 </div>
@@ -101,8 +103,8 @@ function IndexPelajaranGuru() {
             {/* Simple Datatable start */}
             <div className="card-box mb-30">
               <div className="pd-20 d-flex justify-content-between">
-                <h4 className="text-blue h4">Data Kelas</h4>
-                <a href="form-datakelas.html" className="btn btn-sm btn-primary">+ tambah</a>
+                <h4 className="text-blue h4">Pelajaran</h4>
+                {/* <a href="form-datakelas.html" className="btn btn-sm btn-primary">+ tambah</a> */}
               </div>
               <div className="pb-20">
                 <DataTable
@@ -117,7 +119,7 @@ function IndexPelajaranGuru() {
             {/* Simple Datatable End */}
           </div>
           <div className="footer-wrap pd-20 mb-20 card-box">
-            Learning Management System By  Developer
+            Learning Management System By Vianto Nugroho
           </div>
         </div>
       </div>

@@ -75,7 +75,7 @@ function DashboardAdmin() {
               </div>
             </div>
           </div>
-          <div className="row">
+          {/* <div className="row">
             <div className="col-xl-3 mb-30">
               <div className="card-box height-100-p widget-style1">
                 <div className="d-flex flex-wrap align-items-center">
@@ -127,16 +127,16 @@ function DashboardAdmin() {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="row">
+            </div> */}
+          {/* </div> */}
+          {/* <div className="row">
             <div className="col-xl-12 mb-30">
               <div className="card-box height-100-p pd-20">
                 <h2 className="h4 mb-20">Activity</h2>
                 <div id="chart5" />
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="footer-wrap pd-20 mb-20 card-box">
             Learning Management System By Dimas Wahyu Pratoomo
           </div>
