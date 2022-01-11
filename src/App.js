@@ -77,6 +77,7 @@ import ShowMateriSiswa from './siswa/materi/ShowMateri';
 import IndexListUjian from './siswa/ujian/IndexListUjian';
 import AnswerUjianSiswa from './siswa/ujian/AnswerUjian';
 import ReviewUjian from './siswa/ujian/ReviewUjian';
+import CreateUjianGuru from './guru/ujian/CreateUjian';
 
 function App() {
   return (
@@ -155,7 +156,7 @@ function App() {
         <Route exact path="/guru/soal/edit/:id" component={EditUjian} />
         {/* ujian */}
         <Route exact path="/guru/ujian" component={IndexUjianGuru} />
-        <Route exact path="/guru/ujian/create" component={CreateUjian} />
+        <Route exact path="/guru/ujian/create" component={CreateUjianGuru} />
         <Route exact path="/guru/ujian/edit/:id" component={EditUjian} />
         {/* soalujian */}
         <Route exact path="/guru/soalujian/:id" component={IndexUjian} />

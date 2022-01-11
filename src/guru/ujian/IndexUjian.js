@@ -47,8 +47,8 @@ function IndexUjianGuru() {
     // file: <a href={url + user.file}>{user.file}</a>,
     aksi:
       <div>
-        <a classname="btn btn-secondary" href={"/guru/materi/edit/" + user.id}>Edit</a><br />
-        <a classname="btn btn-secondary" href={"/guru/materi/show/" + user.id}>Show</a><br />
+        <a classname="btn btn-secondary" href={"/guru/ujian/edit/" + user.id}>Edit</a><br />
+        <a classname="btn btn-secondary" href={"/guru/soalujian/show/" + user.id}>Show</a><br />
         <a classname="btn btn-secondary" href={"/guru/soalujian/create/" + user.id}>Tambah Soal</a><br />
       </div>,
   }));
@@ -117,7 +117,7 @@ function IndexUjianGuru() {
             <div className="card-box mb-30">
               <div className="pd-20 d-flex justify-content-between">
                 <h4 className="text-blue h4">Data Ujian</h4>
-                <a href="form-datakelas.html" className="btn btn-sm btn-primary">+ tambah</a>
+                <a href="/guru/ujian/create" className="btn btn-sm btn-primary">+ tambah</a>
               </div>
               <div className="pb-20">
                 <DataTable

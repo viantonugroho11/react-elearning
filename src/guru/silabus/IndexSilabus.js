@@ -47,7 +47,7 @@ function IndexSilabus() {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
     //sending
-    await axios.delete(`http://appsiaksd.ugcorpusskkni.online/api/guru/rpp/${id}`)
+    await axios.delete(`http://appsiaksd.ugcorpusskkni.online/api/guru/silabus/${id}`)
       .then(() => {
         //panggil function "fetchData"
         fectData();
@@ -71,7 +71,7 @@ function IndexSilabus() {
       <div>
         <Link className="btn btn-secondary" href={"/guru/silabus/edit/" + user.id}>Edit</Link><br />
         {/* <Link className="btn btn-secondary" href={"/guru/materi/show/" + user.id}>Show</Link><br /> */}
-        <Link className="btn btn-secondary" href={"/guru/materi/delete/"}>Delete</Link><br />
+        <button className="btn btn-sm btn-danger" onClick={() => deletePost(user.id)}>Delete</button><br />
       </div>,
   }));
 
