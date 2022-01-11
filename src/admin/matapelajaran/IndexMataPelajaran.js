@@ -65,9 +65,9 @@ function IndexMataPelajaran() {
     nama: user.nama_pelajaran,
     aksi:
       <div>
-        <Link className="btn btn-sm btn-primary" href={"/admin/pelajaran/edit/" + user.id}>Edit</Link><br />
-        <Link className="btn btn-sm btn-primary" href="/">Show</Link><br />
-        <button className="btn btn-sm btn-primary" onClick={() => deletePost(user.id)}>Delete</button><br />
+            <Link className="btn btn-sm btn-warning" to={"/admin/matapelajaran/edit/" + user.id}>Edit</Link>
+            {/* <Link className="btn btn-sm btn-primary" href="/">Show</Link><br /> */}     
+        <button className="btn btn-sm btn-danger" onClick={() => deletePost(user.id)}>Delete</button>
       </div>,
   }));
 

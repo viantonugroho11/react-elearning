@@ -8,7 +8,11 @@ import { useHistory, useParams } from "react-router-dom";
 //import hook useState from react
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import swal from 'sweetalert';
 function EditKelas() {
+  //token
+  const token = localStorage.getItem('token')
+
   const [nama, setNama] = useState('');
   const [tingkat, setTingkat] = useState('');
   //state validation
@@ -21,6 +25,8 @@ function EditKelas() {
 
   //function "getPostById"
   const getPostById = async () => {
+    //auth token
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
     //get data from server
     const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/admin/kelas/${id}`);
@@ -40,6 +46,8 @@ function EditKelas() {
   //method "storePost"
   const storeUpdate = async (e) => {
     e.preventDefault();
+    //auth token
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
     //send data to server
     await axios.patch(`http://appsiaksd.ugcorpusskkni.online/api/admin/kelas/${id}`,
@@ -49,13 +57,13 @@ function EditKelas() {
     }
     )
       .then(() => {
-
+        swal("Berhasil!", "Data berhasil diubah", "success");
         //redirect
         history.push('/admin/kelas');
 
       })
       .catch((error) => {
-
+        swal("Gagal!", "Data gagal diubah", "error");
         //assign validation on state
         setValidation(error.response.data);
       })
