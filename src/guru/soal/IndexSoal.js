@@ -43,7 +43,7 @@ function IndexSoalGuru (){
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
     //fetching
-    const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/guru/materi/${id}/edit`);
+    const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/guru/tugas/${id}/edit`);
     //get response data
     const data = await response.data.data;
 
@@ -52,16 +52,16 @@ function IndexSoalGuru (){
   }
   // const url = `http://appsiaksd.ugcorpusskkni.online/storage/FileMateri/`
   const datamateri = posts.map((user) => ({
-    nama: user.nama_materi,
+    nama: user.nama_soal,
     // file: <a classname="btn btn-secondary" href={url + user.file_materi} download={user.file_materi}>Download</a>,
     // file: <form method="get" action={url + user.file_materi}>
     //   <button type="submit">Download!</button>
     // </form>,
     aksi:
       <div>
-        <Link className="btn btn-sm btn-primary" href={"/guru/materi/edit/" + user.id}>Edit</Link><br />
-        <Link className="btn btn-sm btn-success" href={"/guru/materi/show/" + user.id}>Show</Link><br />
-        <Link className="btn btn-sm btn-danger" href={"/guru/materi/delete/"}>Delete</Link><br />
+        <Link className="btn btn-sm btn-primary" to={"/guru/soal/edit/" + user.id}>Edit</Link><br />
+        <Link className="btn btn-sm btn-success" to={"/guru/soal/show/" + user.id}>Show</Link><br />
+        {/* <Link className="btn btn-sm btn-danger" href={"/guru/materi/delete/"}>Delete</Link><br /> */}
       </div>,
   }));
 
@@ -94,12 +94,12 @@ function IndexSoalGuru (){
                 <div className="row">
                   <div className="col-md-6 col-sm-12">
                     <div className="title">
-                      <h4>Data Kelas</h4>
+                      <h4>Data Soal</h4>
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                       <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">Data Kelas</li>
+                        <li className="breadcrumb-item active" aria-current="page">Data Soal</li>
                       </ol>
                     </nav>
                   </div>
@@ -109,7 +109,7 @@ function IndexSoalGuru (){
               <div className="card-box mb-30">
                 <div className="pd-20 d-flex justify-content-between">
                   <h4 className="text-blue h4">Data Kelas</h4>
-                  <a href="form-datakelas.html" className="btn btn-sm btn-primary">+ tambah</a>
+                  <Link className="btn btn-sm btn-primary" to={"/guru/soal/create/" + id}><i className="fa fa-plus"></i> Tambah Soal</Link>
                 </div>
                 <div className="pb-20">
                   <DataTable

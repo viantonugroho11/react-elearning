@@ -9,11 +9,14 @@ import axios from 'axios'
 import { useHistory, useParams } from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react';
+import swal from 'sweetalert'
 function CreateSoalUjian() {
   //const { id } = useParams();
   const { id } = useParams();
 
   const [dataUjian, setUjian] = useState({})
+
+  // const soal = useState({})
   const [audio, setAudio] = useState()
   const [soal, setSoal] = useState('')
   // const [audio_ujian, setaudio] = useState('')
@@ -29,10 +32,23 @@ function CreateSoalUjian() {
   //history
   const history = useHistory();
 
-  //const handlechangesetpil
-  const handlechangesetpil = (e) => {
-  
+  //next2
+  const [values, setValues] = useState({});
+  const handlechange =(e)=>{
+    const name = e.target.name;
+    let value = e.target.value;
+    setValues({...values,[name]:value})
+    // setValues({...values,[e.target.name]:e.target.value})
   }
+
+  const onSaveSubmit =(e) => {
+    console.log(values)
+  }
+  //end next
+  //const handlechangesetpil
+  // const handlechangesetpil = (e) => {
+  
+  // }
 
 
   //method "Get Cek Ujian"
@@ -42,9 +58,11 @@ function CreateSoalUjian() {
 
       .then(res => {
         if (res.data.data.jumlah_soal == res.data.data.get_soal_ujian_count) {
+          
           //redirect
           history.push('/guru/ujian');
         } else {
+          
           history.push('/guru/soalujian/create/' + id);
         }
       })
@@ -90,9 +108,13 @@ function CreateSoalUjian() {
 
       .then(() => {
         if (dataUjian.jumlah_soal === dataUjian.get_soal_ujian_count) {
+          swal("Behasil", "Data berhasil ditambahkan", "success");
+          swal("Behasil", "Input Soal Telah selesai", "info");
           //redirect
           history.push('/guru/ujian');
         } else {
+          swal("Behasil", "Data berhasil ditambahkan", "success");
+          swal("Behasil", "Input Soal" + dataUjian.jumlah_soal, "info");
           history.push('/guru/soalujian/create/' + id);
         }
 
@@ -110,44 +132,44 @@ function CreateSoalUjian() {
       rows.push(<div>
         <div className="form-group">
           <label>Soal Ujian</label>
-          <textarea value={soal} onChange={(e) => setSoal(e.target.value)} className="form-control" rows="5"></textarea>
+          <textarea name={"soal"+i} value={values["soal"+i]} onChange={handlechange} className="form-control" rows="5"></textarea>
         </div>
-        <div className="form-group">
+        {/* <div className="form-group">
           <label>Soal Audio(Optional)</label>
-          <input type="file" onChange={(e) => setAudio(e.target.files)} className="form-control" />
+          <input type="file" onChange={handlechange} className="form-control" />
         </div>
         <div className="dropdown-divider" />
         <div className="form-group">
           <label>A.</label>
-          <input value={pil_a_ujian} onChange={(e) => setpil_a(e.target.value)} className="form-control" type="text" placeholder="Masukkan pilihan A" />
+          <input value={pil_a_ujian} onChange={handlechange} className="form-control" type="text" placeholder="Masukkan pilihan A" />
         </div>
         <div className="form-group">
           <label>B.</label>
-          <input value={pil_b_ujian} onChange={(e) => setpil_b(e.target.value)} className="form-control" type="text" placeholder="Masukkan pilihan B" />
+          <input value={pil_b_ujian} onChange={handlechange} className="form-control" type="text" placeholder="Masukkan pilihan B" />
         </div>
         <div className="form-group">
           <label>C.</label>
-          <input value={pil_c_ujian} onChange={(e) => setpil_c(e.target.value)} className="form-control" type="text" placeholder="Masukkan pilihan C" />
+          <input value={pil_c_ujian} onChange={handlechange} className="form-control" type="text" placeholder="Masukkan pilihan C" />
         </div>
         <div className="form-group">
           <label>D.</label>
-          <input value={pil_d_ujian} onChange={(e) => setpil_d(e.target.value)} className="form-control" type="text" placeholder="Masukkan pilihan D" />
+          <input value={pil_d_ujian} onChange={handlechange} className="form-control" type="text" placeholder="Masukkan pilihan D" />
         </div>
         <div className="form-group">
           <label>E. (Optional)</label>
-          <input value={pil_e_ujian} onChange={(e) => setpil_e(e.target.value)} className="form-control" type="text" placeholder="Masukkan pilihan E (Optional)" />
+          <input value={pil_e_ujian} onChange={handlechange} className="form-control" type="text" placeholder="Masukkan pilihan E (Optional)" />
         </div>
         <div className="form-group">
           <label>Kunci Jawab Ujian</label>
-          <textarea value={jawabkunci} onChange={(e) => setkuncijawab(e.target.value)} className="form-control" rows="5"></textarea>
+          <textarea value={jawabkunci} onChange={handlechange} className="form-control" rows="5"></textarea>
           <supscrip>*Copy Dari pilihan yang tepat</supscrip>
-        </div>
+        </div> */}
 
-        <div className="clearfix">
+        {/* <div className="clearfix">
           <div className="pull-right">
             <button className="btn btn-primary btn-sm scroll-click" type="submit">Simpan</button>
           </div>
-        </div>
+        </div> */}
       </div>);
     }
     return rows;
@@ -197,11 +219,21 @@ function CreateSoalUjian() {
                   }
                 </div>
               </div>
+              {/* <form>
               <FormSoal />
+              <div className="clearfix">
+                <div className="pull-right">
+                    <a onClick={onSaveSubmit} className="btn btn-primary btn-sm scroll-click">Simpan</a>
+                </div>
+              </div>
+              </form> */}
               <form onSubmit={storePost}>
                 <div className="form-group">
+                  <label>Soal Ujian {dataUjian.get_soal_ujian_count+1}</label>
+                </div>
+                <div className="form-group">
                   <label>Soal Ujian</label>
-                  <textarea value={soal} onChange={(e) => setSoal(e.target.value)} className="form-control" rows="5"></textarea>
+                  <textarea value={soal["test"]} onChange={(e) => setSoal(e.target.value)} className="form-control" rows="5"></textarea>
                 </div>
                 <div className="form-group">
                   <label>Soal Audio(Optional)</label>

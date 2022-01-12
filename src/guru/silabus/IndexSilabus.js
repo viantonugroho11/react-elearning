@@ -69,7 +69,7 @@ function IndexSilabus() {
     // file: <a href={url + user.file}>{user.file}</a>,
     aksi:
       <div>
-        <Link className="btn btn-secondary" href={"/guru/silabus/edit/" + user.id}>Edit</Link><br />
+        <Link className="btn btn-secondary" to={"/guru/silabus/edit/" + user.id}>Edit</Link><br />
         {/* <Link className="btn btn-secondary" href={"/guru/materi/show/" + user.id}>Show</Link><br /> */}
         <button className="btn btn-sm btn-danger" onClick={() => deletePost(user.id)}>Delete</button><br />
       </div>,

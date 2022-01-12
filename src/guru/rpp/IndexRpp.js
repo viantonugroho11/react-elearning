@@ -70,7 +70,7 @@ function IndexRpp() {
     // file: <a href={url + user.file}>{user.file}</a>,
     aksi:
       <div>
-        <button className="btn btn-sm btn-secondary" href={"/guru/rpp/edit/" + user.id}>Edit</button><br />
+        <a className="btn btn-sm btn-warning" href={"/guru/rpp/edit/" + user.id}>Edit</a><br />
         {/* <button className="btn btn-sm btn-secondary" href={"/guru/materi/show/" + user.id}>Show</button><br /> */}
         <button className="btn btn-sm btn-danger" onClick={() => deletePost(user.id)}>Delete</button><br />
       </div>,

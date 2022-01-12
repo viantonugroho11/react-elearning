@@ -9,6 +9,7 @@ import { useHistory, useParams } from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react';
 // import M from 'minimatch'
+import swal from 'sweetalert';
 function CreateJadwal() {
   const [pelajaran, setPelajaran] = useState('');
   const [kelas, setKelas] = useState('');
@@ -24,12 +25,14 @@ function CreateJadwal() {
   //history
   const history = useHistory();
 
-
+  //token
+  const token = localStorage.getItem('token')
   const { id } = useParams();
 
   //function "getPostById"
   const getJadwalById = async () => {
-
+    //auth token
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     //get data from server
     const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/admin/jadwal/${id}`);
     //get response data
@@ -44,7 +47,8 @@ function CreateJadwal() {
   //method "storePost"
   const storePost = async (e) => {
     e.preventDefault();
-
+    //auth token
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     //send data to server
     await axios.patch(`http://appsiaksd.ugcorpusskkni.online/api/admin/jadwal/${id}`, {
       pelajaran: pelajaran,
@@ -52,13 +56,13 @@ function CreateJadwal() {
       guru: guru
     })
       .then(() => {
-
+        swal("Berhasil!", "Data berhasil diubah", "success");
         //redirect
         history.push('/admin/jadwal');
 
       })
       .catch((error) => {
-
+        swal("Gagal!", error.response.data.message, "error");
         //assign validation on state
         setValidation(error.response.data);
       })
@@ -67,6 +71,8 @@ function CreateJadwal() {
 
   //method "getDataGuru"
   const GetGuru = async () => {
+    //auth token
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/guru')
       .then(res => {
         const dataGuru = res.data.data;
@@ -79,6 +85,8 @@ function CreateJadwal() {
 
   //method "getDataKelas"
   const GetKelas = async () => {
+    //auth token
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/kelas')
       .then(res => {
         const dataKelas = res.data.data
@@ -91,6 +99,8 @@ function CreateJadwal() {
 
   //method "getDataPelajaran"
   const GetPelajaran = async () => {
+    //auth token
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     await axios.get('http://appsiaksd.ugcorpusskkni.online/api/admin/pelajaran')
       .then(res => {
         const dataPelajaran = res.data.data
@@ -190,7 +200,7 @@ function CreateJadwal() {
                 </div>
                 <div className="clearfix">
                   <div className="pull-right">
-                    <a href="#horizontal-basic-form1" className="btn btn-primary btn-sm scroll-click" rel data-toggle="collapse" role="button">Simpan</a>
+                    <button className="btn btn-primary btn-sm scroll-click" type="submit">Simpan</button>
                   </div>
                 </div>
               </form>

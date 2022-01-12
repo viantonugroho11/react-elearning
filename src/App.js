@@ -78,6 +78,9 @@ import IndexListUjian from './siswa/ujian/IndexListUjian';
 import AnswerUjianSiswa from './siswa/ujian/AnswerUjian';
 import ReviewUjian from './siswa/ujian/ReviewUjian';
 import CreateUjianGuru from './guru/ujian/CreateUjian';
+import IndexSoalGuru from './guru/soal/IndexSoal';
+import CreateSoalGuru from './guru/soal/CreateSoal';
+import ShowSoalGuru from './guru/soal/ShowSoal';
 
 function App() {
   return (
@@ -151,9 +154,11 @@ function App() {
         <Route exact path="/guru/siswa" component={IndexSiswa} />
         <Route exact path="/guru/siswa/show/:id" component={EditSiswa} />
         {/* soal */}
-        <Route exact path="/guru/soal/:id" component={IndexUjian} />
-        <Route exact path="/guru/soal/create/:id" component={CreateUjian} />
+        <Route exact path="/guru/soal/:id" component={IndexSoalGuru} />
+        <Route exact path="/guru/soal/create/:id" component={CreateSoalGuru} />
         <Route exact path="/guru/soal/edit/:id" component={EditUjian} />
+        <Route exact path="/guru/soal/show/:id" component={ShowSoalGuru} />
+        <Route exact path="/guru/soal/answer/:id" component={EditUjian} />
         {/* ujian */}
         <Route exact path="/guru/ujian" component={IndexUjianGuru} />
         <Route exact path="/guru/ujian/create" component={CreateUjianGuru} />

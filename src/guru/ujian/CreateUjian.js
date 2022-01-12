@@ -156,7 +156,7 @@ function CreateUjianGuru() {
                         return(
                         {getjadwal.map((data) => {
                           return (
-                            <option value={data.id}>{data.from_pelajaran.nama_pelajaran} ({data.from_guru.nama_guru}) ({data.from_kelas.nama_kelas})</option>
+                            <option value={data.id}>{data.from_pelajaran.nama_pelajaran} ({data.from_kelas.nama_kelas})</option>
                           )
                         })}
                         );

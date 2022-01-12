@@ -14,6 +14,8 @@ function IndexUjianGuru() {
   //define state
   const [posts, setPosts] = useState([]);
   // const [pel, setPel] = useState([]);
+  //token
+  const token = localStorage.getItem("token");
 
   // const { id } = useParams();
   const id = localStorage.getItem("id");
@@ -28,6 +30,8 @@ function IndexUjianGuru() {
   },[]);
   //function "fetchData"
   const fecthDataUjianGuru = async () => {
+    //auth
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     //fetching
     const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/guru/ujian/${id}/edit`);
     //get response data
@@ -47,9 +51,9 @@ function IndexUjianGuru() {
     // file: <a href={url + user.file}>{user.file}</a>,
     aksi:
       <div>
-        <a classname="btn btn-secondary" href={"/guru/ujian/edit/" + user.id}>Edit</a><br />
-        <a classname="btn btn-secondary" href={"/guru/soalujian/show/" + user.id}>Show</a><br />
-        <a classname="btn btn-secondary" href={"/guru/soalujian/create/" + user.id}>Tambah Soal</a><br />
+        <a className="btn btn-warning" href={"/guru/ujian/edit/" + user.id}>Edit</a><br />
+        <a className="btn btn-primary" href={"/guru/soalujian/show/" + user.id}>Show</a><br />
+        <a className="btn btn-success" href={"/guru/soalujian/create/" + user.id}>Tambah Soal</a><br />
       </div>,
   }));
 

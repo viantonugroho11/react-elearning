@@ -50,8 +50,8 @@ function IndexPelajaranGuru() {
     nmpelajaran: pelajaran.from_pelajaran.nama_pelajaran,
     aksi:
       <div>
-        <a className="btn btn-secondary" href={"/guru/materi/create/" + pelajaran.id}>Tambah Materi</a><br />
-        <a className="btn btn-secondary" href="/guru">Tambah Soal</a><br />
+        <a className="btn btn-sm btn-warning" href={"/guru/materi/create/" + pelajaran.id}>Tambah Materi</a><br />
+        <a className="btn btn-sm btn-success" href={"/guru/soal/create/"+pelajaran.id}>Tambah Soal</a><br />
       </div>,
   }));
 

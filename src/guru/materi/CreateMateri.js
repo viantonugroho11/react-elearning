@@ -54,7 +54,7 @@ function CreateMateri() {
         // console.log(res);
         console.log(error.response.data);
         //assign validation on state
-        setValidation(error.response.data);
+        setValidation(error.response.data.data);
       })
 
   };
