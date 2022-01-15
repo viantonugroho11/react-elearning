@@ -86,7 +86,7 @@ function EditGuru(){
   const updateDataGuru = async () => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     //get data from server
-    const response = await axios.put(`http://appsiaksd.ugcorpusskkni.online/api/admin/guru/${id}`, {
+    await axios.put(`http://appsiaksd.ugcorpusskkni.online/api/admin/guru/${id}`, {
       nama_guru: nama,
       nik: nik,
       nu_ptk: nuptk,
@@ -142,6 +142,15 @@ function EditGuru(){
                   <div className="pull-left">
                     <h4 className="text-blue h4">Form Biodata1</h4>
                     <p className="mb-30">Isilah data tersebut dengan benar !</p>
+                    {
+                      validation.errors &&
+                      <div className="alert alert-danger" role="alert">
+                        {validation.errors.map((error, index) => (
+                          <div key={index}>{`${error.param} : ${error.msg}`}</div>
+                        ))}
+                      </div>
+
+                    }
                   </div>
                 </div>
                 <form onSubmit={updateDataGuru}>
