@@ -68,7 +68,9 @@ function IndexPelajaranSiswa() {
                       <div className="card card-box">
                         <div className="card-body">
                           <h5 className="card-title">{data.get_pelajaran.nama_pelajaran}</h5>
-                          <p className="card-text">{data.get_guru.nama_guru}</p>
+                          <p className="card-text">{data.get_guru !==null &&
+                          data.get_guru.nama_guru
+                          }</p>
                           <div className="row">
                             <div className="col-md-6">
                               <Link to={`/pelajaran/materi/${data.id}`} className="btn btn-primary">Materi</Link>

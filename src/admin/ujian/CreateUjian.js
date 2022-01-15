@@ -153,7 +153,20 @@ function CreateUjian() {
                         return(
                         {getjadwal.map((data) => {
                           return (
-                            <option value={data.id}>{data.from_pelajaran.nama_pelajaran} ({data.from_guru.nama_guru}) ({data.from_kelas.nama_kelas})</option>
+                              // data.from_pelajaran != null || data.from_guru != null || data.from_kelas != null ?  
+
+                              <option value={data.id}>{
+                                data.from_pelajaran == null ? "-" : data.from_pelajaran.nama_pelajaran
+                              }
+                                ({
+                                  data.from_guru == null ? "-" :
+                                    data.from_guru.nama_guru
+                                })
+                                ({
+                                  data.from_kelas == null ? "-" :
+                                    data.from_kelas.nama_kelas
+                                })</option>
+                            
                           )
                         })}
                         );

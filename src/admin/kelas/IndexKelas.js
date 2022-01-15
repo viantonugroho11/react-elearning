@@ -70,7 +70,7 @@ function IndexKelas(){
           <div>
             <Link className="btn btn-warning" to={"/admin/kelas/edit/"+user.id}>Edit</Link><br/>
             {/* <Link className="btn btn-secondary" to="/">Show</Link><br/> */}
-            <Link className="btn btn-danger" onClick={() => deletePost(user.id)}>Delete</Link><br/>
+            <button className="btn btn-danger" onClick={() => deletePost(user.id)}>Delete</button><br/>
           </div>,
     }));
     

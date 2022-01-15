@@ -70,7 +70,7 @@ function IndexSiswa() {
     status: user.status,
     aksi: <div>
       <Link className="btn btn-secondary btn-sm" to={"/admin/siswa/edit/" + user.id}>Edit</Link><br />
-      <Link className="btn btn-danger btn-sm" onClick={() => deletePost(user.id)}>Delete</Link><br />
+      <button className="btn btn-danger btn-sm" onClick={() => deletePost(user.id)}>Delete</button><br />
     </div>
     ,
   }));

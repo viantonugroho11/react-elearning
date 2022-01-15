@@ -38,7 +38,7 @@ function IndexWaliKelas() {
     nama: user.nama_guru,
     nik: user.nik,
     email: user.email,
-    nama_kelas: user.get_kelas.nama_kelas,
+    nama_kelas: user.get_kelas==null ? "-" : user.get_kelas.nama_kelas,
     aksi:
       <div>
         <a className="btn btn-secondary btn-sm" href={"/admin/walikelas/edit/" + user.id}>Edit</a><br />

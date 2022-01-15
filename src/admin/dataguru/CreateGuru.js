@@ -142,7 +142,16 @@ function CreateGuru() {
                 </div>
                 <div className="form-group">
                   <label>Pendidikan</label>
-                  <input className="form-control" value={pendidikan} onChange={(e) => setPendidikan(e.target.value)} type="text" placeholder="Masukkan Pendidikan Anda" />
+                  {/* <input className="form-control" value={pendidikan} onChange={(e) => setPendidikan(e.target.value)} type="text" placeholder="Masukkan Pendidikan Anda" /> */}
+                  <select value={pendidikan} onChange={(e) => setPendidikan(e.target.value)} className="custom-select col-12">
+                    <option selected>Pilihan</option>
+                    <option value={"SMA/SMK"}>SMA/SMK</option>
+                    <option value={"D3"}>D3</option>
+                    <option value={"D2"}>D2</option>
+                    <option value={"S1"}>S1</option>
+                    <option value={"S2"}>S2</option>
+                    <option value={"S3"}>S3</option>
+                  </select>
                 </div>
                 <div className="form-group">
                   <label>Masa Kerja</label>
@@ -154,6 +163,7 @@ function CreateGuru() {
                     <option selected>Pilihan</option>
                     <option value={"GTT"}>GTT</option>
                     <option value={"GTY"}>GTY</option>
+                    <option value={"HONORER"}>HONORER</option>
                   </select>
                 </div>
                 <div className="form-group">

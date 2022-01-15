@@ -75,7 +75,7 @@ function IndexUjian() {
       <div>
         <a className="btn btn-secondary btn-sm" href={"/admin/ujian/edit/" + user.id}>Edit</a><br />
         {/* <a className="btn btn-secondary btn-sm" href="/">Show</a><br /> */}
-        <button className="btn btn-secondary btn-sm" onClick={() => deletePost(user.id)}>Delete</button><br />
+        <button className="btn btn-danger btn-sm" onClick={() => deletePost(user.id)}>Delete</button><br />
       </div>,
   }));
 
