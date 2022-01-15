@@ -73,9 +73,9 @@ function IndexUjian() {
     soal_ujian: user.get_soal_ujian_count,
     aksi:
       <div>
-        <a className="btn btn-secondary btn-sm" href={"/admin/ujian/edit/" + user.id}>Edit</a><br />
+        <a className="btn btn-secondary btn-sm" href={"/admin/ujian/edit/" + user.id}><i className="fa fa-edit"></i></a>
         {/* <a className="btn btn-secondary btn-sm" href="/">Show</a><br /> */}
-        <button className="btn btn-danger btn-sm" onClick={() => deletePost(user.id)}>Delete</button><br />
+        <button className="btn btn-danger btn-sm" onClick={() => deletePost(user.id)}><i className="fa fa-trash"></i></button><br />
       </div>,
   }));
 

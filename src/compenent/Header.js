@@ -1,7 +1,7 @@
 //import hook react
 import React, { useState, useEffect } from 'react';
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 //import hook useHitory from react router dom
 import { useHistory } from 'react-router';
 
@@ -56,6 +56,7 @@ function Header() {
 
         //remove token from localStorage
         localStorage.removeItem("token");
+        localStorage.removeItem("id");
 
         //redirect halaman login
         history.push('/admin/login');
@@ -180,7 +181,7 @@ function Header() {
                 {/* <a className="dropdown-item" href="profile.html"><i className="dw dw-user1" /> Profile</a>
                 <a className="dropdown-item" href="profile.html"><i className="dw dw-settings2" /> Setting</a>
                 <a className="dropdown-item" href="faq.html"><i className="dw dw-help" /> Help</a> */}
-                <a className="dropdown-item" onClick={logoutHanlder}><i className="dw dw-logout" /> Log Out</a>
+                <button className="dropdown-item" onClick={logoutHanlder}><i className="dw dw-logout" /> Log Out</button>
               </div>
             </div>
           </div>

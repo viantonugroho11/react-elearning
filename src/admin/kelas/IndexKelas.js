@@ -68,9 +68,9 @@ function IndexKelas(){
           jumlah:user.get_siswa_count,
           aksi:
           <div>
-            <Link className="btn btn-warning" to={"/admin/kelas/edit/"+user.id}>Edit</Link><br/>
+              <Link className="btn btn-warning" to={"/admin/kelas/edit/" + user.id}><i className="fa fa-edit"></i></Link>
             {/* <Link className="btn btn-secondary" to="/">Show</Link><br/> */}
-            <button className="btn btn-danger" onClick={() => deletePost(user.id)}>Delete</button><br/>
+              <button className="btn btn-danger" onClick={() => deletePost(user.id)}><i className="fa fa-trash"></i></button><br/>
           </div>,
     }));
     

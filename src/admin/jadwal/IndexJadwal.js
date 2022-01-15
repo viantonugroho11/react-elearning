@@ -68,9 +68,9 @@ function IndexJadwal(){
           pelajaran: user.from_pelajaran == null ? "-" : user.from_pelajaran.nama_pelajaran,
           aksi:
           <div>
-            <a className="btn btn-secondary btn-sm" href={"/admin/jadwal/edit/"+user.id}>Edit</a><br/>
+              <a className="btn btn-secondary btn-sm" href={"/admin/jadwal/edit/" + user.id}><i className="fa fa-edit"></i></a>
             {/* <a className="btn btn-secondary btn-sm" href="/">Show</a><br/> */}
-            <button className="btn btn-danger btn-sm" onClick={() => deletePost(user.id)}>Delete</button><br/>
+              <button className="btn btn-danger btn-sm" onClick={() => deletePost(user.id)}><i className="fa fa-trash"></i></button><br/>
           </div>
           ,
     }));

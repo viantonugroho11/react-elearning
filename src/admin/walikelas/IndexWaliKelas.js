@@ -41,9 +41,9 @@ function IndexWaliKelas() {
     nama_kelas: user.get_kelas==null ? "-" : user.get_kelas.nama_kelas,
     aksi:
       <div>
-        <a className="btn btn-secondary btn-sm" href={"/admin/walikelas/edit/" + user.id}>Edit</a><br />
+        <a className="btn btn-secondary btn-sm" href={"/admin/walikelas/edit/" + user.id}><i className="fa fa-edit"></i></a>
         {/* <a classname="btn btn-secondary btn-sm" href="/">Show</a><br /> */}
-        <button className="btn btn-danger btn-sm" onClick={() => deletePost(user.id)}>Delete</button><br />
+        <button className="btn btn-danger btn-sm" onClick={() => deletePost(user.id)}><i className="fa fa-trash"></i></button><br />
       </div>,
   }));
   const columns = [

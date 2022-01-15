@@ -69,8 +69,12 @@ function IndexSiswa() {
     email: user.email,
     status: user.status,
     aksi: <div>
-      <Link className="btn btn-secondary btn-sm" to={"/admin/siswa/edit/" + user.id}>Edit</Link><br />
-      <button className="btn btn-danger btn-sm" onClick={() => deletePost(user.id)}>Delete</button><br />
+      {/* icon edit */}
+      {/* <i><Link to={`/admin/siswa/edit/${user.id}`} className="fa fa-edit" style={{ color: '#00a65a' }}></Link></i> */}
+      <Link className="btn btn-warning btn-sm" to={"/admin/siswa/edit/" + user.id}><i className="fa fa-edit"></i></Link>
+      {/* icon delete */}
+      <button className="btn btn-danger btn-sm" onClick={() => deletePost(user.id)}><i className="fa fa-trash"></i></button><br />
+      {/* <button className="btn btn-danger btn-sm" onClick={() => deletePost(user.id)}>Delete</button><br /> */}
     </div>
     ,
   }));

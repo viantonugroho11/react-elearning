@@ -61,8 +61,8 @@ function IndexGuru() {
     email: user.email,
     status: user.status_kepegawaian,
     aksi: <div>
-      <a className="btn btn-primary btn-sm" href={"/admin/guru/edit/" + user.id}>Edit</a><br />
-      <button className="btn btn-sm btn-danger" onClick={() => deletePost(user.id)}>DELETE</button><br />
+      <a className="btn btn-primary btn-sm" href={"/admin/guru/edit/" + user.id}><i className="fa fa-edit"></i></a>
+      <button className="btn btn-sm btn-danger" onClick={() => deletePost(user.id)}><i className="fa fa-trash"></i></button><br />
     </div>
     ,
   }));
