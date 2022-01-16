@@ -154,6 +154,7 @@ function CreateUjianGuru() {
                     <div className="form-group">
                       <label>Jadwal</label>
                       <select value={jadwal} onChange={(e) => setJadwal(e.target.value)} className="custom-select col-12">
+                        <option value="">Pilih Jadwal</option>
                         return(
                         {getjadwal.map((data) => {
                           return (

@@ -117,6 +117,7 @@ function CreateSoalUjian() {
           swal("Behasil", "Data berhasil ditambahkan", "success");
           swal("Behasil", "Input Soal" + dataUjian.jumlah_soal, "info");
           history.push('/guru/soalujian/create/' + id);
+          history.go(0);
         }
 
       })

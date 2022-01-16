@@ -43,9 +43,9 @@ function NilaiSiswa() {
     // file: <a href={url + user.file}>{user.file}</a>,
     aksi:
       <div>
-        <a classname="btn btn-secondary" href={"/guru/materi/edit/" + user.id}>Edit</a><br />
-        <a classname="btn btn-secondary" href={"/guru/materi/show/" + user.id}>Show</a><br />
-        <a classname="btn btn-secondary" href={"/guru/materi/delete/"}>Delete</a><br />
+        {/* <a className="btn btn-secondary" href={"/guru/materi/edit/" + user.id}>Edit</a><br /> */}
+        {/* <a className="btn btn-secondary" href={"/guru/materi/show/" + user.id}>Show</a><br />
+        <a className="btn btn-secondary" href={"/guru/materi/delete/"}>Delete</a><br /> */}
       </div>,
   }));
 

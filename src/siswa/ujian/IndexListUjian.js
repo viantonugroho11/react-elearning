@@ -110,7 +110,7 @@ function IndexListUjian() {
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                      <li className="breadcrumb-item active" aria-current="page">{now}</li>
+                      <li className="breadcrumb-item active" aria-current="page">Ujian</li>
                     </ol>
                   </nav>
                 </div>

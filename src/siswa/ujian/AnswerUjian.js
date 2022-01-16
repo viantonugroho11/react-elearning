@@ -26,6 +26,7 @@ function AnswerUjianSiswa() {
   //define state
   const [ujian, setUjian] = useState([]);
   const [cekujian, setCekujian]= useState([]);
+  // const [cekjawab, setCekjawab]= useState([]);
 
 
   // A super simple expandable component.
@@ -34,6 +35,8 @@ function AnswerUjianSiswa() {
     //panggil method "fetchData"
     fetchDataUjianSiswa();
     fetchDataCekUjian();
+    
+    // getCekJawabanByID(ujian.id);
   }, []);
 
   
@@ -44,8 +47,12 @@ function AnswerUjianSiswa() {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
     const keyhal=e.target.getAttribute("halkey")
-    const formData = new FormData(); 
-    formData.append('jawab', pil_ujian);
+    const formData = new FormData();
+    if (ujian.jawab_ujian!==null && pil_ujian==="") {
+      formData.append('jawab', ujian.jawab_ujian);
+    }else{
+      formData.append('jawab', pil_ujian);
+    }
 
     await axios.post(`http://appsiaksd.ugcorpusskkni.online/api/siswa/ujian/${userid}/${hal}/${ujianid}`,formData)
 
@@ -76,10 +83,11 @@ function AnswerUjianSiswa() {
     const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/siswa/ujian/${ujianid}/cek`);
     //get response data
     const data = await response.data.data;
-    console.log(data);
+    // console.log(data);
     //assign response data to state "posts"
     setCekujian(data);
   }
+
   //fetch data
   const fetchDataUjianSiswa = async () => {
     //set axios header dengan type Authorization + Bearer token
@@ -88,7 +96,8 @@ function AnswerUjianSiswa() {
     const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/siswa/ujian/pertanyaan/${userid}/${hal}/${ujianid}`);
     //get response data
     const data = await response.data.data;
-    console.log(data);
+    // console.log(data);
+    // console.log(data.jawab_ujian);
     //assign response data to state "posts"
     setUjian(data);
   }
@@ -122,6 +131,23 @@ function AnswerUjianSiswa() {
     return rows;
   }
 
+  // useEffect(() => {
+  //   getCekJawabanByID(ujian.id);
+  // }, [ujian.id]);
+  //fetch data getCekJawabanByID SOAL dan IDsiswa
+  // const getCekJawabanByID = async (e) => {
+  //   //set axios header dengan type Authorization + Bearer token
+  //   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+  //   console.log("kode: "+e)
+  //   //fetching
+  //   const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/siswa/ujians/${e}/${userid}/cekjawab`);
+  //   //get response data
+  //   const data = await response.data.data;
+  //   console.log(data);
+  //   //assign response data to state "posts"
+  //   setCekjawab(data);
+  // }
+
   return (
     <div>
       <HeaderSiswa />
@@ -134,13 +160,13 @@ function AnswerUjianSiswa() {
               <div className="row">
                 <div className="col-md-6 col-sm-12">
                   <div className="title">
-                    <h4>Matematika</h4>
+                    <h4>UJIAN</h4>
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item"><a href="index.html">Home</a></li>
                       <li className="breadcrumb-item" aria-current="page">Ujian</li>
-                      <li className="breadcrumb-item active" aria-current="page">Matematika</li>
+                      <li className="breadcrumb-item active" aria-current="page">Ujian</li>
                     </ol>
                   </nav>
                 </div>
@@ -156,24 +182,24 @@ function AnswerUjianSiswa() {
                   {/* <input value={hal} /> */}
                   <p className="card-text mt-4">Piliah Salah satu</p>
                   <div className="custom-control custom-radio mb-5">
-                    <input value={ujian.pil_a_ujian} onClick={(e) => setpil_ujian(e.target.value)} type="radio" id="customRadio4" name="customRadio" className="custom-control-input" />
+                    <input value={ujian.pil_a_ujian} onClick={(e) => setpil_ujian(e.target.value)} type="radio" id="customRadio4" name="customRadio" className="custom-control-input" checked={ujian.jawab_ujian === ujian.pil_a_ujian} />
                     <label className="custom-control-label" htmlFor="customRadio4">{ujian.pil_a_ujian}</label>
                   </div>
                   <div className="custom-control custom-radio mb-5">
-                    <input value={ujian.pil_b_ujian} onClick={(e) => setpil_ujian(e.target.value)} type="radio" id="customRadio5" name="customRadio" className="custom-control-input" />
+                    <input value={ujian.pil_b_ujian} onClick={(e) => setpil_ujian(e.target.value)} type="radio" id="customRadio5" name="customRadio" className="custom-control-input" checked={ujian.jawab_ujian === ujian.pil_b_ujian}/>
                     <label className="custom-control-label" htmlFor="customRadio5">{ujian.pil_b_ujian}</label>
                   </div>
                   <div className="custom-control custom-radio mb-5">
-                    <input value={ujian.pil_c_ujian} onClick={(e) => setpil_ujian(e.target.value)} type="radio" id="customRadio6" name="customRadio" className="custom-control-input" />
+                    <input value={ujian.pil_c_ujian} onClick={(e) => setpil_ujian(e.target.value)} type="radio" id="customRadio6" name="customRadio" className="custom-control-input" checked={ujian.jawab_ujian === ujian.pil_c_ujian}/>
                     <label className="custom-control-label" htmlFor="customRadio6">{ujian.pil_c_ujian}</label>
                   </div>
                   <div className="custom-control custom-radio mb-5">
-                    <input value={ujian.pil_d_ujian} onClick={(e) => setpil_ujian(e.target.value)} type="radio" id="customRadio7" name="customRadio" className="custom-control-input" />
+                    <input value={ujian.pil_d_ujian} onClick={(e) => setpil_ujian(e.target.value)} type="radio" id="customRadio7" name="customRadio" className="custom-control-input" checked={ujian.jawab_ujian === ujian.pil_d_ujian}/>
                     <label className="custom-control-label" htmlFor="customRadio6">{ujian.pil_d_ujian}</label>
                   </div>
                   {ujian.pil_e_ujian != null &&
                     <div className="custom-control custom-radio mb-5">
-                    <input value={ujian.pil_e_ujian} onClick={(e) => setpil_ujian(e.target.value)} type="radio" id="customRadio8" name="customRadio" className="custom-control-input" />
+                    <input value={ujian.pil_e_ujian} onClick={(e) => setpil_ujian(e.target.value)} type="radio" id="customRadio8" name="customRadio" className="custom-control-input" checked={ujian.jawab_ujian === ujian.pil_e_ujian}/>
                       <label className="custom-control-label" htmlFor="customRadio6">{ujian.pil_e_ujian}</label>
                     </div>
                   }
@@ -208,7 +234,9 @@ function AnswerUjianSiswa() {
                     <a halkey={hal-1} onClick={PostJawab} href={"/ujian/" + ujianid + "/" + (hal - 1)} className="btn btn-outline-primary">Kembali</a>
                   }
                   {hal < cekujian.jumlah_soal &&
-                    <a halkey={(hal+1)} onClick={PostJawab} href={"/ujian/" + ujianid + "/" + (hal+1)} className="btn btn-outline-primary">Next</a>
+                  // hitung jumlah
+
+                    <a halkey={hal+1} onClick={PostJawab} href={"/ujian/" + ujianid + "/" + (hal+1)} className="btn btn-outline-primary">Next</a>
                   }
                   {hal == cekujian.jumlah_soal &&
                     <a halkey={(hal+1)} onClick={PostJawab} href={"/ujian/" + ujianid + "/" + (hal+1)} className="btn btn-outline-primary">Selesai</a>

@@ -107,7 +107,7 @@ function IndexSoalGuru (){
               <div className="card-box mb-30">
                 <div className="pd-20 d-flex justify-content-between">
                   <h4 className="text-blue h4">Data Soal</h4>
-                  <Link className="btn btn-sm btn-primary" to={"/guru/soal/create/" + id}><i className="fa fa-plus"></i> Tambah Soal</Link>
+                  <Link className="btn btn-sm btn-primary" to={"/guru/soal/create/" + id}><i className="fa fa-plus"></i> Soal</Link>
                 </div>
                 <div className="pb-20">
                   <DataTable

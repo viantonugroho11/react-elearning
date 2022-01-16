@@ -176,7 +176,7 @@ function HeaderGuru() {
                 <span className="user-icon">
                   {/* <img src="vendors/images/photo1.jpg" alt /> */}
                 </span>
-                <span className="user-name">{user.name}</span>
+                <span className="user-name">{user.nama_guru}</span>
               </a>
               <div className="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                 {/* <a className="dropdown-item" href="profile.html"><i className="dw dw-user1" /> Profile</a>

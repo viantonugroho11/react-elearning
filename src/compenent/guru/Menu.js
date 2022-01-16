@@ -3,7 +3,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 //import axios
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 function MenuGuru() {
   //define state
   const [posts, setPosts] = useState([]);
@@ -111,11 +111,11 @@ function MenuGuru() {
                     <span className="micon dw dw-apartment" /><span className="mtext">Ujian</span>
                   </a>
                 </li>
-                <li className="dropdown">
+                {/* <li className="dropdown">
                   <a href="/guru/soalujian" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-apartment" /><span className="mtext">Soal Ujian</span>
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>

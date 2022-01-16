@@ -83,6 +83,8 @@ import CreateSoalGuru from './guru/soal/CreateSoal';
 import ShowSoalGuru from './guru/soal/ShowSoal';
 import EditSoalGuru from './guru/soal/EditSoal';
 import NilaiSoal from './guru/soal/NilaiSoal';
+import EditUjianGuru from './guru/ujian/EditUjian';
+import ShowUjianGuru from './guru/ujian/ShowUjianGuru';
 
 function App() {
   return (
@@ -165,7 +167,8 @@ function App() {
         {/* ujian */}
         <Route exact path="/guru/ujian" component={IndexUjianGuru} />
         <Route exact path="/guru/ujian/create" component={CreateUjianGuru} />
-        <Route exact path="/guru/ujian/edit/:id" component={EditUjian} />
+        <Route exact path="/guru/ujian/edit/:id" component={EditUjianGuru} />
+        <Route exact path="/guru/ujian/show/:id" component={ShowUjianGuru} />
         {/* soalujian */}
         <Route exact path="/guru/soalujian/:id" component={IndexUjian} />
         <Route exact path="/guru/soalujian/create/:id" component={CreateSoalUjian} />

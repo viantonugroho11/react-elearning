@@ -9,7 +9,7 @@ import moment from 'moment';
 function IndexListTugas() {
   //define history
   // const history = useHistory();
-  var now = new Date().toLocaleString("en-US", { day: '2-digit', month: 'numeric', year: 'numeric' });
+  // var now = new Date().toLocaleString("en-US", { day: '2-digit', month: 'numeric', year: 'numeric' });
   //define state
   const [posts, setPosts] = useState([]);
   // A super simple expandable component.
@@ -52,7 +52,7 @@ function IndexListTugas() {
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                      <li className="breadcrumb-item active" aria-current="page">{now}</li>
+                      <li className="breadcrumb-item active" aria-current="page">Tugas</li>
                     </ol>
                   </nav>
                 </div>

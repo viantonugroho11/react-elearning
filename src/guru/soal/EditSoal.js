@@ -60,7 +60,12 @@ function EditSoalGuru() {
     formData.append('isi_soal', soal);
     formData.append('batas_soal', batas);
     formData.append('file', file);
-    await axios.post(`http://appsiaksd.ugcorpusskkni.online/api/guru/tugas/${id}`, formData)
+    await axios.put(`http://appsiaksd.ugcorpusskkni.online/api/guru/tugas/${id}`, {
+      nama_soal: nama,
+      isi_soal: soal,
+      batas_soal: batas,
+      file: file
+    })
       .then(() => {
 
         swal("Berhasil", "Data berhasil ditambahkan", "success");

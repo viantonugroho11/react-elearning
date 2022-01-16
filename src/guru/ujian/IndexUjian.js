@@ -52,9 +52,9 @@ function IndexUjianGuru() {
     // file: <a href={url + user.file}>{user.file}</a>,
     aksi:
       <div>
-        <a className="btn btn-warning" href={"/guru/ujian/edit/" + user.id}>Edit</a><br />
-        <a className="btn btn-primary" href={"/guru/soalujian/show/" + user.id}>Show</a><br />
-        <a className="btn btn-success" href={"/guru/soalujian/create/" + user.id}>Tambah Soal</a><br />
+        <a className="btn btn-warning btn-sm" href={"/guru/ujian/edit/" + user.id}><i className="fa fa-edit"></i></a>
+        <a className="btn btn-primary btn-sm" href={"/guru/soalujian/show/" + user.id}><i className="fa fa-eye"></i></a><br />
+        <a className="btn btn-success btn-sm" href={"/guru/soalujian/create/" + user.id}><i className="fa fa-plus"></i></a><br />
       </div>,
   }));
 
@@ -122,7 +122,7 @@ function IndexUjianGuru() {
             <div className="card-box mb-30">
               <div className="pd-20 d-flex justify-content-between">
                 <h4 className="text-blue h4">Data Ujian</h4>
-                <a href="/guru/ujian/create" className="btn btn-sm btn-primary">+ tambah</a>
+                <a href="/guru/ujian/create" className="btn btn-sm btn-primary"><i className="fa fa-plus"></i> Tambah</a>
               </div>
               <div className="pb-20">
                 <DataTable
