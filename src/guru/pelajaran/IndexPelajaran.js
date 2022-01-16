@@ -8,6 +8,7 @@ import DataTable from 'react-data-table-component';
 import { useState, useEffect } from 'react';
 //import axios
 import axios from 'axios';
+import Footer from '../../compenent/Footer';
 // import { Link } from 'react-router-dom';
 function IndexPelajaranGuru() {
   //define state
@@ -45,13 +46,15 @@ function IndexPelajaranGuru() {
   }
 
   const datapelajaran = posts.map((pelajaran) => ({
-    nama: pelajaran.from_kelas.nama_kelas,
-    tingkat: pelajaran.from_kelas.tingkat,
-    nmpelajaran: pelajaran.from_pelajaran.nama_pelajaran,
+    nama: pelajaran.from_kelas == null ? 'tidak ada' : pelajaran.from_kelas.nama_kelas,
+    tingkat: pelajaran.from_kelas== null ? 'tidak ada' : pelajaran.from_kelas.tingkat,
+    nmpelajaran: pelajaran.from_pelajaran == null ? 'tidak ada' : pelajaran.from_pelajaran.nama_pelajaran,
     aksi:
       <div>
-        <a className="btn btn-sm btn-warning" href={"/guru/materi/create/" + pelajaran.id}>Tambah Materi</a><br />
-        <a className="btn btn-sm btn-success" href={"/guru/soal/create/"+pelajaran.id}>Tambah Soal</a><br />
+        {/* icon tambah*/}
+        {/* <a to={`/guru/pelajaran/edit/${pelajaran.id}`} className="btn btn-primary btn-sm">< className="fa fa-add"><</a> */}
+        <a className="btn btn-sm btn-warning" href={"/guru/materi/create/" + pelajaran.id}>+ Materi</a>
+        <a className="btn btn-sm btn-success" href={"/guru/soal/create/"+pelajaran.id}>+ Soal</a><br />
       </div>,
   }));
 
@@ -118,9 +121,7 @@ function IndexPelajaranGuru() {
             </div>
             {/* Simple Datatable End */}
           </div>
-          <div className="footer-wrap pd-20 mb-20 card-box">
-            Learning Management System By Vianto Nugroho
-          </div>
+          <Footer />
         </div>
       </div>
     </div>

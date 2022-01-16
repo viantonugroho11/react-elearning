@@ -3,11 +3,12 @@ import Header from '../../compenent/guru/Header'
 import Menu from '../../compenent/guru/Menu'
 import SideBar from '../../compenent/guru/SideBar'
 import DataTable from 'react-data-table-component';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 //import hook useState dan useEffect from react
 import { useState, useEffect } from 'react';
 //import axios
 import axios from 'axios';
+import Footer from '../../compenent/Footer';
 // import { useParams } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 function IndexUjianGuru() {
@@ -135,9 +136,7 @@ function IndexUjianGuru() {
             </div>
             {/* Simple Datatable End */}
           </div>
-          <div className="footer-wrap pd-20 mb-20 card-box">
-            Learning Management System By  Developer
-          </div>
+          <Footer />
         </div>
       </div>
     </div>

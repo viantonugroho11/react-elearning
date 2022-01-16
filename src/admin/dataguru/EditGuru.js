@@ -9,6 +9,7 @@ import { useHistory, useParams } from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react';
 import swal from 'sweetalert';
+import Footer from '../../compenent/Footer'
 // import { Link } from "react-router-dom";
 function EditGuru(){
   // token
@@ -244,9 +245,7 @@ function EditGuru(){
               </div>
               {/* Input Validation End */}
             </div>
-            <div className="footer-wrap pd-20 mb-20 card-box">
-              {/* DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a> */}
-            </div>
+            <Footer />
           </div>
         </div>
 

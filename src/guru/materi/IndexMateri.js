@@ -10,6 +10,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
+import Footer from '../../compenent/Footer';
 function IndexMateriGuru() {
   //define state
   const [posts, setPosts] = useState([]);
@@ -22,22 +24,52 @@ function IndexMateriGuru() {
   // A super simple expandable component.
   const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
   //useEffect hook
-  useEffect(() => {
+  
 
-    //panggil method "fetchData"
-    fectData();
+  const deletePost = async (iddelete) => {
+    //swal alert konfirmasi
+    swal({
+      title: "Apakah anda yakin?",
+      text: "Setelah dihapus, Anda tidak akan dapat mengembalikan data ini!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          // auth
+          axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-  }, []);
+          //sending
+          axios.delete(`http://appsiaksd.ugcorpusskkni.online/api/guru/materi/${iddelete}`)
+            .then(() => {
+              //panggil function "fetchData"
+              fectData();
+              swal("Berhasil!", "Data berhasil dihapus", "success");
+              //redirect
+              // history.push('/admin/siswa');
+            })
+            .catch((error) => {
+              swal("Gagal!", "Data gagal dihapus", "error");
+              //assign validation on state
+              // setValidation(error.response.data);
+            })
+          //panggil function "fetchData"
+          fectData();
+          //swal alert sukses
+          // swal("Data berhasil dihapus!", {
+          //   icon: "success",
+          // });
+
+        }
+
+      });
+
+  }
 
 
-  //method "fetchPelajaran"
-  // const fectPelajaran = async () => {
-  //   //fetching
-  //   const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/guru/pelajaran/${id}`);
-  //   //get response data
-  //   const data = await response.data.data;
-  //   setPel(data);
-  // }
+  //const delete data
+  
   //function "fetchData"
   const fectData = async () => {
     // auth
@@ -54,15 +86,13 @@ function IndexMateriGuru() {
   // const url = `http://appsiaksd.ugcorpusskkni.online/storage/FileMateri/`
   const datamateri = posts.map((user) => ({
     nama: <div>{user.nama_materi}</div>,
-    // file: <a classname="btn btn-secondary" href={url + user.file_materi} download={user.file_materi}>Download</a>,
-    // file: <form method="get" action={url + user.file_materi}>
-    //   <button type="submit">Download!</button>
-    // </form>,
     aksi:
       <div>
-        <Link className="btn btn-sm btn-primary" href={"/guru/materi/edit/" + user.id}>Edit</Link><br />
-        <Link className="btn btn-sm btn-success" href={"/guru/materi/show/" + user.id}>Show</Link><br />
-        <Link className="btn btn-sm btn-danger" href={"/guru/materi/delete/"}>Delete</Link><br />
+        <Link className="btn btn-sm btn-warning" href={"/guru/materi/edit/" + user.id}><i className="fa fa-edit"></i></Link>
+        {/* icon show */}
+        <Link className="btn btn-sm btn-success" href={"/guru/materi/show/" + user.id}><i className="fa fa-eye"></i></Link> 
+        {/* <Link className="btn btn-sm btn-success" href={"/guru/materi/show/" + user.id}>Show</Link><br /> */}
+        {/* <button className="btn btn-sm btn-danger" onClick={() => deletePost(user.id)}><i className="fa fa-trash"></i></button><br /> */}
       </div>,
   }));
 
@@ -83,6 +113,12 @@ function IndexMateriGuru() {
       selector: row => row.aksi
     },
   ];
+  useEffect(() => {
+
+    //panggil method "fetchData"
+    fectData();
+
+  }, []);
   return (
     <div>
       <Header />
@@ -124,9 +160,7 @@ function IndexMateriGuru() {
             </div>
             {/* Simple Datatable End */}
           </div>
-          <div className="footer-wrap pd-20 mb-20 card-box">
-            Learning Management System By Vianto Nugroho
-          </div>
+          <Footer />
         </div>
       </div>
     </div>

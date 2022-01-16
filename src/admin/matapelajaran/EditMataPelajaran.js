@@ -9,6 +9,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { useState, useEffect } from 'react';
 // import { Link } from "react-router-dom";
 import swal from 'sweetalert';
+import Footer from '../../compenent/Footer'
 function EditMataPelajaran(){
   //token
   const token = localStorage.getItem('token')
@@ -124,9 +125,7 @@ function EditMataPelajaran(){
               </div>
               {/* Input Validation End */}
             </div>
-            <div className="footer-wrap pd-20 mb-20 card-box">
-              {/* DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a> */}
-            </div>
+            <Footer />
           </div>
         </div>
 

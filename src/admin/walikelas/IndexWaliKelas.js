@@ -11,6 +11,7 @@ import { useState, useEffect } from 'react';
 
 import swal from 'sweetalert';
 import axios from 'axios';
+import Footer from '../../compenent/Footer';
 function IndexWaliKelas() {
   //token
   const token = localStorage.getItem("token");
@@ -138,9 +139,7 @@ function IndexWaliKelas() {
             </div>
             {/* Simple Datatable End */}
           </div>
-          <div className="footer-wrap pd-20 mb-20 card-box">
-            Learning Management System By  Developer
-          </div>
+          <Footer/>
         </div>
       </div>
     </div>

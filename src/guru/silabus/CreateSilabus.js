@@ -3,13 +3,14 @@ import Header from '../../compenent/guru/Header'
 import Menu from '../../compenent/guru/Menu'
 import SideBar from '../../compenent/guru/SideBar'
 import axios from 'axios'
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 //import hook history dari react router dom
 import { useHistory } from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react';
 import swal from 'sweetalert'
+import Footer from '../../compenent/Footer'
 function CreateSilabus() {
   const [nama, setNama] = useState('');
   const [file, setFile] = useState();
@@ -129,9 +130,7 @@ function CreateSilabus() {
             </div>
             {/* Input Validation End */}
           </div>
-          <div className="footer-wrap pd-20 mb-20 card-box">
-            Learning Management System By  Developer
-          </div>
+          <Footer />
         </div>
       </div>
 

@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useHistory, useParams } from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react'
+import Footer from '../../compenent/Footer'
 function EditSiswa() {
 
   //id
@@ -487,9 +488,7 @@ function EditSiswa() {
             </div>
             {/* Input Validation End */}
           </div>
-          <div className="footer-wrap pd-20 mb-20 card-box">
-            {/* DeskApp - Bootstrap 4 Admin Template By <Link to="https://github.com/dropways" target="_blank">Ankit Hingarajiya</Link> */}
-          </div>
+          <Footer />
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import Footer from '../../compenent/Footer';
 export default class IndexSiswaGuru extends Component {
   render() {
     return (
@@ -45,9 +46,7 @@ export default class IndexSiswaGuru extends Component {
       </div>
       {/* Simple Datatable End */}
     </div>
-    <div className="footer-wrap pd-20 mb-20 card-box">
-      Learning Management System By  Developer
-    </div>
+            <Footer />
   </div>
 </div>
       </div>

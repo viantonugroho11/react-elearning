@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 //import axios
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import Footer from '../../compenent/Footer';
 function IndexSoalGuru (){
   //define state
   const [posts, setPosts] = useState([]);
@@ -53,14 +54,11 @@ function IndexSoalGuru (){
   // const url = `http://appsiaksd.ugcorpusskkni.online/storage/FileMateri/`
   const datamateri = posts.map((user) => ({
     nama: user.nama_soal,
-    // file: <a classname="btn btn-secondary" href={url + user.file_materi} download={user.file_materi}>Download</a>,
-    // file: <form method="get" action={url + user.file_materi}>
-    //   <button type="submit">Download!</button>
-    // </form>,
+    batas: user.batas_soal,
     aksi:
       <div>
-        <Link className="btn btn-sm btn-primary" to={"/guru/soal/edit/" + user.id}>Edit</Link><br />
-        <Link className="btn btn-sm btn-success" to={"/guru/soal/show/" + user.id}>Show</Link><br />
+        <Link className="btn btn-sm btn-primary" to={"/guru/soal/edit/" + user.id}><i className="fa fa-edit"></i></Link>
+        <Link className="btn btn-sm btn-success" to={"/guru/soal/show/" + user.id}><i className="fa fa-eye"></i></Link><br />
         {/* <Link className="btn btn-sm btn-danger" href={"/guru/materi/delete/"}>Delete</Link><br /> */}
       </div>,
   }));
@@ -72,11 +70,11 @@ function IndexSoalGuru (){
       selector: row => row.nama,
       sortable: true,
     },
-    // {
-    //   name: 'File',
-    //   selector: row => row.file,
-    //   sortable: false,
-    // },
+    {
+      name: 'Batas Soal',
+      selector: row => row.batas,
+      sortable: false,
+    },
     {
       name: 'Aksi',
       selector: row => row.aksi
@@ -108,7 +106,7 @@ function IndexSoalGuru (){
               {/* Simple Datatable start */}
               <div className="card-box mb-30">
                 <div className="pd-20 d-flex justify-content-between">
-                  <h4 className="text-blue h4">Data Kelas</h4>
+                  <h4 className="text-blue h4">Data Soal</h4>
                   <Link className="btn btn-sm btn-primary" to={"/guru/soal/create/" + id}><i className="fa fa-plus"></i> Tambah Soal</Link>
                 </div>
                 <div className="pb-20">
@@ -123,9 +121,7 @@ function IndexSoalGuru (){
               </div>
               {/* Simple Datatable End */}
             </div>
-            <div className="footer-wrap pd-20 mb-20 card-box">
-              Learning Management System By  Developer
-            </div>
+            <Footer />
           </div>
         </div>
       </div>

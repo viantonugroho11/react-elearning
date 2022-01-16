@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import Footer from '../../compenent/Footer';
 export default class ShowSoalUjian extends Component {
   render() {
     return (
@@ -131,9 +132,7 @@ export default class ShowSoalUjian extends Component {
         </div>
         {/* Simple Datatable End */}
       </div>
-      <div className="footer-wrap pd-20 card-box">
-        Learning  Management By Developer
-      </div>
+              <Footer />
     </div>
   </div>
 </div>

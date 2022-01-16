@@ -11,6 +11,7 @@ import axios from 'axios';
 // import { useParams } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
+import Footer from '../../compenent/Footer';
 function IndexRpp() {
   //define state
   const [posts, setPosts] = useState([]);
@@ -44,25 +45,44 @@ function IndexRpp() {
     setPosts(data);
   }
   const deletePost = async (id) => {
-    // auth
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    //swal alert konfirmasi
+    swal({
+      title: "Apakah anda yakin?",
+      text: "Setelah dihapus, Anda tidak akan dapat mengembalikan data ini!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          // auth
+          axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-    //sending
-    await axios.delete(`http://appsiaksd.ugcorpusskkni.online/api/guru/rpp/${id}`)
-      .then(() => {
-        //panggil function "fetchData"
-        fectData();
-        swal("Berhasil!", "Data berhasil dihapus", "success");
-        //redirect
-        // history.push('/admin/siswa');
-      })
-      .catch((error) => {
-        swal("Gagal!", "Data gagal dihapus", "error");
-        //assign validation on state
-        // setValidation(error.response.data);
-      })
-    //panggil function "fetchData"
-    fectData();
+          //sending
+          axios.delete(`http://appsiaksd.ugcorpusskkni.online/api/guru/rpp/${id}`)
+            .then(() => {
+              //panggil function "fetchData"
+              fectData();
+              swal("Berhasil!", "Data berhasil dihapus", "success");
+              //redirect
+              // history.push('/admin/siswa');
+            })
+            .catch((error) => {
+              swal("Gagal!", "Data gagal dihapus", "error");
+              //assign validation on state
+              // setValidation(error.response.data);
+            })
+          //panggil function "fetchData"
+          fectData();
+          //swal alert sukses
+          // swal("Data berhasil dihapus!", {
+          //   icon: "success",
+          // });
+          
+        }
+        
+      });
+    
   }
   // const url =  `http://appsiaksd.ugcorpusskkni.online/storage/FileMateri/`
   const datarpp = posts.map((user) => ({
@@ -70,9 +90,9 @@ function IndexRpp() {
     // file: <a href={url + user.file}>{user.file}</a>,
     aksi:
       <div>
-        <a className="btn btn-sm btn-warning" href={"/guru/rpp/edit/" + user.id}>Edit</a><br />
+        <a className="btn btn-sm btn-warning" href={"/guru/rpp/edit/" + user.id}><li className="fa fa-edit"></li></a>
         {/* <button className="btn btn-sm btn-secondary" href={"/guru/materi/show/" + user.id}>Show</button><br /> */}
-        <button className="btn btn-sm btn-danger" onClick={() => deletePost(user.id)}>Delete</button><br />
+        <button className="btn btn-sm btn-danger" onClick={() => deletePost(user.id)}><li className="fa fa-trash"></li></button><br />
       </div>,
   }));
 
@@ -129,9 +149,7 @@ function IndexRpp() {
             </div>
             {/* Simple Datatable End */}
           </div>
-          <div className="footer-wrap pd-20 mb-20 card-box">
-            Learning Management System By  Developer
-          </div>
+          <Footer />
         </div>
       </div>
     </div>

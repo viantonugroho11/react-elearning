@@ -10,6 +10,8 @@ import { useHistory } from 'react-router';
 
 //import axios
 import axios from 'axios';
+import Footer from '../compenent/Footer';
+
 
 function DashboardAdmin() {
 
@@ -137,9 +139,7 @@ function DashboardAdmin() {
               </div>
             </div>
           </div> */}
-          <div className="footer-wrap pd-20 mb-20 card-box">
-            Learning Management System By Dimas Wahyu Pratoomo
-          </div>
+          <Footer/>
         </div>
       </div>
     </div>

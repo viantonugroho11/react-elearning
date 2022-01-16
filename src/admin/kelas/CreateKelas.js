@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react';
 import swal from 'sweetalert'
+import Footer from '../../compenent/Footer'
 
 function CreateKelas() {
     const [nama, setNama] = useState('');
@@ -116,9 +117,7 @@ function CreateKelas() {
               </div>
               {/* Input Validation End */}
             </div>
-            <div className="footer-wrap pd-20 mb-20 card-box">
-              {/* DeskApp - Bootstrap 4 Admin Template By <Link to="https://github.com/dropways" target="_blank">Ankit Hingarajiya</Link> */}
-            </div>
+            <Footer />
           </div>
         </div>
 

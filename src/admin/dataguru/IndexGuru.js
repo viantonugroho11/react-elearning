@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 //import axios
 import axios from 'axios';
 import swal from 'sweetalert';
+import Footer from '../../compenent/Footer';
 function IndexGuru() {
 
   //token
@@ -179,9 +180,7 @@ function IndexGuru() {
             {/* Simple Datatable End */}
 
           </div>
-          <div className="footer-wrap pd-20 mb-20 card-box">
-            DeskApp - Bootstrap 4 Admin Template By <a href="/" target="_blank">Ankit Hingarajiya</a>
-          </div>
+          <Footer />
         </div>
       </div>
 

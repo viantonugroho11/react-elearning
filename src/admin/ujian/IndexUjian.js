@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
 //import axios
 import axios from 'axios';
 import swal from 'sweetalert';
+import Footer from '../../compenent/Footer';
 function IndexUjian() {
   //token
   const token = localStorage.getItem("token");
@@ -157,9 +158,7 @@ function IndexUjian() {
             </div>
             {/* Simple Datatable End */}
           </div>
-          <div className="footer-wrap pd-20 mb-20 card-box">
-            Learning Management System By  Developer
-          </div>
+          <Footer/>
         </div>
       </div>
     </div>

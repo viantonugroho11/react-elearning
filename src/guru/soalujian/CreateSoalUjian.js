@@ -10,6 +10,7 @@ import { useHistory, useParams } from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react';
 import swal from 'sweetalert'
+import Footer from '../../compenent/Footer'
 function CreateSoalUjian() {
   //const { id } = useParams();
   const { id } = useParams();
@@ -275,9 +276,7 @@ function CreateSoalUjian() {
             </div>
             {/* Input Validation End */}
           </div>
-          <div className="footer-wrap pd-20 mb-20 card-box">
-            Learning  Management By Developer
-          </div>
+          <Footer />
         </div>
       </div>
     </div>

@@ -10,6 +10,7 @@ import swal from 'sweetalert';
 import { useState, useEffect } from 'react';
 //import axios
 import axios from 'axios';
+import Footer from '../../compenent/Footer';
 function IndexSiswa() {
   //token
   const token = localStorage.getItem("token");
@@ -152,9 +153,7 @@ function IndexSiswa() {
             </div>
             {/* Simple Datatable End */}
           </div>
-          <div className="footer-wrap pd-20 mb-20 card-box">
-            {/* DeskApp - Bootstrap 4 Admin Template By <Link to="https://github.com/dropways" target="_blank">Ankit Hingarajiya</Link> */}
-          </div>
+          <Footer />
         </div>
       </div>
 

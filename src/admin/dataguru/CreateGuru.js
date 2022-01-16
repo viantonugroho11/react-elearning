@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react';
 import swal from 'sweetalert';
+import Footer from '../../compenent/Footer'
 function CreateGuru() {
   // token
   const token = localStorage.getItem("token");
@@ -200,9 +201,7 @@ function CreateGuru() {
             </div>
             {/* Input Validation End */}
           </div>
-          <div className="footer-wrap pd-20 mb-20 card-box">
-            {/* DeskApp - Bootstrap 4 Admin Template By <a href="/" target="_blank">Ankit Hingarajiya</a> */}
-          </div>
+          <Footer />
         </div>
       </div>
 

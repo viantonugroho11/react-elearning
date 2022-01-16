@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react';
 import swal from 'sweetalert'
+import Footer from '../../compenent/Footer'
 // import M from 'minimatch'
 function CreateJadwal() {
   const [pelajaran, setPelajaran] = useState('');
@@ -191,9 +192,7 @@ function CreateJadwal() {
             </div>
             {/* Input Validation End */}
           </div>
-          <div className="footer-wrap pd-20 mb-20 card-box">
-            Learning  Management By Developer
-          </div>
+          <Footer />
         </div>
       </div>
 

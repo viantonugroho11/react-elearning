@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Footer from '../../compenent/Footer'
 
 export default class EditUjian extends Component {
   render() {
@@ -92,9 +93,7 @@ export default class EditUjian extends Component {
         </form></div>
       {/* Input Validation End */}
     </div>
-    <div className="footer-wrap pd-20 mb-20 card-box">
-      Learning Management System By  Developer
-    </div>
+            <Footer />
   </div>
 </div>
 

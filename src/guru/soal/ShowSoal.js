@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 //import axios
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import Footer from '../../compenent/Footer';
 function ShowSoalGuru(){
   //define history
   // const history = useHistory();
@@ -31,16 +32,24 @@ function ShowSoalGuru(){
   const token = localStorage.getItem('token');
 
   //get params
-  const { idsoal } = useParams();
+  const { id } = useParams();
+
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" }
+    return new Date(dateString).toLocaleDateString(undefined, options)
+  }
+
   //fetch data
   const fetchDataSoalJawab = async () => {
     //authotizen
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     //fetching
-    const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/guru/nilai/${idsoal}/edit`);
+    const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/guru/nilai/${id}/edit`);
     //get response data
     const data = await response.data.data;
-    console.log(data);
+    // console.log(formatDate(data.created_at));
+    // console.log(data.created_at);
+    // console.log(response);
     //assign response data to state "posts"
     setPosts(data);
   }
@@ -56,7 +65,7 @@ function ShowSoalGuru(){
               <div className="row">
                 <div className="col-md-12 col-sm-12">
                   <div className="title">
-                    <h4>Daftar Pelajaran</h4>
+                    <h4>Daftar Pengumpulan Tugas</h4>
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
@@ -76,8 +85,8 @@ function ShowSoalGuru(){
                     <div className="card card-box">
                       <div className="card-body">
                         <h5 className="card-title">{data.to_user.nama_siswa}</h5>
-                        <p className="card-text">Dikumpulin {data.created_at}<br/>
-                        Diedit {data.updated_at}</p>
+                        <p className="card-text">Dikumpulin {formatDate(data.created_at)}<br/>
+                          Diedit {formatDate(data.updated_at)}</p>
                         <div className="row">
                           <div className="col-md-6">
                             <Link to={`/guru/soal/nilai/${data.id}`} className="btn btn-primary">Lihat Hasil</Link>
@@ -93,9 +102,10 @@ function ShowSoalGuru(){
               })}
             </div>
           </div>
-          <div className="footer-wrap pd-20 mb-20 card-box">
+          <Footer />
+          {/* <div className="footer-wrap pd-20 mb-20 card-box">
             DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways">Ankit Hingarajiya</a>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

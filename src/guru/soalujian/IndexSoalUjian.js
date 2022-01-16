@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Footer from '../../compenent/Footer'
 
 export default class IndexSoalUjian extends Component {
   render() {
@@ -45,9 +46,7 @@ export default class IndexSoalUjian extends Component {
       </div>
       {/* Simple Datatable End */}
     </div>
-    <div className="footer-wrap pd-20 mb-20 card-box">
-      Learning Management System By  Developer
-    </div>
+            <Footer />
   </div>
 </div>
       </div>

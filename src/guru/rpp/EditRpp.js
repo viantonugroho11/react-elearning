@@ -10,6 +10,7 @@ import { useHistory, useParams } from "react-router-dom";
 //import hook useState from react
 import { useState } from 'react';
 import swal from 'sweetalert'
+import Footer from '../../compenent/Footer'
 function EditRpp() {
   //token
   const token = localStorage.getItem('token')
@@ -152,9 +153,7 @@ function EditRpp() {
             </div>
             {/* Input Validation End */}
           </div>
-          <div className="footer-wrap pd-20 mb-20 card-box">
-            Learning Management System By  Developer
-          </div>
+          <Footer />
         </div>
       </div>
 

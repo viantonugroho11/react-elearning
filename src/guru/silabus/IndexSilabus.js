@@ -11,6 +11,7 @@ import axios from 'axios';
 // import { useParams } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
+import Footer from '../../compenent/Footer';
 function IndexSilabus() {
   //define state
   const [posts, setPosts] = useState([]);
@@ -69,9 +70,9 @@ function IndexSilabus() {
     // file: <a href={url + user.file}>{user.file}</a>,
     aksi:
       <div>
-        <Link className="btn btn-secondary" to={"/guru/silabus/edit/" + user.id}>Edit</Link><br />
+        <Link className="btn btn-sm btn-warning" to={"/guru/silabus/edit/" + user.id}><i className="fa fa-edit"></i></Link>
         {/* <Link className="btn btn-secondary" href={"/guru/materi/show/" + user.id}>Show</Link><br /> */}
-        <button className="btn btn-sm btn-danger" onClick={() => deletePost(user.id)}>Delete</button><br />
+        <button className="btn btn-sm btn-danger" onClick={() => deletePost(user.id)}><li className="fa fa-trash"></li></button><br />
       </div>,
   }));
 
@@ -128,9 +129,7 @@ function IndexSilabus() {
             </div>
             {/* Simple Datatable End */}
           </div>
-          <div className="footer-wrap pd-20 mb-20 card-box">
-            Learning Management System By  Developer
-          </div>
+          <Footer />
         </div>
       </div>
     </div>
