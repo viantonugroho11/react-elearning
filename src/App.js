@@ -82,6 +82,7 @@ import IndexSoalGuru from './guru/soal/IndexSoal';
 import CreateSoalGuru from './guru/soal/CreateSoal';
 import ShowSoalGuru from './guru/soal/ShowSoal';
 import EditSoalGuru from './guru/soal/EditSoal';
+import NilaiSoal from './guru/soal/NilaiSoal';
 
 function App() {
   return (
@@ -128,6 +129,7 @@ function App() {
         {/* walikelas */}
         <Route exact path="/admin/walikelas" component={IndexWaliKelas} />
         <Route exact path="/admin/walikelas/create" component={CreateWaliKelas} />
+        <Route exact path="/admin/walikelas/edit/:id" component={EditWaliKelas} />
         {/* admin end */}
 
         {/* guru start */}
@@ -159,7 +161,7 @@ function App() {
         <Route exact path="/guru/soal/create/:id" component={CreateSoalGuru} />
         <Route exact path="/guru/soal/edit/:id" component={EditSoalGuru} />
         <Route exact path="/guru/soal/show/:id" component={ShowSoalGuru} />
-        <Route exact path="/guru/soal/answer/:id" component={EditUjian} />
+        <Route exact path="/guru/soal/answer/:id" component={NilaiSoal} />
         {/* ujian */}
         <Route exact path="/guru/ujian" component={IndexUjianGuru} />
         <Route exact path="/guru/ujian/create" component={CreateUjianGuru} />

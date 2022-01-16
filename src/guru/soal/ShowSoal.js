@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Footer from '../../compenent/Footer';
-function ShowSoalGuru(){
+function ShowSoalGuru() {
   //define history
   // const history = useHistory();
 
@@ -85,7 +85,7 @@ function ShowSoalGuru(){
                     <div className="card card-box">
                       <div className="card-body">
                         <h5 className="card-title">{data.to_user.nama_siswa}</h5>
-                        <p className="card-text">Dikumpulin {formatDate(data.created_at)}<br/>
+                        <p className="card-text">Dikumpulin {formatDate(data.created_at)}<br />
                           Diedit {formatDate(data.updated_at)}</p>
                         <div className="row">
                           <div className="col-md-6">
@@ -110,5 +110,5 @@ function ShowSoalGuru(){
       </div>
     </div>
   )
-  }
-  export default ShowSoalGuru;
+}
+export default ShowSoalGuru;
