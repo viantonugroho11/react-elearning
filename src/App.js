@@ -85,6 +85,7 @@ import EditSoalGuru from './guru/soal/EditSoal';
 import NilaiSoal from './guru/soal/NilaiSoal';
 import EditUjianGuru from './guru/ujian/EditUjian';
 import ShowUjianGuru from './guru/ujian/ShowUjianGuru';
+import NilaiSiswa from './siswa/nilai/IndexNilai';
 
 function App() {
   return (
@@ -194,6 +195,10 @@ function App() {
         <Route exact path="/ujian" component={IndexListUjian} />
         <Route exact path="/ujian/:ujianid/:hal" component={AnswerUjianSiswa} />
         <Route exact path="/review/ujian/:ujianid" component={ReviewUjian}/>
+        {/* ujian selesai */}
+        {/* nilai start */}
+        <Route exact path="/nilai" component={NilaiSiswa} />
+        {/* nilai selesai */}
         {/* NotFound */}
         <Route exact path="/admin/login" component={LoginAdmin} />
         <Route component={NotFound} />

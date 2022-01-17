@@ -1,13 +1,14 @@
 import React from 'react'
-import Header from '../../compenent/guru/Header'
-import Menu from '../../compenent/guru/Menu'
-import SideBar from '../../compenent/guru/SideBar'
+import Header from '../../compenent/siswa/Header';
+import Menu from '../../compenent/siswa/Menu';
+import SideBar from '../../compenent/siswa/Sidebar';
 import DataTable from 'react-data-table-component';
 // import { ?? } from "react-router-dom";
 //import hook useState dan useEffect from react
 import { useState, useEffect } from 'react';
 //import axios
 import axios from 'axios';
+import Footer from '../../compenent/Footer';
 // import { useParams } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
@@ -30,7 +31,7 @@ function NilaiSiswa() {
   //function "fetchData"
   const fectData = async () => {
     //fetching
-    const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/siswa/rpp/${id}/edit`);
+    const response = await axios.get(`http://appsiaksd.ugcorpusskkni.online/api/siswa/nilai/${id}/soal`);
     //get response data
     const data = await response.data.data;
 
@@ -39,7 +40,9 @@ function NilaiSiswa() {
   }
   // const url =  `http://appsiaksd.ugcorpusskkni.online/storage/FileMateri/`
   const datarpp = posts.map((user) => ({
-    nama: user.nama_rpp,
+    nama: user.get_soal.nama_soal,
+    nilai: user.nilai_soal,
+    tgl_kumpul: user.created_at,
     // file: <a href={url + user.file}>{user.file}</a>,
     aksi:
       <div>
@@ -52,14 +55,24 @@ function NilaiSiswa() {
 
   const columns = [
     {
-      name: 'Nama Rpp',
+      name: 'Nama Tugas',
       selector: row => row.nama,
       sortable: true,
     },
     {
-      name: 'Aksi',
-      selector: row => row.aksi
+      name: 'Nilai Tugas',
+      selector: row => row.nilai,
+      sortable: true,
     },
+    {
+      name: 'Tanggal Pengumpulan',
+      selector: row => row.tgl_kumpul,
+      sortable: true,
+    },
+    // {
+    //   name: 'Aksi',
+    //   selector: row => row.aksi
+    // },
   ];
   return (
     <div>
@@ -73,12 +86,12 @@ function NilaiSiswa() {
               <div className="row">
                 <div className="col-md-6 col-sm-12">
                   <div className="title">
-                    <h4>Data Kelas</h4>
+                    <h4>Data Nilai</h4>
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                      <li className="breadcrumb-item active" aria-current="page">Data Kelas</li>
+                      <li className="breadcrumb-item active" aria-current="page">Data Nilai</li>
                     </ol>
                   </nav>
                 </div>
@@ -87,8 +100,8 @@ function NilaiSiswa() {
             {/* Simple Datatable start */}
             <div className="card-box mb-30">
               <div className="pd-20 d-flex justify-content-between">
-                <h4 className="text-blue h4">Data RPP</h4>
-                <a href="/guru/rpp/create" className="btn btn-sm btn-primary">+ tambah</a>
+                <h4 className="text-blue h4">Data Nilai</h4>
+                {/* <a href="/guru/rpp/create" className="btn btn-sm btn-primary">+ tambah</a> */}
               </div>
               <div className="pb-20">
                 <DataTable
@@ -102,9 +115,7 @@ function NilaiSiswa() {
             </div>
             {/* Simple Datatable End */}
           </div>
-          <div className="footer-wrap pd-20 mb-20 card-box">
-            Learning Management System By  Developer
-          </div>
+          <Footer />
         </div>
       </div>
     </div>

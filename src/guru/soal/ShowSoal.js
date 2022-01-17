@@ -89,7 +89,7 @@ function ShowSoalGuru() {
                           Diedit {formatDate(data.updated_at)}</p>
                         <div className="row">
                           <div className="col-md-6">
-                            <Link to={`/guru/soal/nilai/${data.id}`} className="btn btn-primary">Lihat Hasil</Link>
+                            <Link to={`/guru/soal/answer/${data.id}`} className="btn btn-primary">Lihat Hasil</Link>
                           </div>
                         </div>
                         {/* <a href="#" className="btn btn-primary">Klik Me</a> */}

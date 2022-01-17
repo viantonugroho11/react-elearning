@@ -1,19 +1,22 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import HeaderSiswa from '../../compenent/siswa/Header';
 import MenuSiswa from '../../compenent/siswa/Menu';
 import SidebarSiswa from '../../compenent/siswa/Sidebar';
-
+import Footer from '../../compenent/Footer';
+import swal from 'sweetalert';
 function ShowTugasSiswa() {
   //define history
-  // const history = useHistory();
+  const history = useHistory();
+  const [isi, setIsi] = useState('');
+  const [file, setFile] = useState();
+  // const [materi, setMateri] = useState('');
 
   //define state
   const [posts, setPosts] = useState([]);
   const [status, setStatus] = useState('');
-  // A super simple expandable component.
-  // const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
+
   //useEffect hook
   useEffect(() => {
 
@@ -22,11 +25,52 @@ function ShowTugasSiswa() {
 
   }, []);
 
+  //state validation
+  const [validation, setValidation] = useState({});
+
   //token
+  const token = localStorage.getItem("token");
   const { id } = useParams('id');
 
-  //store
+  //userid local
+  const userid = localStorage.getItem('id');
 
+  //store data
+  //method "storePost"
+  const storePost = async (e) => {
+    e.preventDefault();
+
+    //auth
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+    //send data to server
+    //initialize formData
+    const formData = new FormData();
+
+    //append data to formData
+    formData.append('soal_id', id);
+    formData.append('user_id', userid);
+    formData.append('jawab_soal', isi);
+    // formData.append('batas_soal', batas);
+    formData.append('file_jawab_soal', file);
+    await axios.post(`http://appsiaksd.ugcorpusskkni.online/api/siswa/tugas/${id}/jawab`, formData)
+      .then(() => {
+
+        swal("Berhasil", "Jawaban Telah Disimpan", "success");
+        //redirect
+        // history.push('/tugas/' + id);
+        history.back();
+
+      })
+      .catch((error) => {
+        swal("Gagal", error.response.data.message, "error");
+        // console.log(res);
+        console.log(error.response.data);
+        //assign validation on state
+        setValidation(error.response.data);
+      })
+
+  };
   //fetch data
   const fetchDataMateriSiswa = async () => {
     //fetching
@@ -53,12 +97,12 @@ function ShowTugasSiswa() {
               <div className="row">
                 <div className="col-md-12 col-sm-12">
                   <div className="title">
-                    <h4>Daftar Pelajaran</h4>
+                    <h4>Form Jawab Soal</h4>
                   </div>
                   <nav aria-label="breadcrumb" role="navigation">
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                      <li className="breadcrumb-item active" aria-current="page"></li>
+                      <li className="breadcrumb-item active" aria-current="page">Soal</li>
                     </ol>
                   </nav>
                 </div>
@@ -84,29 +128,38 @@ function ShowTugasSiswa() {
               </div>
               {status == 0 &&
                 <div class="col-sm-12 col-md-12 mb-30">
-                  <div class="clearfix">
-                    <div class="pd-20 card-box mb-30">
-                      <h4 class="h4 text-blue">Pengumpulan Tugas</h4>
-                      <p>Silahkan Mengumpulkan Tugas dibawah ini</p>
-                      <p>Bisa Langsung/Menggunakan File</p>
-                      <div class="form-group">
-                        <label>Isi</label>
-                        <textarea class="form-control border-radius-0" placeholder="Masukan Isi ..."></textarea>
-                      </div>
-                      <div class="form-group">
-                        <label>File</label>
-                        <input type="file" class="form-control" />
-                      </div>
-                      <div class="clearfix">
-                        <div class="pull-right">
-                          <a href="#horizontal-basic-form1" class="btn btn-primary btn-sm scroll-click" rel="" data-toggle="collapse" role="button">Simpan</a>
+                  <form onSubmit={storePost}>
+                    <div class="clearfix">
+                      <div class="pd-20 card-box mb-30">
+                        <h4 class="h4 text-blue">Pengumpulan Tugas</h4>
+                        <p>Silahkan Mengumpulkan Tugas dibawah ini</p>
+                        <p>Bisa Langsung/Menggunakan File</p>
+                        {
+                          validation.message && (
+                            <div className="alert alert-danger">
+                              {validation.message}
+                            </div>
+                          )
+                        }
+                        <div class="form-group">
+                          <label>Isi</label>
+                          <textarea value={isi} onChange={(e) => setIsi(e.target.value)} class="form-control border-radius-0" placeholder="Masukan Isi ..."></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label>File</label>
+                          <input onChange={(e) => setFile(e.target.files[0])} type="file" class="form-control" />
+                        </div>
+                        <div class="clearfix">
+                          <div class="pull-right">
+                            <button className="btn btn-primary btn-sm scroll-click" type="submit">Simpan</button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </form>
                 </div>
               }
-              {status == 1 && 
+              {status == 1 &&
                 <div class="col-sm-12 col-md-12 mb-30">
                   <div class="clearfix">
                     <div class="pd-20 card-box mb-30">
@@ -114,11 +167,9 @@ function ShowTugasSiswa() {
                     </div>
                   </div>
                 </div>
-                }
+              }
             </div>
-            <div className="footer-wrap pd-20 mb-20 card-box">
-              Aplikasi System Akademik By <a href="https://github.com/dropways">Muhammad Novianto Nugroho</a>
-            </div>
+            <Footer />
           </div>
         </div>
       </div>

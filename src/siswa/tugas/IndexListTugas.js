@@ -6,6 +6,7 @@ import HeaderSiswa from '../../compenent/siswa/Header';
 import MenuSiswa from '../../compenent/siswa/Menu';
 import SidebarSiswa from '../../compenent/siswa/Sidebar';
 import moment from 'moment';
+import Footer from '../../compenent/Footer';
 function IndexListTugas() {
   //define history
   // const history = useHistory();
@@ -83,9 +84,7 @@ function IndexListTugas() {
               })}
             </div>
           </div>
-          <div className="footer-wrap pd-20 mb-20 card-box">
-            DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways">Ankit Hingarajiya</a>
-          </div>
+          <Footer />
         </div>
       </div>
     </div>

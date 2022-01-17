@@ -38,7 +38,7 @@ export default class MenuSiswa extends Component {
                   </Link>
                 </li>
                 <li className="dropdown">
-                  <Link to="/dashboard" className="dropdown-toggle no-arrow">
+                  <Link to="/" className="dropdown-toggle no-arrow">
                     <span className="micon dw dw-apartment" /><span className="mtext">Log Out</span>
                   </Link>
                 </li>
