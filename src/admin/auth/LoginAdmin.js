@@ -82,13 +82,13 @@ function LoginAdmin() {
                 </div>
                 <form onSubmit={loginHandler}>
                   <div className="input-group custom">
-                    <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" className="form-control form-control-lg" placeholder="Username" />
+                    <input id="email" value={email} onChange={(e) => setEmail(e.target.value)} type="text" className="form-control form-control-lg" placeholder="Username" />
                     <div className="input-group-append custom">
                       <span className="input-group-text"><i className="icon-copy dw dw-user1" /></span>
                     </div>
                   </div>
                   <div className="input-group custom">
-                    <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control form-control-lg" placeholder="**********" />
+                    <input id="password" value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control form-control-lg" placeholder="**********" />
                     <div className="input-group-append custom">
                       <span className="input-group-text"><i className="dw dw-padlock1" /></span>
                     </div>
