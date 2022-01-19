@@ -10,10 +10,103 @@ import { useHistory } from "react-router-dom";
 import { useState } from 'react'
 import swal from 'sweetalert'
 import Footer from '../../compenent/Footer'
+import Select from 'react-select';
 function CreateSiswa() {
   useEffect(() => {
     GetKelas()
   }, [])
+
+  const options = [
+    { value: '', label: 'Pilih Pekerjaan' },
+    { value: 'Belum/Tidak Bekerja', label: 'Belum/Tidak Bekerja' },
+    { value: 'Mengurus Rumah Tangga', label: 'Mengurus Rumah Tangga' },
+    { value: 'Pelajar/Mahasiswa', label: 'Pelajar/Mahasiswa' },
+    { value: 'Pensiunan', label: 'Pensiunan' },
+    { value: 'Pegawai Negeri Sipil (PNS)', label: 'Pegaawai Negeri Sipil (PNS)' },
+    { value: 'Tentara Nasional Indonesia (TNI)', label: 'Tentara Nasional Indonesia (TNI)' },
+    { value: 'Kepolisian RI (POLRI)', label: 'Kepolisian RI (POLRI)' },
+    { value: 'Perdagangan', label: 'Perdagangan' },
+    { value: 'Petani/Pekebun', label: 'Petani/Pekebun' },
+    { value: 'Peternak', label: 'Peternak' },
+    { value: 'Nelayan/Perikanan', label: 'Nelayan/Perikanan' },
+    { value: 'Industri', label: 'Industri' },
+    { value: 'Konstruksi', label: 'Konstruksi' },
+    { value: 'Transportasi', label: 'Transportasi' },
+    { value: 'Karyawan Swasta', label: 'Karyawan Swasta' },
+    { value: 'Karyawan BUMN', label: 'Karyawan BUMN' },
+    { value: 'Karyawan BUMD', label: 'Karyawan BUMD' },
+    { value: 'Karyawan Honorer', label: 'Karyawan Honorer' },
+    { value: 'Buruh Harian Lepas', label: 'Buruh Harian Lepas' },
+    { value: 'Buruh Tani/Perkebunan', label: 'Buruh Tani/Perkebunan' },
+    { value: 'Buruh Nelayan/Perikanan', label: 'Buruh Nelayan/Perikanan' },
+    { value: 'Buruh Peternakan', label: 'Buruh Peternakan' },
+    { value: 'Pembantu Rumah Tangga', label: 'Pembantu Rumah Tangga' },
+    { value: 'Tukang Cukur', label: 'Tukang Cukur' },
+    { value: 'Tukang Listrik', label: 'Tukang Listrik' },
+    { value: 'Tukang Batu', label: 'Tukang Batu' },
+    { value: 'Tukang Kayu', label: 'Tukang Kayu' },
+    { value: 'Tukang Sol Sepatu', label: 'Tukang Sol Sepatu' },
+    { value: 'Tukang Las/Pandai Besi', label: 'Tukang Las/Pandai Besi' },
+    { value: 'Tukang Jahit', label: 'Tukan Jahit' },
+    { value: 'Tukang Gigi', label: 'Tukang Gigi' },
+    { value: 'Penata Rias', label: 'Penata Rias' },
+    { value: 'Penata Busana', label: 'Penata Busana' },
+    { value: 'Penata Rambut', label: 'Penata Rambut' },
+    { value: 'Mekanik', label: 'Mekanik' },
+    { value: 'Seniman', label: 'Seniman' },
+    { value: 'Tabib', label: 'Tabib' },
+    { value: 'Paraji', label: 'Paraji' },
+    { value: 'Perancang Busana', label: 'Perancang Busana' },
+    { value: 'Penterjemah', label: 'Penterjemah' },
+    { value: 'Imam Masjid', label: 'Imam Masjid' },
+    { value: 'Pendeta', label: 'Pendeta' },
+    { value: 'Pastor', label: 'Pastor' },
+    { value: 'Wartawan', label: 'Waritawan' },
+    { value: 'Ustadz/Mubaligh', label: 'Ustadz/Mubaligh' },
+    { value: 'Juru Masak', label: 'Juru Masak' },
+    { value: 'Promotor Acara', label: 'Promotor Acara' },
+    { value: 'Anggota DPR-RI', label: 'Anggota DPR-RI' },
+    { value: 'Anggota DPD', label: 'Anggota DPD' },
+    { value: 'Anggota BPK', label: 'Anggota BPK' },
+    { value: 'Presiden', label: 'Presiden' },
+    { value: 'Wakil Presiden', label: 'Wakil Presiden' },
+    { value: 'Anggota Mahkamah Konstitusi', label: 'Anggota Mahkamah Konstitusi' },
+    { value: 'Anggota Kabinet/Kementrian', label: 'Anggota Kabinet/Kementrian' },
+    { value: 'Duta Besar', label: 'Duta Besar' },
+    { value: 'Gubernur', label: 'Gubenur' },
+    { value: 'Wakil Gubernur', label: 'Wakil Gubernur' },
+    { value: 'Bupati', label: 'Bupati' },
+    { value: 'Wakil Bupati', label: 'Wakil Bupati' },
+    { value: 'Walikota', label: 'Walikota' },
+    { value: 'Wakil Walikota', label: 'Wakil Walikota' },
+    { value: 'Anggota DPRD Prop.', label: 'Anggota DPRD Propinsi' },
+    { value: 'Anggota DPRD Kab./Kota', label: 'Anggota DPRD Kab./Kota' },
+    { value: 'Dosen', label: 'Dosen' },
+    { value: 'Guru', label: 'Guru' },
+    { value: 'Pilot', label: 'Pilot' },
+    { value: 'Pengacara', label: 'Pengacara' },
+    { value: 'Notaris', label: 'Notaris' },
+    { value: 'Arsitek', label: 'Arsitek' },
+    { value: 'Akuntan', label: 'Akuntan' },
+    { value: 'Konsultan', label: 'Konsultan' },
+    { value: 'Dokter', label: 'Dokter' },
+    { value: 'Bidan', label: 'Bidan' },
+    { value: 'Perawat', label: 'Perawat' },
+    { value: 'Apoteker', label: 'Apoteker' },
+    { value: 'Psikiater/Psikolog', label: 'Psikiater/Psikolog' },
+    { value: 'Penyiar Televisi', label: 'Penyiar Televisi' },
+    { value: 'Penyiar Radio', label: 'Penyiar Radio' },
+    { value: 'Pelaut', label: 'Pelaut' },
+    { value: 'Peneliti', label: 'Peneliti' },
+    { value: 'Sopir', label: 'Sopir' },
+    { value: 'Pialang', label: 'Pialang' },
+    { value: 'Paranormal', label: 'Paranormal' },
+    { value: 'Pedagang', label: 'Pedagang' },
+    { value: 'Perangkat Desa', label: 'Perangkat Desa' },
+    { value: 'Kepala Desa', label: 'Kepala Desa' },
+    { value: 'Biarawati', label: 'Biarawati' },
+    { value: 'Wiraswasta', label: 'Wiraswasta' }
+  ]
   // token
   const token = localStorage.getItem('token');
 
@@ -318,8 +411,8 @@ function CreateSiswa() {
                     <option value={"Kepala Desa"}>Kepala Desa</option>
                     <option value={"Biarawati"}>Biarawati</option>
                     <option value={"Wiraswasta"}>Wiraswasta</option>
-
                   </select>
+                  <Select options={options} />
 
                 </div>
                 <div className="form-group">
